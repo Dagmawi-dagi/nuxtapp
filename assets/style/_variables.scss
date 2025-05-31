@@ -1,0 +1,41 @@
+//colors
+$dark-blue: #1F316F;
+$white: #fff;
+//text
+$text-blue: #1492E6;
+$text-dark-gray: #353A3C;
+$text-light-gray: #959595;
+$text-light-red: tomato;
+// border
+$border-light: #e5e7eb;
+$border-light-blue:#C1DEFF;
+// other colors
+$light-gray: #707070;
+$green: #9CFF2E;
+$modal: #000000b3;
+//---------------------------------//
+
+//--------- measurments -----------//
+$top-nav-1-height: 35px;
+$top-nav-2-height: 77px;
+// Z-index
+$zindex-top-nav-2: 9;
+$zindex-modal: 999999999999;
+// beak point
+$mobile-breakpoint: 768px;
+$desktop-breakpoint: 1024px;
+$router-view-width: 1200px;
+
+//----------------------------------//
+
+:root {
+  --dark-blue:#{$dark-blue};
+  --white:#{$white};
+  --dark-red: #BD151E;
+
+
+  --text-blue: #{$text-blue};
+  --text-light-gray: #{$text-light-gray};
+  --text-dark-gray: #{$text-dark-gray};
+  --border-light-blue :#{$border-light-blue};
+}

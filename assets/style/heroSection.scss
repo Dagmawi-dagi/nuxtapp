@@ -1,0 +1,280 @@
+@import '/assets/style/variables';
+
+$color-gray: #a0a8b8;
+
+.hero {
+    background: linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+    width: 100%;
+    padding: 0 7%;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    // Dots pattern
+  .dots-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, $text-blue, 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: .13;
+    pointer-events: none;
+  }
+}
+
+.continer{
+    color: #fff;
+    max-width: 500px;
+    align-self: center;
+    min-height: 300px;
+
+}
+
+.container-2{
+    min-width: 600px;
+    margin-top: 3rem;
+    min-height: 300px;
+  
+    @media (max-width: 1200px) {
+      order: -1;
+    }
+}
+
+
+
+.neon-light {
+    position: relative;
+    margin: auto;
+    height: 3px;
+    width: 0;
+
+    background-color: #0ff;
+    box-shadow: 
+        0 0 7px 1px #0ff,
+        0 0 10px 2px rgba(0, 255, 255, 0.8),
+        0 0 15px 3px rgba(0, 255, 255, 0.6),
+        0 0 25px 4px rgba(0, 255, 255, 0.4);
+    z-index: 20; 
+
+    //add thinner neon light below it for cool effects
+    .light-glow {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 100%;
+        height: 400px;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 255, 255, 0.4) 0%,
+            rgba(0, 210, 255, 0.3) 10%,
+            rgba(0, 180, 255, 0.2) 20%,
+            rgba(0, 150, 255, 0.1) 30%,
+            rgba(0, 120, 255, 0.05) 40%,
+            rgba(0, 8, 20, 0) 70%
+        );
+        pointer-events: none;
+    }
+
+    .light-beam {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 100%;
+        height: 300px;
+        background: radial-gradient(
+            ellipse at top,
+            rgba(0, 255, 255, 0.4) 0%,
+            rgba(0, 210, 255, 0.2) 20%,
+            rgba(0, 180, 255, 0.1) 40%,
+            rgba(0, 8, 20, 0) 70%
+        );
+        pointer-events: none;
+    }
+}
+
+
+.img{
+  position: absolute;
+  max-width: 100%;
+  height: 200px;
+  border-radius: 1px;
+  inset: 0; /* This sets top, right, bottom, and left to 0 */
+  margin: auto; 
+  opacity:0;
+
+  &.img1{
+    margin-left: auto; 
+    margin-right: auto; 
+    transform:  scale(0);
+    z-index: 15;
+    opacity: 1;
+
+  }
+  &.img2{
+    transform:  scale(.999);
+    z-index: 14;
+  }
+
+  &.img3{
+    transform:  scale(.999);
+    z-index: 14;
+  }
+  &.img4{
+    transform:  scale(.9);
+    z-index: 13;
+  }
+  &.img5{
+    transform: scale(.9);
+    z-index: 13;
+  }
+  &.img6{
+    transform: scale(.8);
+    z-index: 12;
+  }
+  &.img7{
+    transform: scale(.8);
+    z-index: 12;
+  }
+  &.img8{
+    transform: scale(.7);
+    z-index: 11;
+  }
+  &.img9{
+    transform: scale(.7);
+    z-index: 11;
+  }
+  &.img10{
+    transform: scale(.6);
+    z-index: 10;
+  }
+}
+
+
+// Hero section
+.info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.info__content {
+  max-width: 800px;
+  text-align: center;
+  z-index: 1;
+}
+
+.info__title {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.info__subtitle {
+  color: $color-gray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.info__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  
+  @media (min-width: 576px) {
+    flex-direction: row;
+  }
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  min-width: 180px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &--primary {
+    background-color:var(--dark-blue);
+    color: var(--white);
+    
+    &:hover {
+      background-color: darken($dark-blue, 5%);
+    }
+  }
+  
+  &--secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    &:hover {
+      background-color: inherit;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+// Chat button
+.chat {
+  position: absolute;
+  bottom: 1rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  z-index: 10;
+  cursor: pointer;
+
+
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .chat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: var(--dark-blue);
+    border-radius: 50%;
+    color: var(--white);
+  }
+  
+  .chat_btn{
+      background-color: #fff;
+      color: $text-dark-gray;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 1rem;
+      padding: 5px 10px;
+      font-weight: bold;
+      text-transform: capitalize;
+      cursor: pointer;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    left: 10px;
+    .chat_btn{
+      display: none;
+    }
+  }
+}
+

@@ -1,0 +1,37 @@
+@import '../../../style/variables';
+@import '../../../style/mixins';
+
+.themeContainer{
+  @include transition($prop: onlytheme);
+
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: var(--light-blue);
+  border: 1px solid $text-light-gray;
+  border-radius: 50px;
+  padding: 10px;
+  cursor: pointer;
+
+  & .themeIcon{
+    position: absolute;
+    left: unset;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+
+    &.moon{
+      right: 0;
+    }
+    &.sun{
+      left: 0;
+    }
+    & svg{
+      color: var(--text-dark-gray);
+    }
+  }
+
+}
