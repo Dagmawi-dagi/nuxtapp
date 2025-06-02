@@ -10,10 +10,14 @@ const aa = ()=>{
         console.log('Running on the client')
     }
 }
+
+    const res = await $fetch('/api/test')
+    console.log(res);
+
 </script>
 
-<template                  >
-    <button @click="aa">click me </button>
+<template>
+    <!-- <button @click="aa">click me </button> -->
 
     <Topnavs/>
     <div style="min-height: 80vh;"> <NuxtPage/> </div>
