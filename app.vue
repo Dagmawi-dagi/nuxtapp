@@ -11,9 +11,6 @@ const aa = ()=>{
     }
 }
 
-    const res = await $fetch('/api/test')
-    console.log(res);
-
 </script>
 
 <template>
