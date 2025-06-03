@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '@/server/database/sequelizeConnection';
+import {sequelize} from '@/server/database/sequelizeConnection';
 
 const schema = {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
