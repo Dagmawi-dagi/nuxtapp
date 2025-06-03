@@ -1,6 +1,6 @@
 import { sequelize } from '@/server/database/sequelizeConnection'
 
-export default defineNitroPlugin(async () => {
+export default defineNuxtPlugin(async () => {
   try {
     await sequelize.authenticate();
     console.log('MySQL connected successfully');
