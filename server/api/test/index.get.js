@@ -1,6 +1,7 @@
 import { model as test } from '@/server/database/models/test'
+import withErrorHandler from '@/server/utils/catchAsync'
 
-export default defineEventHandler( async(event) => {
+export default withErrorHandler( async(event) => {
     const tests = await test.findAll()
     return {tests}
 })
