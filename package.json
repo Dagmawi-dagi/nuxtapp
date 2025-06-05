@@ -21,12 +21,14 @@
     "mysql2": "^3.14.1",
     "nuxt": "^3.17.4",
     "nuxt-easy-lightbox": "^1.0.2",
+    "pg-hstore": "^2.3.4",
     "pinia": "^3.0.2",
     "sequelize": "^6.37.7",
     "v-page": "^3.3.0",
     "vue": "^3.5.14",
     "vue-easy-lightbox": "^1.19.0",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "zod": "^3.25.51"
   },
   "devDependencies": {
     "sass": "^1.89.0"
