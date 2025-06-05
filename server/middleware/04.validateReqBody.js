@@ -3,5 +3,6 @@
 
 export default defineEventHandler( async (event) => {
     console.log('4444');
+
     // const result = await readValidatedBody(event, body => generateZodSchema(schema,'testss').safeParse(body))
 });

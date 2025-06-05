@@ -1,7 +1,7 @@
 import { createWriteStream } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
-import { getRequestURL,getMethod   } from 'h3'
+import { getRequestURL   } from 'h3'
 
 // Ensure __dirname works in ES module context
 const __dirname = dirname(fileURLToPath(import.meta.url))
