@@ -3,5 +3,8 @@ import withErrorHandler from '@/server/utils/catchAsync'
 
 export default withErrorHandler( async(event) => {
     const tests = await test.findAll()
-    return {tests}
+    return {
+        tests,
+        APIINFO:event.context.APIINFO
+    }
 })

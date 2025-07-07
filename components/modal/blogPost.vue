@@ -2,7 +2,7 @@
 // libs
 import { format } from 'date-fns';
 // util
-import { serverUrl } from '@/utils/server'
+// import { serverUrl } from '@/utils/'
 
 const { any_open_modal } = storeToRefs( useUtilStore() )
 const { show_global_vueEasyLightbox } = useLightBox()
