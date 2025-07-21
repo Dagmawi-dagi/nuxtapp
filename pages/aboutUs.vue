@@ -1,6 +1,6 @@
 <script setup>
 //utills
-import { serverUrl } from '@/utils/server';
+// import { serverUrl } from '@/utils/server';
 // assets
 import { aboutUs_p,aboutUsCardswithIcon,manager,customerReview,products } from '@/public/site_info_ref';
 // libs

@@ -1,3 +1,7 @@
+//NOTE:::: Middleware handlers should not return anything (nor close or respond to the request) 
+// and only inspect or extend the request context or throw an error.
+
+
 import { API_INFO } from "../utils/apisInfo"
 
 export default defineEventHandler(async (event) => {

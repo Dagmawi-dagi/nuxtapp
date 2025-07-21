@@ -31,7 +31,7 @@ export const API_INFO = {
             addCreatedBy: false,
         },
     },
-        "/api/test/post" : { 
+    "/api/test/post" : { 
         method: 'POST',
         auth: true,
         restrict:['admin'],
