@@ -1,7 +1,7 @@
-import { model as test } from '@/server/database/models/test'
+import modelsRefs from '@/server/database/models/modelsRefs'
 
 export default defineEventHandler( async(event) => {
-    const testt = await test.findByPk(getRouterParams(event).id)
+    const testt = await modelsRefs.test.model.findByPk(getRouterParams(event).id)
     
     return {
         testt,

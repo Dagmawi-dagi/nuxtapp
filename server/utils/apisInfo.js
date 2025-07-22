@@ -6,7 +6,7 @@ export const API_INFO = {
         method: 'GET',
         auth: false,
         restrict:[],
-        fileUpload: {fieldName: 'coverImage',image: false,saveFileTo:'path'},
+        fileUpload: {},
         saveFileTo: 'testphotos',
         reqBodyValidation:{bool:true,schemaName:'test'},
         filterReqBodyWith:[],
@@ -35,7 +35,20 @@ export const API_INFO = {
         method: 'POST',
         auth: true,
         restrict:['admin'],
-        fileUpload: {fieldName: 'coverImg',image: true,saveFileTo:'public/test'},
+        fileUpload: [
+            {
+                fieldName: 'coverImg',
+                saveFileToFolder: 'test',
+                allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+                type:"image"
+            },
+            {
+                fieldName: 'gallery',
+                saveFileToFolder: 'test/gallery',
+                allowedTypes: ['.jpg', '.png', '.webp'],
+                type:"image"
+            }
+        ],
         reqBodyValidation:{bool:true,schemaName:'test'},
         filterReqBodyWith:[],
         controller:{

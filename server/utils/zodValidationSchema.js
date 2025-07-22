@@ -87,8 +87,6 @@ export function generateZodSchema(sequelizeModelSchema, schemaName = 'Schema') {
 }
 
 
-
-
 // z.object({
 //   name: z.string()
 //     .min(3)
