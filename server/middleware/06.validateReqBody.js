@@ -8,6 +8,7 @@
 import { generateZodSchema } from '@/server/utils/zodValidationSchema'
 import modelsRefs from '../database/models/modelsRefs';
 import withErrorHandler from '../utils/catchAsync';
+import { createError } from 'h3';
 
 export default withErrorHandler( async(event) => {
     let result
@@ -19,9 +20,14 @@ export default withErrorHandler( async(event) => {
         else{ // if the body is not formdata we can just use the readValidatedBody
             result = await readValidatedBody(event, body => generateZodSchema(dbSchema,'test').safeParse(body)) // or `.parse` to directly throw an error
         }
+
+        if (!result.success){
+            throw createError({
+                statusCode: 400,
+                message: 'request body validation failed',
+                data: result.error.issues
+            });
+        }
     } 
 
-    return result
-    // // check if we have modifed body to mean thta have multipart form data 
-    // // else just use the regular readValidatedBody cus it will read from the req.body
 })

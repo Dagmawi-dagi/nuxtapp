@@ -1,6 +1,6 @@
 export default function withErrorHandler(handler) {
   return defineEventHandler(async (event) => {
-    const isDev = 'development'
+    const isDev = true
     try {
       // do something before the route handler
       return await handler(event)
@@ -14,10 +14,8 @@ export default function withErrorHandler(handler) {
       if (isDev) {
         console.error('[API ERROR]', error)
       }
-
       // Optionally send to external logging service here
-
-      return err
+      throw error
     }
   })
 }
