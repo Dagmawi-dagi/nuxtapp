@@ -1,1 +1,0 @@
-// here creat functions to do commmon CRUP operattion to save time just pass the event,model and other needed params
