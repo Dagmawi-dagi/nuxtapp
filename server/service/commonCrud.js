@@ -1,5 +1,6 @@
-const { Op } = require('sequelize');
-const { getQuery, readBody, createError } = require('h3');
+import { Op }  from 'sequelize'
+import { getQuery, readBody, createError } from 'h3';
+import sequelize from 'sequelize';
 
 export const commonController = (event, model) => {
   // Helper to parse operator queries (price>=100, date<2023-01-01)
@@ -26,15 +27,12 @@ export const commonController = (event, model) => {
         return { field, operator, val };
       }
     }
-    
+
     return { field: key, operator: Op.eq, val: value };
   };
 
-  const create = async () => {
-    const body = await readBody(event);
-    return model.create(body, {
-      transaction: event.context.transaction // Support transactions
-    });
+  const create = async (createObject) => {
+    return model.create(createObject);
   };
 
   const get = async () => {
@@ -107,7 +105,7 @@ export const commonController = (event, model) => {
     }
 
     // Execute query
-    const result = await model.findAndCountAll({
+    return model.findAndCountAll({
       where,
       limit: parseInt(perPage),
       offset: (parseInt(page) - 1) * parseInt(perPage),
@@ -117,52 +115,63 @@ export const commonController = (event, model) => {
       subQuery: false, // Important for MySQL pagination with includes
       distinct: true,  // Fix count for MySQL with joins
     });
-
-    return {
-      data: result.rows,
-      pagination: {
-        page: parseInt(page),
-        perPage: parseInt(perPage),
-        total: result.count,
-        totalPages: Math.ceil(result.count / perPage)
-      }
-    };
+ 
   };
 
-  const update = async () => {
-    const id = event.context.params?.id;
-    if (!id) throw createError({ statusCode: 400, message: 'Missing ID' });
+  const updateMany = async (where, updateData) => {
     
-    const body = await readBody(event);
-    const record = await model.findByPk(id, {
-      transaction: event.context.transaction
+    if (!where || Object.keys(where).length === 0) {
+      throw createError({ statusCode: 400, message: 'Missing conditions for update' });
+    }
+    
+    if (!updateData || Object.keys(updateData).length === 0) {
+      throw createError({ statusCode: 400, message: 'Missing update data' });
+    }
+
+    // Perform the bulk update
+    const [affectedCount] = await model.update(updateData, {
+      where: where
     });
-    
-    if (!record) throw createError({ statusCode: 404, message: 'Record not found' });
-    
-    return record.update(body, {
-      transaction: event.context.transaction
+
+    if (affectedCount === 0) {
+      throw createError({ statusCode: 404, message: 'No records found matching the where conditions to update' });
+    }
+
+    // Return updated records
+    return await model.findAll({
+      where: where,
+      attributes: Object.keys(model.rawAttributes) // Return all columns
     });
   };
 
-  const deleteOne = async () => {
-    const id = event.context.params?.id;
-    if (!id) throw createError({ statusCode: 400, message: 'Missing ID' });
-    
-    const record = await model.findByPk(id, {
-      transaction: event.context.transaction
+  const deleteMany = async (where) => {
+    // Validate conditions - prevent accidental deletion of all records
+    if (!where || Object.keys(where).length === 0) {
+      throw createError({
+        statusCode: 400,
+        message: 'Deletion conditions required for safety'
+      });
+    }
+
+    // Perform deletion
+    const deletedCount = await model.destroy({
+      where: where
     });
-    
-    if (!record) throw createError({ statusCode: 404, message: 'Record not found' });
-    
-    await record.destroy({ transaction: event.context.transaction });
-    return { message: 'Record deleted successfully' };
+
+    // Handle no records found
+    if (deletedCount === 0) {
+      throw createError({
+        statusCode: 404,
+        message: 'No records found matching the conditions'
+      });
+    }
+    return deletedCount
   };
 
   return {
     create,
     get,
-    update,
-    delete: deleteOne
+    updateMany,
+    deleteMany
   };
 };

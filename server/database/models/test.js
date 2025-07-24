@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '@/server/database/sequelizeConnection';
+import { z } from 'zod';
 
 const _schema = {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
@@ -15,7 +16,26 @@ const test = sequelize.define('test', _schema, {
 
 test.searchColumns = ['name'];
 
+// here create zod validation schema form the reqBody for this model to be used before crud operations
+const base = z.object({
+  name: z.string()
+    .min(1, "test Name is required")
+    .max(255, "test Name must be less than 255 characters"),
+  coverImg: z.string()
+    .min(1, "test Cover image is required"),
+  createdBy: z.coerce.number().int("test Created by must be an integer").positive("test Created by must be positive")
+});
+
+// Schema for CREATING new records
+// Schema for COMPLETE records (including ID)
+export const full = base.extend({
+  id: z.number().int().positive("test ID must be a positive integer")
+});
+// Schema for UPDATING records
+export const update = base.partial();
+
 export default {
   model: test,
-  schema : _schema
+  schema : _schema,
+  zobSchema: {base,full,update}
 }

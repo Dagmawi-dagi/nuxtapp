@@ -7,22 +7,8 @@ export const API_INFO = {
         auth: false,
         restrict:[],
         fileUpload: [],
-        saveFileTo: 'testphotos',
-        reqBodyValidation:{bool:true,schemaName:'test'},
-        filterReqBodyWith:[],
-        // controller:{
-        //     model: 'user',
-        //     crudMethod: 'create',
-        //     common: true,
-        //     addCreatedBy: false,
-        // },
-    },
-    "/api/test/:id" : { 
-        method: 'GET',
-        auth: true,
-        restrict:[],
-        fileUpload: [],
-        reqBodyValidation:{bool:true,schemaName:'test'},
+        saveFileTo: null,
+        reqBodyValidation:{},
         filterReqBodyWith:[],
     },
     "/api/test/post" : { 
@@ -36,14 +22,33 @@ export const API_INFO = {
                 allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
                 type:"image"
             },
-            {
-                fieldName: 'gallery',
-                saveFileToFolder: 'test/gallery',
-                allowedTypes: ['.jpg', '.png', '.webp'],
-                type:"image"
-            }
         ],
         reqBodyValidation:{bool:true,schemaName:'test'},
+        filterReqBodyWith:[],
+    },
+    "/api/test/patch" : { 
+        method: 'patch',
+        auth: false,
+        restrict:[],
+        fileUpload: [
+            {
+                fieldName: 'coverImg',
+                saveFileToFolder: 'test',
+                allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+                type:"image"
+            },
+        ],
+        saveFileTo: null,
+        reqBodyValidation:{bool:true,schemaName:'test'},
+        filterReqBodyWith:[],
+    },
+    "/api/test/delete" : { 
+        method: 'delete',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
         filterReqBodyWith:[],
     },
 }

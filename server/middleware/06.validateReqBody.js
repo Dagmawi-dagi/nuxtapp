@@ -5,7 +5,7 @@
 //1- here we will validate the reqBody with the DBSchema 
 //2- we will validate the reqBody with custome validation rules defined for this route on ApiRouteRefs.js
 
-import { generateZodSchema } from '@/server/utils/zodValidationSchema'
+
 import modelsRefs from '../database/models/modelsRefs';
 import withErrorHandler from '../utils/catchAsync';
 import { createError } from 'h3';
@@ -13,12 +13,20 @@ import { createError } from 'h3';
 export default withErrorHandler( async(event) => {
     let result
     if (event.context.APIINFO.reqBodyValidation.bool){
-        const dbSchema = modelsRefs[event.context.APIINFO.reqBodyValidation.schemaName].schema
+
+         let validationSchema;
+        if (event.method === 'PATCH' || event.method === 'PUT') {
+            validationSchema = modelsRefs.test.zobSchema.update;
+        } else {
+            // Default to create schema for POST/other methods
+            validationSchema = modelsRefs.test.zobSchema.create;
+        }
+
         if(event.context.modifiedBody){
-            result =  generateZodSchema(dbSchema,'test').safeParse(event.context.modifiedBody) // or `.parse` to directly throw an error
+            result =  validationSchema.safeParse(event.context.modifiedBody) // or `.parse` to directly throw an error
         }
         else{ // if the body is not formdata we can just use the readValidatedBody
-            result = await readValidatedBody(event, body => generateZodSchema(dbSchema,'test').safeParse(body)) // or `.parse` to directly throw an error
+            result = await readValidatedBody(event, body => validationSchema.safeParse(body)) // or `.parse` to directly throw an error
         }
 
         if (!result.success){

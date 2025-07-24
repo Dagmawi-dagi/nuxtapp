@@ -8,7 +8,6 @@
 
 import withErrorHandler from '@/server/utils/catchAsync'
 import {processImage} from  '@/server/utils/processImage';
-import {saveFile} from  '@/server/utils/saveFileUpload';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -18,13 +17,14 @@ import { createError } from 'h3';
 // Main handler
 export default withErrorHandler(async (event) => {
   const apiConfig = event.context.APIINFO;
-  
+    
   // Check if file upload is expected
   const fileUploadConfigs = apiConfig.fileUpload || [];
   const expectsFileUpload = fileUploadConfigs.length > 0;
   
   // Read form data only if file upload is expected
   let form;
+
   if (expectsFileUpload) {
     form = await readMultipartFormData(event);
     if (!form) throw createError({ statusCode: 400, message: 'No form data found' });

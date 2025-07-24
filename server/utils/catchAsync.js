@@ -8,14 +8,13 @@ export default function withErrorHandler(handler) {
       const err = {
         statusCode: error.statusCode || 500,
         statusMessage: error.statusMessage || 'Internal Server Error',
-        message: error.message || String(error),
+        message: error,
       }
 
       if (isDev) {
-        console.error('[API ERROR]', error)
+        console.error('[API ERROR]', err)
       }
-      // Optionally send to external logging service here
-      throw error
+      throw err
     }
   })
 }
