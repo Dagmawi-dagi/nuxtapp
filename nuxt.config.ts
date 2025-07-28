@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-easy-lightbox','@vueform/nuxt','maz-ui/nuxt'],
   css: ['@/assets/style/global.scss'],
   mazUi: {

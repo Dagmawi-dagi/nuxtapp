@@ -1,10 +1,14 @@
 <script setup>
 // assets
 import { herosction } from "../public/site_info_ref";
+import logo from '@/assets/pictures/Products/alcohol 70.png';
 // libs
 import gsap from 'gsap';
+//vue
+import { onMounted } from 'vue'
 
 onMounted(()=>{
+    
     gsap.to(".img1",{ scale: "1.5", duration: 1,ease:"linear"}).then((el)=>{
         gsap.to(".img1",{ scale: "1.3", duration: 3,ease:"linear"})
     })
@@ -56,16 +60,16 @@ const scrollToSection = (id) => {
                 <div class="light-beam"></div>
                 <div class="light-glow"></div>
             </div>
-            <img  loading="lazy" class="img img1" src="/assets/pictures/Products/vodka.png" alt="pruduct image">
-            <img  loading="lazy" class="img img2" src="/assets/pictures/Products/uozo.png" alt="pruduct image">
-            <img  loading="lazy" class="img img3" src="/assets/pictures/Products/gin.png" alt="pruduct image">
-            <img  loading="lazy" class="img img4" src="/assets/pictures/Products/apple.png" alt="pruduct image">
-            <img  loading="lazy" class="img img5" src="/assets/pictures/Products/superment.png" alt="pruduct image">
-            <img  loading="lazy" class="img img6" src="/assets/pictures/Products/coffee.png" alt="pruduct image">
-            <img  loading="lazy" class="img img7" src="/assets/pictures/Products/aprative.png" alt="pruduct image">
-            <img  loading="lazy" class="img img8" src="/assets/pictures/Products/lime.png" alt="pruduct image">
-            <img  loading="lazy" class="img img9" src="/assets/pictures/Products/zebib.png" alt="pruduct image">
-            <img  loading="lazy" class="img img10" src="/assets/pictures/Products/ananas.png" alt="pruduct image">
+            <img  class="img img1" src="/pictures/Products/vodka.png" alt="pruduct image">
+            <img  class="img img2" src="/pictures/Products/uozo.png" alt="pruduct image">
+            <img  class="img img3" src="/pictures/Products/gin.png" alt="pruduct image">
+            <img  class="img img4" src="/pictures/Products/apple.png" alt="pruduct image">
+            <img  class="img img5" src="/pictures/Products/superment.png" alt="pruduct image">
+            <img  class="img img6" src="/pictures/Products/coffee.png" alt="pruduct image">
+            <img  class="img img7" src="/pictures/Products/aprative.png" alt="pruduct image">
+            <img  class="img img8" src="/pictures/Products/lime.png" alt="pruduct image">
+            <img  class="img img9" src="/pictures/Products/zebib.png" alt="pruduct image">
+            <img  class="img img10" src="/pictures/Products/ananas.png" alt="pruduct image">
         </div>
 
         <div class="chat" @click="$router.push('/contact-us')">    

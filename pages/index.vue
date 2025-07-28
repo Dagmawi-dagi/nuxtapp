@@ -1,4 +1,9 @@
 <script setup>
+import { onMounted } from 'vue'
+onMounted(()=>{
+    console.log('asdasdasdasdasd');
+})
+
 useHead({
     titleTemplate: 'DALF | HOME',
 })
@@ -11,7 +16,7 @@ useHead({
     </ClientOnly>
     <HomeAbout/>
     <OurNumbers/>
-    <NewsletterSub/>
+    <NewsletterSub/>        
 </template>
 <style>
 </style>
