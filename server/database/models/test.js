@@ -26,16 +26,15 @@ const base = z.object({
   createdBy: z.coerce.number().int("test Created by must be an integer").positive("test Created by must be positive")
 });
 
-// Schema for CREATING new records
 // Schema for COMPLETE records (including ID)
-export const full = base.extend({
+const full = base.extend({
   id: z.number().int().positive("test ID must be a positive integer")
 });
 // Schema for UPDATING records
-export const update = base.partial();
+ const updateSchema = base.partial();
 
 export default {
   model: test,
   schema : _schema,
-  zobSchema: {base,full,update}
+  zobSchema: {base,full,updateSchema}
 }
