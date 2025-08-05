@@ -32,7 +32,7 @@ const _schema = {
   passwordChangedAt: {type: DataTypes.DATE},
   passwordResetToken: {type: DataTypes.STRING},
   passwordResetExpires: {type: DataTypes.DATE},
-  last_logged_in:{
+  lastLoggedIn:{
     type:  DataTypes.DATE,
   },
   active:{
@@ -53,24 +53,22 @@ const user = sequelize.define('user', _schema, {
 const base = z.object({
   userName: z.string()
     .min(1, "Username is required")
-    .max(50, "Username must be less than 50 characters")
-    .default('username'),
+    .max(50, "Username must be less than 50 characters"),
 
   email: z.string()
     .min(1, "Email is required")
     .email("Invalid email format"),
 
   phoneNumber: z.string()
-    .min(1, "Phone number is required")
-    .regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number format (E.164)"),
+    .min(1, "Phone number is required"),
 
   userPassword: z.string()
     .min(1, "Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-    .regex(/[0-9]/, "Password must contain at least one number")
-    .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character"),
+    .min(8, "Password must be at least 8 characters"),
+    // .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    // .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    // .regex(/[0-9]/, "Password must contain at least one number")
+    // .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character"),
 
   avatar: z.string()
     .optional()
@@ -85,7 +83,7 @@ const base = z.object({
   passwordResetExpires: z.coerce.date()
     .optional(),
 
-  last_logged_in: z.coerce.date()
+  lastLoggedIn: z.coerce.date()
     .optional(),
 
   active: z.boolean()

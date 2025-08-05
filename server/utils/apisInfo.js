@@ -2,9 +2,9 @@
 // which can be used inn the next server middle wares
 
 export const API_INFO = {   
-    "/api/test" : { 
+    "/api/test/GET" : { 
         method: 'GET',
-        auth: false,
+        auth: true,
         restrict:[],
         fileUpload: [],
         saveFileTo: null,
@@ -23,7 +23,7 @@ export const API_INFO = {
                 type:"image"
             },
         ],
-        reqBodyValidation:{bool:true,schemaName:'test'},
+        reqBodyValidation:{bool:true,modelRef:'test', schemaName: 'base'},
         filterReqBodyWith:[],
     },
     "/api/test/patch" : { 
@@ -39,7 +39,7 @@ export const API_INFO = {
             },
         ],
         saveFileTo: null,
-        reqBodyValidation:{bool:true,schemaName:'test'},
+        reqBodyValidation:{bool:true,modelRef:'test', schemaName: 'base'},
         filterReqBodyWith:[],
     },
     "/api/test/delete" : { 
@@ -49,6 +49,24 @@ export const API_INFO = {
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{},
+        filterReqBodyWith:[],
+    },
+     "/api/user/logIn/POST" : { 
+        method: 'POST',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'loginSchema'},
+        filterReqBodyWith:[],
+    },
+     "/api/user/signUp/POST" : { 
+        method: 'POST',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'base'},
         filterReqBodyWith:[],
     },
 }

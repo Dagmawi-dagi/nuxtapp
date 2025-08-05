@@ -1,3 +1,7 @@
+import { createError } from 'h3';
+
+
+
 export default function withErrorHandler(handler) {
   return defineEventHandler(async (event) => {
     const isDev = true
@@ -13,8 +17,21 @@ export default function withErrorHandler(handler) {
 
       if (isDev) {
         console.error('[API ERROR]', err)
+      } 
+
+      // handling error needed errors
+      if(err.message?.parent?.code === 'ER_DUP_ENTRY'){
+        throw createError({
+          statusCode: 400,
+          message: JSON.stringify(err.message?.parent?.sqlMessage)
+        });
       }
-      throw err
+
+      throw createError({
+        statusCode: err.statusCode,
+        statusMessage: err.statusMessage ,
+        message: err.message
+      });
     }
   })
 }

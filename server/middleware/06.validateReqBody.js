@@ -17,31 +17,29 @@ export default withErrorHandler( async(event) => {
     if (url.includes('/api/')) {
         let result
         if (event.context.APIINFO.reqBodyValidation.bool){
-    
-             let validationSchema;
-            if (event.method === 'PATCH' || event.method === 'PUT') {
-                validationSchema = modelsRefs.test.zobSchema.update;
-            } else {
-                // Default to create schema for POST/other methods
-                validationSchema = modelsRefs.test.zobSchema.create;
-            }
-    
+            const modelRef = event.context.APIINFO.reqBodyValidation.modelRef
+            const schemaName = event.context.APIINFO.reqBodyValidation.schemaName
+            let validationSchema = modelsRefs[modelRef].zobSchema[schemaName];
+
             if(event.context.modifiedBody){
                 result =  validationSchema.safeParse(event.context.modifiedBody) // or `.parse` to directly throw an error
             }
             else{ // if the body is not formdata we can just use the readValidatedBody
                 result = await readValidatedBody(event, body => validationSchema.safeParse(body)) // or `.parse` to directly throw an error
             }
-    
-            if (!result.success){
+
+            if (!result?.success){
                 throw createError({
                     statusCode: 400,
-                    message: 'request body validation failed',
-                    data: result.error.issues
+                    statusMessage:"request body validation failed",
+                    message: JSON.stringify(result.error.issues),
                 });
             }
         } 
 
     }
 
-})
+})    
+            
+
+

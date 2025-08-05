@@ -102,7 +102,7 @@ export default withErrorHandler(async (event) => {
 
         // since we need {} for bodyValidation to work with readValidatedBody 
         // we need to pass the nonFileFields to event.context
-        event.context.modifiedBody = nonFileFields
+        if( Object.keys(nonFileFields).length >0) event.context.modifiedBody = nonFileFields
         // return  event.context.modifiedBody;
     }
   
