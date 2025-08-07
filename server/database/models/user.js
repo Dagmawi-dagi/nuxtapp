@@ -92,7 +92,28 @@ const base = z.object({
 });
 
 // CRUD Operation Specific Schemas
-const updateSchema = base.partial();
+const updateSchema = z.object({
+  userName: base.shape.userName.optional(),
+  avatar: base.shape.avatar.optional()
+}).strict({message: 'This api only update your USERNAME and PROFILE picture'});
+const updatePasswordSchema = z.object({
+  userPassword: base.shape.userPassword, // current password
+  newPassword: z.string()
+    .min(1, "New password is required")
+    .min(8, "New password must be at least 8 characters")
+    // .regex(/[A-Z]/, "New password must contain at least one uppercase letter")
+    // .regex(/[a-z]/, "New password must contain at least one lowercase letter")
+    // .regex(/[0-9]/, "New password must contain at least one number")
+    // .regex(/[^A-Za-z0-9]/, "New password must contain at least one special character")
+});
+const updatePhonenumberSchema = z.object({
+  userPassword: base.shape.userPassword, // current password
+  newPhoneNumber: base.shape.phoneNumber // new phone number
+});
+const updateEmailSchema = z.object({
+  userPassword: base.shape.userPassword, // current password
+  email: base.shape.email // new phone number
+});
 const loginSchema = base.pick({ email: true, userPassword: true });
 const resetPasswordSchema = base.pick({ passwordResetToken: true, userPassword: true });
 const full = base.extend({
@@ -138,5 +159,14 @@ user.prototype.createPasswordResetToken = function() {
 export default {
   model: user,
   schema : _schema,
-  zobSchema: {base,full,updateSchema,loginSchema,resetPasswordSchema}
+  zobSchema: {
+    base,
+    full,
+    updatePasswordSchema,
+    updatePhonenumberSchema,
+    updateEmailSchema,
+    updateSchema,
+    loginSchema,
+    resetPasswordSchema
+  }
 }

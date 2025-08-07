@@ -55,6 +55,5 @@ export default withErrorHandler( async(event) => {
 
     // 6. Attach user to context
     event.context.user = user
-    return user
   }
 })

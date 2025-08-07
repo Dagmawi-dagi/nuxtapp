@@ -9,7 +9,7 @@ export const API_INFO = {
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{},
-        filterReqBodyWith:[],
+        
     },
     "/api/test/post" : { 
         method: 'POST',
@@ -24,7 +24,7 @@ export const API_INFO = {
             },
         ],
         reqBodyValidation:{bool:true,modelRef:'test', schemaName: 'base'},
-        filterReqBodyWith:[],
+        
     },
     "/api/test/patch" : { 
         method: 'patch',
@@ -40,7 +40,7 @@ export const API_INFO = {
         ],
         saveFileTo: null,
         reqBodyValidation:{bool:true,modelRef:'test', schemaName: 'base'},
-        filterReqBodyWith:[],
+        
     },
     "/api/test/delete" : { 
         method: 'delete',
@@ -49,7 +49,7 @@ export const API_INFO = {
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{},
-        filterReqBodyWith:[],
+        
     },
      "/api/user/logIn/POST" : { 
         method: 'POST',
@@ -58,7 +58,7 @@ export const API_INFO = {
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'loginSchema'},
-        filterReqBodyWith:[],
+        
     },
      "/api/user/signUp/POST" : { 
         method: 'POST',
@@ -67,6 +67,70 @@ export const API_INFO = {
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'base'},
-        filterReqBodyWith:[],
+        
+    },
+    "/api/user/me/GET" : { 
+        method: 'GET',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
+        
+    },
+    "/api/user/[id]/GET" : { 
+        method: 'GET',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
+        
+    },
+    "/api/user/updatePassword/PATCH" : { 
+        method: 'PATCH',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
+        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePasswordSchema'},
+        
+    },
+    "/api/user/updatePhoneNumber/PATCH" : { 
+        method: 'PATCH',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
+        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePhonenumberSchema'},
+        
+    },
+    "/api/user/updateEmail/PATCH" : { 
+        method: 'PATCH',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
+        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateEmailSchema'},
+        
+    },
+    "/api/user/me/PATCH" : { 
+        method: 'PATCH',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateSchema'},
+    },
+    "/api/user/me/DELETE" : { 
+        method: 'DELETE',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
     },
 }
