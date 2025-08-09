@@ -6,21 +6,20 @@ import withErrorHandler from '../utils/catchAsync';
 import { createError } from 'h3';
 
 export default withErrorHandler( async(event) => {
- // Get authenticated user from context
+  const { restrict } = event.context.APIINFO;
+  // If no restrictions are set, skip role check
+  if (restrict && restrict.length > 0) {
+    // Get authenticated user from context
     const currentUser = event.context.user;
-    
     if (!currentUser) {
       throw createError({
         statusCode: 401,
-        statusMessage: 'Unauthorized: Please log in'
+        statusMessage: 'Please log in to continue'
       });
     }
 
-    // Fetch user with roles
-    const user = await modelsRefs.user.model.findByPk(currentUser.id, {
-      include: ['role']
-    });
-
+    // Fetch user from DB
+    const user = await modelsRefs.user.model.findByPk(currentUser.id);
     if (!user) {
       throw createError({
         statusCode: 404,
@@ -28,19 +27,19 @@ export default withErrorHandler( async(event) => {
       });
     }
 
-    // Extract role names (assuming department_name is the field)
-    const userRoles = user.role.map(role => role.department_name);
-    
-    // Check if user has any of the required roles
-    const hasPermission = roles.some(role => userRoles.includes(role));
-    
+    // User roles stored as JSON array in DB
+    const userRoles = Array.isArray(user.role) ? user.role : [];
+    // return userRoles
+    // Check if user has any required role
+    const hasPermission = restrict.some(requiredRole =>
+      userRoles.includes(requiredRole)
+    );
+    // return hasPermission
     if (!hasPermission) {
       throw createError({
         statusCode: 403,
-        statusMessage: `Forbidden: Only ${roles.join(', ')} can perform this action`
+        statusMessage: `Forbidden: Only ${restrict.join(', ')} can perform this action`
       });
     }
-    
-    // User has permission - continue processing
-    return true;
+  }
 })

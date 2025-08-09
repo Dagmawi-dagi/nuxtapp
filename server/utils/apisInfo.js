@@ -5,11 +5,10 @@ export const API_INFO = {
     "/api/test/GET" : { 
         method: 'GET',
         auth: true,
-        restrict:[],
+        restrict:["admin"],
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{},
-        
     },
     "/api/test/post" : { 
         method: 'POST',

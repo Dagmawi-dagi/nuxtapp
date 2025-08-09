@@ -38,7 +38,23 @@ const _schema = {
   active:{
     type: DataTypes.BOOLEAN,
     defaultValue: true,
-  }
+  },
+  role:{
+    type: DataTypes.JSON,
+    allowNull: false,
+    arrayOfStrings: true,
+    allowed: ['user', 'admin'],
+    defaultValue: ['user'],
+    validate: {
+      isArrayOfAllowedValues(value) {
+        const allowed = ['user', 'admin'];
+        if (!Array.isArray(value)) throw new Error('user role must be an array of strings');
+        for (const v of value) {
+          if (!allowed.includes(v)) throw new Error(`Invalid value user role: ${v}`);
+        }
+      }
+    },
+  },
 }
 
 const user = sequelize.define('user', _schema, {
@@ -88,7 +104,15 @@ const base = z.object({
 
   active: z.boolean()
     .optional()
-    .default(true)
+    .default(true),
+
+  role: z.array(
+    z.enum(["user", "admin"], {
+      errorMap: (v) => ({ message: `user role as "${v.received}" not supported`})
+    })
+  )
+  .nonempty("Role array cannot be empty")
+  .default(["user"])
 });
 
 // CRUD Operation Specific Schemas
