@@ -25,11 +25,11 @@ const subscribe = ()=>{
 
   showSuccMsg.value = false
   errMsg.value = false
-  apicall_from_store('newsletter','newsletter-subscribe',{ onSucSaveTheJsonOn: 'subscriber', data:obj }).then(res=>{
-    if(res.data.status === "success") return showSuccMsg.value = true
-    showSuccMsg.value = false
-    errMsg.value = res.data.errMessage
-  })
+//   apicall_from_store('newsletter','newsletter-subscribe',{ onSucSaveTheJsonOn: 'subscriber', data:obj }).then(res=>{
+//     if(res.data.status === "success") return showSuccMsg.value = true
+//     showSuccMsg.value = false
+//     errMsg.value = res.data.errMessage
+//   })
 }
 
 

@@ -19,7 +19,7 @@ function applyVacancy (FD, form$){
         languages: form$.data.languages,
         workExperienceInformation: form$.data.workExperienceInformation,
     }))
-    apicall_from_store('vacancy','vacancy-apply',{ onSucSaveTheJsonOn: 'appledVac', data:formData }) 
+    // apicall_from_store('vacancy','vacancy-apply',{ onSucSaveTheJsonOn: 'appledVac', data:formData }) 
 }
 
 </script>
