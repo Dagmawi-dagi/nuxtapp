@@ -6,9 +6,9 @@ import withErrorHandler from '../utils/catchAsync';
 import { createError } from 'h3';
 
 export default withErrorHandler( async(event) => {
-  const { restrict } = event.context.APIINFO;
+  const url = getRequestURL(event).pathname;
   // If no restrictions are set, skip role check
-  if (restrict && restrict.length > 0) {
+  if (url.includes('/api/') && event.context.APIINFO?.restrict && event.context.APIINFO?.length > 0) {
     // Get authenticated user from context
     const currentUser = event.context.user;
     if (!currentUser) {

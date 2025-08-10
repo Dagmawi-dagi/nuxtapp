@@ -1,9 +1,10 @@
 import { Sequelize }  from 'sequelize'
 
- export const sequelize = new Sequelize( 'D_DALF' , 'root', '', {
-  host: '127.0.0.1' , // or your database host IP/domain
-  dialect: 'mysql', // or 'postgres', 'sqlite', 'mariadb', 'mssql'
-  port: 3306,       // Optional: Defaults are usually fine (e.g., 3306 for MySQL, 5432 for PostgreSQL)
+const sequelize = new Sequelize('nuxtstarter', 'root', '', {
+  host: '127.0.0.1',
+  dialect: 'mysql',
+  port: 3306,
   logging: false
 });
-// connect the DB on app start using  plugin
+
+export default sequelize;
