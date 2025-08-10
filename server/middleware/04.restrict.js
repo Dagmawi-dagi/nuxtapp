@@ -20,6 +20,7 @@ export default withErrorHandler( async(event) => {
 
     // Fetch user from DB
     const user = await modelsRefs.user.model.findByPk(currentUser.id);
+    
     if (!user) {
       throw createError({
         statusCode: 404,
@@ -28,8 +29,8 @@ export default withErrorHandler( async(event) => {
     }
 
     // User roles stored as JSON array in DB
-    const userRoles = Array.isArray(user.role) ? user.role : [];
-    // return userRoles
+    const userRoles =JSON.parse(user.role) ;
+     
     // Check if user has any required role
     const hasPermission = restrict.some(requiredRole =>
       userRoles.includes(requiredRole)

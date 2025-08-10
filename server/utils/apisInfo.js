@@ -5,7 +5,7 @@ export const API_INFO = {
     "/api/test/GET" : { 
         method: 'GET',
         auth: true,
-        restrict:["admin"],
+        restrict:["user"],
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{},
@@ -92,7 +92,6 @@ export const API_INFO = {
         restrict:[],
         fileUpload: [],
         saveFileTo: null,
-        reqBodyValidation:{},
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePasswordSchema'},
         
     },
@@ -102,7 +101,6 @@ export const API_INFO = {
         restrict:[],
         fileUpload: [],
         saveFileTo: null,
-        reqBodyValidation:{},
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePhonenumberSchema'},
         
     },
@@ -112,7 +110,6 @@ export const API_INFO = {
         restrict:[],
         fileUpload: [],
         saveFileTo: null,
-        reqBodyValidation:{},
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateEmailSchema'},
         
     },
