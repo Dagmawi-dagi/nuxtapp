@@ -59,22 +59,22 @@ const full = base.extend({
 // create associations
 newsletter.associate = (models)=>{
   newsletter.belongsTo(models.user, { foreignKey: 'createdBy', targetKey: 'id' });
-  // Recipients (many-to-many with newsletter_sub)
-  newsletter.belongsToMany(models.newsletter_sub, {
-    through: 'newsletter_recipients', // Junction table name
+  // Recipients (many-to-many with newsletterSub)
+  newsletter.belongsToMany(models.newsletterSub, {
+    through: 'newsletter Recipients', // Junction table name
     as: 'recipients', // Alias for eager loading (when populating)
   });
 
   // Successful Recipients
-  newsletter.belongsToMany(models.newsletter_sub, {
-    through: 'newsletter_successful_recipients',
-    as: 'successful_recipients', 
+  newsletter.belongsToMany(models.newsletterSub, {
+    through: 'newsletter Successful Recipients',
+    as: 'successful Recipients', 
   });
 
   // Failed Recipients
-  newsletter.belongsToMany(models.newsletter_sub, {
-    through: 'newsletter_failed_recipients',
-    as: 'failed_recipients',
+  newsletter.belongsToMany(models.newsletterSub, {
+    through: 'newsletter Failed Recipients',
+    as: 'failed Recipients',
   });
 }
 
@@ -87,11 +87,11 @@ newsletter.beforeFind('',function(options){
     through: { attributes: [] }, // Exclude junction table fields
     },
     {
-      association: 'successful_recipients', // Use the alias defined in your association
+      association: 'successful Recipients', // Use the alias defined in your association
       through: { attributes: [] }, // Exclude junction table fields
     },
     {
-      association: 'failed_recipients', // Use the alias defined in your association
+      association: 'failed Recipients', // Use the alias defined in your association
       through: { attributes: [] }, // Exclude junction table fields
     },
   );
@@ -102,9 +102,9 @@ const failedRecipients = [];
 // pre save middler ware to send newsletter to subscribers
 newsletter.beforeCreate('', async function(model,options){
   try {
-    // since the recipientsIds field is [ids] get the newsletter_sub docs 
+    // since the recipientsIds field is [ids] get the newsletterSub docs 
     const { models } = sequelize;
-    const recipients = await models.newsletter_sub.findAll({ where: { id: model.recipientsIds}});
+    const recipients = await models.newsletterSub.findAll({ where: { id: model.recipientsIds}});
     const newsletter = model;
     // --------------------------------------------------------------------------------//
     const email_sending_errors = []

@@ -120,5 +120,5 @@ const openProductModal = (product)=>{
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/productCards.scss';
+@use '/assets/style/productCards.scss' as *;
 </style>

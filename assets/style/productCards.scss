@@ -1,4 +1,4 @@
-@import '/assets/style/variables';
+@use "@/assets/style/variables" as *;;
 
 /* Header styles */
 .container{

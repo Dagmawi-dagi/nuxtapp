@@ -55,7 +55,7 @@ const openVacancyApplyModal = (vac)=>{
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/variables';
+@use "@/assets/style/variables" as *;;
 /* Main container */
 .job-container {
     max-width: 800px;

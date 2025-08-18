@@ -14,8 +14,8 @@ const _schema = {
     unsubscribe: { type: DataTypes.BOOLEAN, defaultValue: false },
 }
 
-const newsletter_sub = sequelize.define('newsletter_sub', _schema, {
-  tableName: 'newsletter_subs',
+const newsletterSub = sequelize.define('newsletterSub', _schema, {
+  tableName: 'newsletterSubs',
   timestamps: true,
 });
 
@@ -47,26 +47,26 @@ const unsubscribeSchema = z.object({ email: z.string().email("Valid email is req
 
 
 // create associations
-newsletter_sub.associate = (models)=>{
-    newsletter_sub.belongsToMany(models.news_letter, {
-      through: 'newsletter_successful_recipients', // Junction table name
-      as: 'recieved_newsletters', // Alias for eager loading (when populating)
+newsletterSub.associate = (models)=>{
+    newsletterSub.belongsToMany(models.newsletter, {
+      through: 'newsletter Successful Recipients', // Junction table name
+      as: 'recieved Newsletters', // Alias for eager loading (when populating)
     });
 }
 
-newsletter_sub.beforeFind('',function(options){
+newsletterSub.beforeFind('',function(options){
     options.include = options.include || [];
     options.include.push({
-      association: 'recieved_newsletters', // Use the alias defined in your association
+      association: 'recieved Newsletters', // Use the alias defined in your association
       through: { attributes: [] }, // Exclude junction table fields
     });
 })
 
-newsletter_sub.afterCreate('', async function(model,options){
+newsletterSub.afterCreate('', async function(model,options){
     const subscriber = model;
     // --------------------------------------------------------------------------------//
     try {
-       await new Email().confirm_newsletter_sub({
+       await new Email().confirm_newsletterSub({
         email: subscriber.email,
         name: subscriber.name,
         frontEnd: `${process.env.FRONTENDURL}/newsletter-confirm/${subscriber.id}`,
@@ -79,7 +79,7 @@ newsletter_sub.afterCreate('', async function(model,options){
 })
 
 export default {
-  model: newsletter_sub,
+  model: newsletterSub,
   schema : _schema,
   zobSchema: {base,full,updateSchema,subscribeSchema,unsubscribeSchema}
 }

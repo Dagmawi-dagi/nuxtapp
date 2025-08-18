@@ -28,14 +28,14 @@ export default class Email {
     })
   }
 
-  confirm_newsletter_sub(info){
-    const confirm_newsletter_sub_email_html_template = renderHtmlTemplate('../server/utils/email/newsletter/confirm_sub.html', info);
+  confirm_newsletterSub(info){
+    const confirm_newsletterSub_email_html_template = renderHtmlTemplate('../server/utils/email/newsletter/confirm_sub.html', info);
     return this.transport().sendMail({
       to: info.email,
       form: `Desta Alcohol and Liquor Factory <${process.env.AppGmailAccount}>`,
       subject: 'destaAlcohol&Liquor newsletter confirmaition',
-      html: confirm_newsletter_sub_email_html_template,
-      text: convert(confirm_newsletter_sub_email_html_template)
+      html: confirm_newsletterSub_email_html_template,
+      text: convert(confirm_newsletterSub_email_html_template)
     })
   }
 

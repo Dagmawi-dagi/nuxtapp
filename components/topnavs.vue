@@ -69,7 +69,7 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
         <!-- Desktop Navigation -->
         <div class="nav-links">
             <NuxtLink  to="/" class="nav-link" >Home</NuxtLink>
-            <NuxtLink  to="/aboutUs" class="nav-link" >About Us</NuxtLink>
+            <NuxtLink  to="/aboutUs"  class="nav-link" >About Us</NuxtLink>
             <NuxtLink  to="/contactUs" class="nav-link" >Contact</NuxtLink>
             <NuxtLink  to="/community" class="nav-link" >Community</NuxtLink>
             <NuxtLink  to="/blog" class="nav-link" >Blog</NuxtLink>
@@ -107,5 +107,5 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
     </nav>
 </template>
 <style scoped lang="scss">
-@import '/assets/style/nav/index.scss';
+@use '/assets/style/nav/index.scss' as *;
 </style>

@@ -63,12 +63,12 @@ const subscribe = ()=>{
                         <button class="newsletter-button" @click="subscribe">
                             <!-- Background dots layers -->
                             <div class="dots-pattern"></div>
-                            <ReusableSpinner :color="'red'" :width="'1rem'" style="margin: auto;" v-if="apicall_from_store_loading"/>
-                          <span v-if="!apicall_from_store_loading">Subscribe</span>  
+                            <ReusableSpinner :color="'red'" :width="'1rem'" style="margin: auto;" v-if="false"/>
+                          <span v-if="!false">Subscribe</span>  
                         </button>
                     </div>
                     <!-- Success message -->
-                    <div class="message success-message" v-if="!apicall_from_store_loading && showSuccMsg && !errMsg">
+                    <div class="message success-message" v-if="!false && showSuccMsg && !errMsg">
                         <div class="message-icon success-icon">
                         <!-- Check Circle SVG Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -82,7 +82,7 @@ const subscribe = ()=>{
                         </div>
                     </div>
                     <!-- Error message -->
-                    <div class="message error-message" v-if="!apicall_from_store_loading && errMsg && !showSuccMsg">
+                    <div class="message error-message" v-if="!false && errMsg && !showSuccMsg">
                         <div class="message-icon error-icon">
                         <!-- X Circle SVG Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -177,5 +177,5 @@ const subscribe = ()=>{
 </template>
 <style scoped lang="scss">
 // @import '../sections/styles/newsletterSub.scss';
-@import '/assets/style/footer/index.scss';
+@use '/assets/style/footer/index.scss' as *;
 </style>

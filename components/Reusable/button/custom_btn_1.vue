@@ -23,9 +23,9 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-@import '../../../style/variables';
-@import '../../../style/mixins';
-@import '../../../style/global.scss';
+@use '../../../style/variables' as *;
+@use '../../../style/mixins' as *;
+@use '../../../style/global.scss' as *;
 .btn{
   margin-bottom: 10px;
  

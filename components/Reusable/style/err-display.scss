@@ -1,6 +1,6 @@
-@import '../../../style/variables';
-@import '../../../style/mixins';
-@import '../../../style/global.scss';
+@use '../../../style/variables' as *;
+@use '../../../style/mixins' as *;
+@use '../../../style/global.scss' as *;
 
 .status-container{
   text-align: center;

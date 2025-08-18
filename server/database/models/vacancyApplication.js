@@ -18,8 +18,8 @@ const _schema = {
     application_form: { type:  DataTypes.TEXT, allowNull: false},
 }
 
-const vacancy_application = sequelize.define('vacancy_application', _schema, {
-    tableName: 'vacancy_applications',
+const vacancyApplication = sequelize.define('vacancyApplication', _schema, {
+    tableName: 'vacancyApplications',
     timestamps: true,
 });
 
@@ -49,12 +49,12 @@ const updateSchema = base.partial();
 
 
 // add associations
-vacancy_application.associate = function (models){
-  vacancy_application.belongsTo(models.vacancy);
+vacancyApplication.associate = function (models){
+  vacancyApplication.belongsTo(models.vacancy);
 }
 
 export default {
-  model: vacancy_application,
+  model: vacancyApplication,
   schema : _schema,
   zobSchema: {base,full,updateSchema}
 }

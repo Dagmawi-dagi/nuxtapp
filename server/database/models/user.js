@@ -148,7 +148,7 @@ const full = base.extend({
 
 user.associate = function (models){
   user.hasMany(models.blog, { foreignKey: 'createdBy' });
-  user.hasMany(models.news_letter, { foreignKey: 'createdBy' });
+  user.hasMany(models.newsletter, { foreignKey: 'createdBy' });
 }
 
 // hashing the password on save

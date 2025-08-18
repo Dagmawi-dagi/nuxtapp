@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: false },
+  ssr: true,
   modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-easy-lightbox','@vueform/nuxt','maz-ui/nuxt'],
   css: ['@/assets/style/global.scss'],
   mazUi: {

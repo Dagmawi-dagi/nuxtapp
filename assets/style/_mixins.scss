@@ -1,4 +1,5 @@
-@use './variables';
+@use './variables' as *;
+@use "sass:meta";
 
 @mixin button($bg-color, $text-color, $cssvar: false ) {
   // width  height shoud Not be included
@@ -74,7 +75,7 @@
     transition:
       background-color 0.2s ease-in-out,
       color 0.2s ease-in-out;
-  } @else if type-of($prop) == 'map' {
+  } @else if meta.type-of($prop) == 'map' {
     $transitions: "background-color 0.2s ease-in-out, color 0.2s ease-in-out";
     @each $p, $propDelay in $prop {
       $transitions: #{$transitions}, #{$p} #{$propDelay} ease-in-out;

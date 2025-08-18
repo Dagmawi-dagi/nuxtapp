@@ -31,7 +31,7 @@ const scrollTo = ()=>{
 </template>
 
 <style scoped lang="scss"> 
-@import '../../style/mixins';
+@use '../../style/mixins' as *;
 .scrollTop{
   @include flexbox;
   position: fixed;

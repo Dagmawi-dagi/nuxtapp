@@ -86,5 +86,5 @@ watch(deep_active_acc,()=>{
   </div>
 </template>
 <style scoped lang="scss"> 
-@import './style/accordion.scss';
+@use './style/accordion.scss' as *;
 </style>

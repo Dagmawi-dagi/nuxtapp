@@ -58,5 +58,5 @@ import { aboutUsCardswithIcon } from '@/public/site_info_ref';
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/homeabout.scss';
+@use '/assets/style/homeabout.scss' as *;
 </style>

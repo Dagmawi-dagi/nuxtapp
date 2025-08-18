@@ -92,7 +92,8 @@ return new URL(`../assets/pictures/community/${imgName}`, import.meta.url).href
             </article>
         </div>
 
-        <newsletterSub/>
+    <NewsletterSub/>        
+
 
     </div>
 </template>

@@ -68,7 +68,7 @@ const subscribe = (FD,form$)=>{
                     }"
                     align="center"
                     size="sm"
-                    :loading="apicall_from_store_loading"
+                    :loading="false"
                   />
             </Vueform>
           </ClientOnly>
@@ -76,7 +76,7 @@ const subscribe = (FD,form$)=>{
         No spam ever, we are care about the protection of your data.
       </p>
       <!-- Success message -->
-      <div class="message success-message" v-if="!apicall_from_store_loading && showSuccMsg && !errMsg">
+      <div class="message success-message" v-if="false && showSuccMsg && !errMsg">
         <div class="message-icon success-icon">
           <!-- Check Circle SVG Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -90,7 +90,7 @@ const subscribe = (FD,form$)=>{
         </div>
       </div>
       <!-- Error message -->
-      <div class="message error-message" v-if="!apicall_from_store_loading && errMsg && !showSuccMsg">
+      <div class="message error-message" v-if="!false && errMsg && !showSuccMsg">
         <div class="message-icon error-icon">
           <!-- X Circle SVG Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -110,5 +110,5 @@ const subscribe = (FD,form$)=>{
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/newsletterSub.scss';
+@use '/assets/style/newsletterSub.scss' as *;
 </style>

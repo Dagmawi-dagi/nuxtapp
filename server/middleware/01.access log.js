@@ -14,10 +14,10 @@ const accessLogStream = createWriteStream(join(__dirname, '../../access.log'), {
 })
 
 export default defineEventHandler((event) => {
-  console.log('1111111111');
   
   const url = getRequestURL(event).toString()
   const logLine = `[${new Date().toISOString()}] ${event.node.req.method} ${url}\n`
-
+  
   accessLogStream.write(logLine)
+  console.log(logLine);
 })

@@ -1,6 +1,4 @@
 <script setup>
-//utills
-import { serverUrl } from '@/utils/server';
 // libs
 import { format } from 'date-fns';
 import gsap from 'gsap';
@@ -88,7 +86,7 @@ const onsearch  = ()=>{
             <main class="main-content">
                 <!-- Blog posts -->
                 <MazCard  v-for="(blog_post,i) in blog_posts" :key="i" 
-                    :images="[`${serverUrl}/${blog_post?.coverImg.split('-')[0]}/blog/${blog_post?.coverImg}`]" 
+                    :images="[`https://unsplash.com/photos/welcome-center-building-with-mountain-backdrop-VMlIOzs_kkg`]" 
                     :orientation="mobilePhone ? 'column' : 'row'  " 
                     :galleryWidth=" tablet ?  '250px': '300px' "
                     :galleryHeight="'250px'"
@@ -130,7 +128,7 @@ const onsearch  = ()=>{
                     <div class="recent-posts">
                         <MazCard   v-for="(blog_post,i) in recentPosts" :key="i" 
                             @click.stop="openBlogPostModal(blog_post)"
-                            :images="[`${serverUrl}/${blog_post?.coverImg.split('-')[0]}/blog/${blog_post?.coverImg}`]" 
+                            :images="[`https://unsplash.com/photos/welcome-center-building-with-mountain-backdrop-VMlIOzs_kkg`]" 
                             :orientation="'row'" 
                             :galleryWidth="'50px'"
                             class="blogcard recent">
@@ -155,8 +153,8 @@ const onsearch  = ()=>{
 </template>
 
 <style scoped lang="scss">
-    @import '/assets/style/variables';
-    @import '/assets/style/mixins';
+    @use "@/assets/style/variables" as *;;
+    @use "@/assets/style/mixins" as *;
 
     .blogcard :deep(.m-gallery__item__image){
         background-color: #152a4a !important;

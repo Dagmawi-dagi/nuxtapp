@@ -222,5 +222,5 @@ const getImageUrl = (imgName) => new URL(`../assets/pictures/desta-logo.png`, im
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/aboutUs.scss';
+@use '/assets/style/aboutUs.scss' as *;
 </style>

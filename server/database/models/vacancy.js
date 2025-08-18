@@ -76,7 +76,7 @@ export { base, full, updateSchema };
 // add association
 vacancy.associate = function (models){
   vacancy.belongsTo(models.user,  { foreignKey: 'createdBy', targetKey: 'id',});
-  vacancy.hasMany(models.vacancy_application);
+  vacancy.hasMany(models.vacancyApplication);
 }
 
 export default {

@@ -14,5 +14,5 @@
 </template>
 
 <style scoped lang="scss">
-  @import './style/err-display.scss';
+  @use './style/err-display.scss' as *;
 </style>

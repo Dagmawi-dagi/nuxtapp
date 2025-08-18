@@ -43,7 +43,7 @@ const showimg = (imgRef,isArr,index)=>{
 </template>
 
 <style lang="scss" scoped>
-@import '/assets/style/variables';
+@use "@/assets/style/variables" as *;;
 
 .emoji {
     position: absolute;

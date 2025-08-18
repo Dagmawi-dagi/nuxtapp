@@ -58,5 +58,5 @@ const toggle = (dark) => {
 </template>
 
 <style scoped lang="scss">
-@import './style/theme-toggle.scss';
+@use './style/theme-toggle.scss' as *;
 </style>

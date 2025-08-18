@@ -45,7 +45,7 @@ const getImageUrl = (imgName) => {
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/variables';
+@use "@/assets/style/variables" as *;;
 
 .modal-overlay {
     position: fixed;

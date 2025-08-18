@@ -85,5 +85,5 @@ const scrollToSection = (id) => {
 </template>
 
 <style scoped lang="scss">
-@import '/assets/style/heroSection.scss';
+@use '/assets/style/heroSection.scss' as *;
 </style>

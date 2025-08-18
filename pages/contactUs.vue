@@ -211,7 +211,7 @@ const handleSubmit = async () => {
 
 
 <style scoped lang="scss">
-@import '/assets/style/variables';
+@use "@/assets/style/variables" as *;;
 .contact-container {
   max-width: 1200px;
   margin: 2rem auto;
