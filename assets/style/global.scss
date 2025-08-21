@@ -4,7 +4,18 @@
 @use './base' as *;
 @use './fonts';
 @use './animations' as *;
-
+// for the v-diag comp(global error handling front End feed back)
+ .global_error{
+        padding: 7px;
+        & .v-dialog-body.toast-error{
+          background-color: #fff  !important;
+          color: var(--dark-red)!important;
+          border-color: var(--dark-red)!important;
+        }
+      }
+      .global_success{
+        color: var(--text-dark-gray)!important;
+      }
 
 .route-container{
   @include transition($prop: 'onlytheme');

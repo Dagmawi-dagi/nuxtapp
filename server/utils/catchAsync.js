@@ -1,10 +1,8 @@
 import { createError } from 'h3';
 
 
-
 export default function withErrorHandler(handler) {
   return defineEventHandler(async (event) => {
-    const isDev = true
     try {
       // do something before the route handler
       return await handler(event)
@@ -15,17 +13,17 @@ export default function withErrorHandler(handler) {
         message: error,
       }
 
-      if (isDev) {
-        console.error('[API ERROR]', err)
-      } 
-
       // handling error needed errors
+
+      //-----------------------------------ER_DUP_ENTRY------------------------------------------------
       if(err.message?.parent?.code === 'ER_DUP_ENTRY'){
         throw createError({
           statusCode: 400,
           message: JSON.stringify(err.message?.parent?.sqlMessage)
         });
       }
+
+      //-----------------------------------------------------------------------------------
 
       throw createError({
         statusCode: err.statusCode,

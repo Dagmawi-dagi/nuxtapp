@@ -2,17 +2,12 @@
 // libs
 import { format } from 'date-fns';
 import gsap from 'gsap';
-// global_apihandler
-// import { global_apihandler  } from '../../plugIn/axios/global-api-hadler';
 // comps
 import { PaginationBar, PaginationPageNumbers, PaginationPreviousPage, PaginationNextPage } from 'v-page'
-// composable
-// import { use_apicalls_from_store } from '../../composables/store-apicalls';
 
 const { mobilePhone ,tablet } = useBreakPoint()
 const { any_open_modal } = storeToRefs( useUtilStore() )
-const { blog_posts,page,perPage } = storeToRefs( useBlogStore() )
-// const { apicall_from_store } = use_apicalls_from_store();
+const { blogPosts,page,perPage } = storeToRefs( useBlogStore() )
 
 const openBlogPostModal = (post)=>{
     any_open_modal.value.bool = true
@@ -45,6 +40,8 @@ const catagoriesCount = ref({
     news: 0,
 })
 const totalBlogCount = ref()
+
+
 // global_apihandler('blog-getList',{}).then((res)=>{ 
 //     totalBlogCount.value =  res.data.count 
 //     catagoriesCount.value.info = res.data.data.filter((data)=> data.category.includes('info')).length

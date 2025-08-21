@@ -8,16 +8,22 @@ useHead({
     titleTemplate: 'DALF | HOME',
 })
 
-    const a = ref()
-    const get = async()=>{
-        const data = await $fetch('/api/test')
-        a.value = data
-        console.log(data)
-    }
+const { data: a,refresh,pending,execute:gettedtd } =  useFetch('/api/test', {
+  headers: {
+    apiref: '/api/test/GET',
+  },
+  lazy: true,
+  immediate:false
+})
+
 </script>
 <template>
-    <button @click="get">sdasdasdasd</button>
-    {{ a }}
+    <div v-if="!pending">{{ a }}</div>
+    <div v-else>pending </div>
+    <button @click="refresh">refresh</button>
+    <br>
+    <button @click="gettedtd">gettests</button>
+    
     <HeroSection/>
     <OurPartners/>
     <ClientOnly>

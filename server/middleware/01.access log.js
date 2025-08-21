@@ -1,23 +1,28 @@
 //NOTE:::: Middleware handlers should not return anything (nor close or respond to the request) 
 // and only inspect or extend the request context or throw an error.
-
-import { createWriteStream } from 'fs'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { getRequestURL   } from 'h3'
-
-// Ensure __dirname works in ES module context
-const __dirname = dirname(fileURLToPath(import.meta.url))
-// Create a write stream for access.log
-const accessLogStream = createWriteStream(join(__dirname, '../../access.log'), {
-  flags: 'a', // Append mode
-})
+import { join  } from 'path'
+import { appendFile } from "node:fs/promises";
 
 export default defineEventHandler((event) => {
-  
-  const url = getRequestURL(event).toString()
-  const logLine = `[${new Date().toISOString()}] ${event.node.req.method} ${url}\n`
-  
-  accessLogStream.write(logLine)
-  console.log(logLine);
+  const startTime = Date.now();
+  event.node.res.on('finish', async() => {
+    const endTime = Date.now();
+    const responseTime = endTime - startTime;
+    const { method, url } = event.node.req;
+    const statusCode = event.node.res.statusCode;
+
+    // Format the log entry
+    const timestamp = new Date().toISOString();
+    const logEntry = `[${timestamp}] ${method} [${statusCode}] ${url} ${responseTime}ms\n`;
+    // Log to console
+    console.log(logEntry.trim());
+    try {
+      const logPath = join(process.cwd(), 'server', 'access.log');
+      await appendFile(logPath,logEntry, "utf8");
+    } catch (fsErr) {
+      console.error("Failed to write access log:", fsErr);
+    }
+
+  });
 })
+

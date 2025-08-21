@@ -2,23 +2,17 @@
 const { global_vue_easy_lightbox,any_open_modal } = storeToRefs(useUtilStore())
 const { onhide } = useLightBox()
 
-if (useNuxtApp().isServer) {
-  console.log('Running on the server 💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💥💢💢💢')
+const d = ()=>{
+    frontEndErrorFeedback().err('new error has been caught')
 }
-const aa = ()=>{
-    if (useNuxtApp().isClient) {
-        console.log('Running on the client')
-    }
-}
-
 </script>
 
 <template>
-    <!-- <button @click="aa">click me </button> -->
-
-    <Topnavs/>
-    <div style="min-height: 80vh;"> <NuxtPage/> </div>
-    <MyFooter/>
+    <button @click="d">cliclme</button>
+    <NuxtLoadingIndicator/>
+    <Topnavs v-if="$route.name != 'ageVerification' "/>
+    <div style="min-height: 80vh;" > <NuxtPage/> </div>
+    <MyFooter v-if="$route.name != 'ageVerification' "/>
     
     <transition :name="'fadeIn'">
         <ModalBlogPost v-if="any_open_modal.bool && any_open_modal.id === 'blogModal'"  :blog-post="any_open_modal.AnythingTopass"/>
@@ -42,6 +36,9 @@ const aa = ()=>{
     :imgs="global_vue_easy_lightbox.imgs" 
     />
 </template>
+<style lang="scss">
+
+</style>
 
 
  
