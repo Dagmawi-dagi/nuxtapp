@@ -4,8 +4,8 @@
 export const API_INFO = {   
     "/api/test/GET" : { 
         method: 'GET',
-        auth: true,
-        restrict:["admin"],
+        auth: false,
+        restrict:[],
         fileUpload: [],
         saveFileTo: null,
         reqBodyValidation:{},

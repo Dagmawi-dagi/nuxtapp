@@ -1,6 +1,6 @@
 import { Sequelize }  from 'sequelize'
 
-const sequelize = new Sequelize('nuxtstarter', 'root', '', {
+const sequelize = new Sequelize('d_dalf', 'root', '', {
   host: '127.0.0.1',
   dialect: 'mysql',
   port: 3306,
