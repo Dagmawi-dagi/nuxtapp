@@ -2,7 +2,6 @@ import { defineStore } from 'pinia';
 
 // this store is for global util variables
 export const useUtilStore = defineStore('utilStore',()=>{
-  const dark_theme = ref(false)
   // for controlling global modal
   const any_open_modal = ref({
     bool: false,
@@ -16,9 +15,11 @@ export const useUtilStore = defineStore('utilStore',()=>{
     imgIndex: 0
   })
 
+  const sideBarOpen = ref(false)
+
   return{
-    dark_theme,
     any_open_modal,
     global_vue_easy_lightbox,
+    sideBarOpen
   }
 })

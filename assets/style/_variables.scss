@@ -18,9 +18,14 @@ $modal: #000000b3;
 //--------- measurments -----------//
 $top-nav-1-height: 35px;
 $top-nav-2-height: 77px;
+$dashboardTopnavHeight:50px;
+$side-nav-width: min( 250px,90%);
+
 // Z-index
 $zindex-top-nav-2: 9;
 $zindex-modal: 999999999999;
+$zindex-side-nav: 99;
+
 // beak point
 $mobile-breakpoint: 768px;
 $desktop-breakpoint: 1024px;

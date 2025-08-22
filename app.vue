@@ -2,18 +2,18 @@
 const { global_vue_easy_lightbox,any_open_modal } = storeToRefs(useUtilStore())
 const { onhide } = useLightBox()
 
-const d = ()=>{
-    frontEndErrorFeedback().err('new error has been caught')
-}
+
 </script>
 
 <template>
-    <button @click="d">cliclme</button>
     <NuxtLoadingIndicator/>
-    <Topnavs v-if="$route.name != 'ageVerification' "/>
-    <div style="min-height: 80vh;" > <NuxtPage/> </div>
-    <MyFooter v-if="$route.name != 'ageVerification' "/>
     
+    <Topnavs v-if="$route.meta.nav === undefined || $route.meta.nav" />
+    <div style="min-height: 80vh;">
+        <NuxtPage />
+    </div>
+    <MyFooter v-if="$route.meta.footer === undefined || $route.meta.footer"/>
+
     <transition :name="'fadeIn'">
         <ModalBlogPost v-if="any_open_modal.bool && any_open_modal.id === 'blogModal'"  :blog-post="any_open_modal.AnythingTopass"/>
     </transition>

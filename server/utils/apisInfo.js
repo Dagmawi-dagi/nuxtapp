@@ -50,6 +50,7 @@ export const API_INFO = {
         reqBodyValidation:{},
         
     },
+    // ------------------------------user--------------------------
      "/api/user/logIn/POST" : { 
         method: 'POST',
         auth: false,
@@ -129,4 +130,15 @@ export const API_INFO = {
         saveFileTo: null,
         reqBodyValidation:{},
     },
+
+    // ------------------------------blog--------------------------
+    "/api/blog/GET" : { 
+        method: 'GET',
+        auth: true,
+        restrict:[],
+        fileUpload: [],
+        saveFileTo: null,
+        reqBodyValidation:{},
+    },
+
 }

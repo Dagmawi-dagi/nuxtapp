@@ -1,8 +1,9 @@
 <script setup>
-// router 
-import { useRouter } from 'vue-router';
-// vue
-import { ref, onMounted } from 'vue';
+
+definePageMeta({
+    nav: false,
+    footer: false
+})
 
 const router = useRouter()
 
@@ -10,6 +11,7 @@ const ageVerificationError = ref({
     msg: "",
     bool: false
 })
+
 
 onMounted(()=>{
         // Basic form validation

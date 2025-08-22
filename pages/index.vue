@@ -1,13 +1,4 @@
 <script setup>
-import { onMounted,onUpdated } from 'vue'
-onMounted(async()=>{
-    console.log('asdasdasdasdasd');
-})
-
-useHead({
-    titleTemplate: 'DALF | HOME',
-})
-
 const { data: a,refresh,pending,execute:gettedtd } =  useFetch('/api/test', {
   headers: {
     apiref: '/api/test/GET',
@@ -18,12 +9,7 @@ const { data: a,refresh,pending,execute:gettedtd } =  useFetch('/api/test', {
 
 </script>
 <template>
-    <div v-if="!pending">{{ a }}</div>
-    <div v-else>pending </div>
-    <button @click="refresh">refresh</button>
-    <br>
-    <button @click="gettedtd">gettests</button>
-    
+    <button @click="$router.push('/dashboard/auth/login')">login</button>
     <HeroSection/>
     <OurPartners/>
     <ClientOnly>

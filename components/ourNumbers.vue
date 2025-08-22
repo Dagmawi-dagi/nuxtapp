@@ -107,9 +107,7 @@ import { ourNumbers } from '@/public/site_info_ref'
 }
 
 /* SVG icons */
-.organic-icon {
-    // fill: #4a6fa5;
-}
+
 
 .distillery-icon {
     fill: #2c3e8f;

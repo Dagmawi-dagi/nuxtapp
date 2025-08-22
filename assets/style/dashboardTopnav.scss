@@ -1,0 +1,22 @@
+@use "@/assets/style/variables" as *;
+@use "@/assets/style/mixins" as *;
+
+nav{
+  @include transition($prop: onlytheme);
+  background-color: #fff;
+  height: $dashboardTopnavHeight;
+  border-bottom: 1px solid #C1DEFF;
+}
+
+.container{
+  @include flexbox($justify-content: space-between);
+
+  width: 90%;
+  margin: 0 auto;
+  height: 100%;
+
+  & img{
+    height: 100%;
+    cursor: pointer;
+  }
+}
