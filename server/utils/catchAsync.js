@@ -3,9 +3,12 @@ import { createError } from 'h3';
 
 export default function withErrorHandler(handler) {
   return defineEventHandler(async (event) => {
+
     try {
       // do something before the route handler
-      return await handler(event)
+      let resObj =  await handler(event) 
+      return resObj;
+
     } catch (error) {
       const err = {
         statusCode: error.statusCode || 500,

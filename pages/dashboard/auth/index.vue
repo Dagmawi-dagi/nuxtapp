@@ -1,8 +1,8 @@
 <script setup>
 
 definePageMeta({
-    nav: false,
-    footer: false
+  layout:"clean",
+  name: 'auth',
 })
 
 const login = async (data, form$)=>{
@@ -21,7 +21,10 @@ const login = async (data, form$)=>{
     frontEndErrorFeedback().err(error.value)
   }
   else{
-    useRouter().push('/')
+    useRouter().push('/dashboard/').then(()=>{
+      useAuthStore().loggedInUser = response.value.data
+        window.localStorage.setItem('token',response.value.token)
+    })
   }
 }
 </script>

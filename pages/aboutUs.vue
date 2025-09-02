@@ -1,4 +1,10 @@
 <script setup>
+definePageMeta({
+    layout:"default",
+    name: 'aboutUs',
+})
+
+
 //utills
 // import { serverUrl } from '@/utils/server';
 // assets

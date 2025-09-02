@@ -22,7 +22,7 @@ export default defineEventHandler((event) => {
     } catch (fsErr) {
       console.error("Failed to write access log:", fsErr);
     }
-
   });
+
 })
 

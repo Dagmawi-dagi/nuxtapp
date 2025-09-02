@@ -3,14 +3,74 @@
 import { storeToRefs } from 'pinia';
 //vue
 const { sideBarOpen } = storeToRefs( useUtilStore())
+const { loggedInUser } = storeToRefs( useAuthStore())
 const { tablet,mobilePhone } = useBreakPoint()
+
+const  active_acc  = ref()
+const sideBarNavs = ref([
+
+  {
+    "role": 'admin',
+    "routes" : [
+      {
+        "name": "users",
+        "route_name": "users",
+      }
+    ]
+  },
+  {
+    "role": 'general',
+    "routes" : [
+      {
+        "name": "vacancy",
+        "route_name": "vacancy",
+      },
+      {
+        "name": "blog",
+        "route_name": "blog",
+      },
+      {
+        "name": "newsletter",
+        "route_name": "newsletter",
+      },
+    ]
+  },
+])
 </script>
 
 <template>
   <div class="container" :class="{ position:  tablet || mobilePhone , open: sideBarOpen, close: !sideBarOpen  }"  >
-    <!-- <loggedInUser/> -->
-    <!-- <compSpacer :space="'13px 0'" /> -->
+     <div class="userContainer" >
+        <MazAvatar :src="`/users/${loggedInUser?.avatar}`" 
+        :caption="loggedInUser?.userName"
+        size=".8rem"
+        />
+        <img src="" alt="">
+        <div class="user" >
+          <span>{{loggedInUser?.email}}</span>
+          <span> {{loggedInUser?.userName}} </span>
+          <!-- <span> {{loggedInUser}} </span> -->
+        </div>
+     </div>
+     <br>
+     <br>
+     <br>
+  
+    <ReusableAccordion v-for="(obj, i) in sideBarNavs" :key="i" 
+      :id="`${i}`"
+      :items='obj.routes' 
+      :head="obj.role"
+      :accordion_open="active_acc === obj.role"
+      :border="true"
+      :toggler_icon="false" 
+      :sub_ref="'sub_routes'"
+      :item_ref="'name'"
+      @accActive="active_acc === obj.role ? active_acc = '' :  active_acc = $event" 
+      @handleAccChoice="$router.push({name: $event.route_name})"
+    />
   </div>
+
+
 
   <span class="sideNavToggler"  @click="sideBarOpen = !sideBarOpen"  >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">

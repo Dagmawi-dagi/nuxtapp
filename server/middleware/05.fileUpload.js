@@ -38,10 +38,7 @@ export default withErrorHandler(async (event) => {
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
         const publicDir = path.join(__dirname, '..', '..', 'public');
-        const defaultUploadDir = path.join(publicDir, 'uploadedfiles');
-        
-        // Create default directory
-        await fs.mkdir(defaultUploadDir, { recursive: true });
+
         
         const nonFileFields = {};
         const uploadConfigMap = new Map();

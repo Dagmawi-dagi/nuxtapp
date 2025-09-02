@@ -26,7 +26,7 @@
 
   &.close {
     transform: translateX(-100%);
-    transition: all 0.83s;
+    transition: all 0.8s;
     & + .sideNavToggler {
       right: calc(100vw - 25px);
       left: 0;
@@ -47,10 +47,25 @@
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.1) 2px 0px 5px 2px;
   cursor: pointer;
-  top: $dashboardTopnavHeight;
+  top: 5px;
   left: $side-nav-width;
   width: 20px;
   height: 40px;
   border-radius: 0 5px 5px 0;
   z-index: 99;
+}
+.userContainer{
+  @include flexbox($justify-content:left);
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  gap: .2rem;
+}
+
+.user{
+  @include transition($prop: onlytheme);
+  display: flex;
+  flex-direction: column;
+  font-size: 85%;
+  color: var(--text-dark-gray);
 }

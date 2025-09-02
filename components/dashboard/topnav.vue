@@ -5,7 +5,7 @@
 <template>
   <nav>
     <div class="container">
-      <img @click="$router.push('/dashboard')" src="/assets/pictures/desta-logo.png" alt="logo" >
+      <img @click="$router.push('/')" src="/assets/pictures/desta-logo.png" alt="logo" >
     </div>
   </nav>
 </template>

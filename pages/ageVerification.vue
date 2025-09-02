@@ -1,11 +1,11 @@
 <script setup>
 
 definePageMeta({
+    layout:"default",
     nav: false,
-    footer: false
+    footer: false,
+    name: 'ageVerification',
 })
-
-const router = useRouter()
 
 const ageVerificationError = ref({
     msg: "",
@@ -60,9 +60,11 @@ onMounted(()=>{
             
             if (age >= legalAge) {
                 // save the verification on local storage of reuse which will be valid for 10 days
-                window.localStorage.setItem('ageVerifiedDate',Date.now())
-                router.push('/')
-
+                const time = Date.now()
+                window.localStorage.setItem('ageVerifiedDate',time)
+                const cookie = useCookie('ageVerifiedDate')
+                cookie.value = time // store current timestamp
+                navigateTo('/')
             } else {
                 ageVerificationError.value.bool = true
                 ageVerificationError.value.msg = 'Sorry, you must be of legal drinking age to enter this site.'

@@ -12,12 +12,8 @@ export default withErrorHandler( async(event) => {
   // we need this middleware to run if the api url needs auth
   const url = getRequestURL(event).pathname;
   if (event.context.APIINFO?.auth && url.includes('/api/')) {
-    // 1. Get token from headers
-    const authHeader = event.node.req.headers?.authorization
-    let token = null
-    if (authHeader && authHeader.startsWith('Bearer')) {
-      token = authHeader.split(' ')[1]
-    }
+    // 1. Get token from cookie
+    const token = getCookie(event, 'jwt')
 
     // 2. Handle missing token
     if (!token) {
@@ -52,7 +48,6 @@ export default withErrorHandler( async(event) => {
         })
       }
     }
-
     // 6. Attach user to context
     event.context.user = user
   }

@@ -1,0 +1,12 @@
+import modelsRef from '@/server/database/models/modelsRefs'
+import withErrorHandler from '@/server/utils/catchAsync'
+import { commonController } from '@/server/service/commonCrud'
+
+export default withErrorHandler( async(event) => {
+ const result =  await commonController(event,modelsRef.user.model).get()
+   return{
+     status: 'success',
+     count:result.rows.length,
+     data: result.rows
+   }
+})

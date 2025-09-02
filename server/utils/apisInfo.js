@@ -4,10 +4,10 @@
 export const API_INFO = {   
     "/api/test/GET" : { 
         method: 'GET',
-        auth: false,
+        auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{},
     },
     "/api/test/post" : { 
@@ -37,7 +37,7 @@ export const API_INFO = {
                 type:"image"
             },
         ],
-        saveFileTo: null,
+        
         reqBodyValidation:{bool:true,modelRef:'test', schemaName: 'base'},
         
     },
@@ -46,7 +46,7 @@ export const API_INFO = {
         auth: false,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{},
         
     },
@@ -56,7 +56,7 @@ export const API_INFO = {
         auth: false,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'loginSchema'},
         
     },
@@ -64,17 +64,22 @@ export const API_INFO = {
         method: 'POST',
         auth: false,
         restrict:[],
-        fileUpload: [],
-        saveFileTo: null,
+        fileUpload: [
+            {
+                fieldName: 'avatar',
+                saveFileToFolder: 'users',
+                allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+                type:"image"
+            },
+        ],
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'base'},
-        
     },
     "/api/user/me/GET" : { 
         method: 'GET',
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{},
         
     },
@@ -83,7 +88,7 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{},
         
     },
@@ -92,7 +97,7 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePasswordSchema'},
         
     },
@@ -101,7 +106,7 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePhonenumberSchema'},
         
     },
@@ -110,7 +115,7 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateEmailSchema'},
         
     },
@@ -119,7 +124,7 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateSchema'},
     },
     "/api/user/me/DELETE" : { 
@@ -127,17 +132,23 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{},
     },
-
+    "/api/user/GET" : { 
+        method: 'GET',
+        auth: true,
+        restrict:['admin'],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
     // ------------------------------blog--------------------------
     "/api/blog/GET" : { 
         method: 'GET',
         auth: true,
         restrict:[],
         fileUpload: [],
-        saveFileTo: null,
+        
         reqBodyValidation:{},
     },
 

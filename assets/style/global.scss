@@ -4,6 +4,7 @@
 @use './base' as *;
 @use './fonts';
 @use './animations' as *;
+
 // for the v-diag comp(global error handling front End feed back)
  .global_error{
         padding: 7px;

@@ -1,4 +1,10 @@
 <script setup>
+definePageMeta({
+    layout:"default",
+    name: 'community',
+})
+
+
 // assets
 import { communityImages } from '@/public/site_info_ref'
 // libs

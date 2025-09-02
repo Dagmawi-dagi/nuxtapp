@@ -1,12 +1,10 @@
 <script setup>
-
 definePageMeta({
-    nav: false,
-    footer: false,
+  layout: 'dashboard',   // 👈 use custom layout
+  middleware:['auth']
 })
 </script>
 
 <template>
-    <DashboardTopnav/>
-    <DashboardAside/>
+   <div>sadasdasd</div>
 </template>

@@ -1,4 +1,9 @@
 <script setup>
+definePageMeta({
+    layout:"default",
+    name: 'contactUs',
+})
+
 // store
 // import { global_apihandler } from '../plugIn/axios/global-api-hadler';
 // vue

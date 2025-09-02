@@ -8,11 +8,9 @@ const { onhide } = useLightBox()
 <template>
     <NuxtLoadingIndicator/>
     
-    <Topnavs v-if="$route.meta.nav === undefined || $route.meta.nav" />
-    <div style="min-height: 80vh;">
+    <NuxtLayout>
         <NuxtPage />
-    </div>
-    <MyFooter v-if="$route.meta.footer === undefined || $route.meta.footer"/>
+    </NuxtLayout>
 
     <transition :name="'fadeIn'">
         <ModalBlogPost v-if="any_open_modal.bool && any_open_modal.id === 'blogModal'"  :blog-post="any_open_modal.AnythingTopass"/>

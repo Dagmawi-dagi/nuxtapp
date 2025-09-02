@@ -1,3 +1,11 @@
+<script>
+definePageMeta({
+    layout:"default",
+    name: '404 page not found',
+})
+
+</script>
+
 <template>
     <div>
         <h2>404 PAGE NOT FOUND </h2>

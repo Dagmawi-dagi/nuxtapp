@@ -37,10 +37,18 @@ export default withErrorHandler(async (event) => {
   const token = jwt.sign({ id: updatedUser.id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN
   });
-
+    // Save token inside cookie (httpOnly, secure)
+  setCookie(event, 'jwt', token, {
+    httpOnly: true,  // prevents JS access
+    // secure: process.env.NODE_ENV === 'production',
+    secure: true,
+    sameSite: 'lax',
+    path: '/',       // cookie available to all routes
+    maxAge: 60 * 60 * 24 * 7 // 7 days
+  })
+  
   return {
     status: 'success',
-    token,
     data: updatedUser
   };
 });

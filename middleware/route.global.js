@@ -1,14 +1,9 @@
-import { compareAsc ,addDays  } from 'date-fns'
-import { navigateTo } from '#app';
-
-export default defineNuxtRouteMiddleware((to, from) => {
-  if (typeof window != 'undefined') {
-    console.log(to);
-    console.log(from);
-        // check if we have age verified on local storage
-    const ageVerifiedDate = Number(window.localStorage.getItem('ageVerifiedDate'))
-    
-    if (!ageVerifiedDate && to.name != "ageVerification" ) return navigateTo('/ageVerification')
-    if ( compareAsc( addDays (new Date(ageVerifiedDate),1 ) , new Date() ) === -1  && to.name != "ageVerification" ) return navigateTo('/age-verification')
-  };
+export default defineNuxtRouteMiddleware((to) => {
+  // Read the cookie /// since the site is server renderomg theis cookiie ring will be done the the server 
+  //  cus the cookie info of the user is being sent vie the http request heder
+  const cookie = useCookie('ageVerifiedDate')
+  const ageVerifiedDate = Number(cookie.value || 0)
+  // If not set, redirect to verification
+  if (!ageVerifiedDate && to.name !== 'ageVerification') return navigateTo('/ageVerification')
+  
 })

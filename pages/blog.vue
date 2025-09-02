@@ -1,4 +1,10 @@
 <script setup>
+definePageMeta({
+    layout:"default",
+    name: 'blog',
+})
+
+
 // libs
 import { format } from 'date-fns';
 import gsap from 'gsap';
