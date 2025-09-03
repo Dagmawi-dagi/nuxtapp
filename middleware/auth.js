@@ -1,14 +1,38 @@
-export default defineNuxtRouteMiddleware(async(to) => {
-   if(!useAuthStore().loggedInUser){
-     const { data: user, error } = await useFetch('/api/user/me',{ headers:{
-       apiref:"/api/user/[id]/GET"
-     }});
-     if (error.value) {
-       // Clear invalid token
-       const tokenCookie = useCookie('jwt');
-       tokenCookie.value = null;
-       return navigateTo({name:'auth'});
-     }
-     useAuthStore().loggedInUser = user?.value?.data
-   }
+
+export default defineNuxtRouteMiddleware(async (to) => {
+  const auth = useAuthStore()
+
+  if (!auth.loggedInUser) {
+    const { data: user, error } = await useFetch('/api/user/me', {
+      headers: {
+        apiref: "/api/user/[id]/GET",
+      },
+    })
+
+    if (!error.value && user.value?.data) {
+      auth.loggedInUser = user.value.data
+
+      // Already logged in → prevent going to auth page
+      if (to.name === 'auth') {
+        return navigateTo({ name: 'dashboard' })
+      }
+      return
+    }
+
+    // Clear invalid token
+    const tokenCookie = useCookie('jwt')
+    tokenCookie.value = null
+
+    // If not logged in, but trying to go anywhere except auth → go to auth
+    if (to.name !== 'auth') {
+      return navigateTo({ name: 'auth' })
+    }
+    return
+  }
+
+  // ✅ Already logged in
+  // Don’t force redirect if already inside dashboard
+  if (to.name === 'auth') {
+    return navigateTo({ name: 'dashboard' })
+  }
 })

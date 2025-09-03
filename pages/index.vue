@@ -14,6 +14,7 @@ const { data: a,refresh,pending,execute:gettedtd } =  useFetch('/api/test', {
 </script>
 <template>
     <button @click="$router.push('/dashboard')">das</button>
+    <button @click="$router.push('/dashboard/auth')">log</button>
     <HeroSection/>
     <OurPartners/>
     <ClientOnly>

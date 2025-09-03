@@ -1,8 +1,10 @@
 <script setup>
 
+  
 definePageMeta({
   layout:"clean",
   name: 'auth',
+  middleware:['auth'],
 })
 
 const login = async (data, form$)=>{
