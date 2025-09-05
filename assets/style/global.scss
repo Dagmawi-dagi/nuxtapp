@@ -53,17 +53,19 @@
     // overflow: hidden;
 
     :deep(.m-tabs-bar__indicator){
-      background-color: var(--light-blue);
+      background-color: #e7edf8;
       border-radius: 0;
     }
   
     :deep(.m-tabs-bar__item){
+      background-color: transparent;
       @include transition($prop: onlytheme);
       color:var(--text-dark-gray) !important;
       &:hover{
         color:var(--text-dark-gray) !important;
       }
     }
+
   
     :deep(+ .m-tabs-content){
       // min-height: 200px;

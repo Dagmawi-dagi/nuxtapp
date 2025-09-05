@@ -40,7 +40,7 @@ const sideBarNavs = ref([
 
 <template>
   <div class="container" :class="{ position:  tablet || mobilePhone , open: sideBarOpen, close: !sideBarOpen  }"  >
-     <div class="userContainer" >
+     <div class="userContainer" @click="$router.push({name:'userProfile'})">
         <MazAvatar :src="`/users/${loggedInUser?.avatar}`" 
         :caption="loggedInUser?.userName"
         size=".8rem"
@@ -52,7 +52,6 @@ const sideBarNavs = ref([
           <!-- <span> {{loggedInUser}} </span> -->
         </div>
      </div>
-     <br>
      <br>
      <br>
   

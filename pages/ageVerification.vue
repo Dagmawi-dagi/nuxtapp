@@ -61,7 +61,6 @@ onMounted(()=>{
             if (age >= legalAge) {
                 // save the verification on local storage of reuse which will be valid for 10 days
                 const time = Date.now()
-                window.localStorage.setItem('ageVerifiedDate',time)
                 const cookie = useCookie('ageVerifiedDate')
                 cookie.value = time // store current timestamp
                 navigateTo('/')
