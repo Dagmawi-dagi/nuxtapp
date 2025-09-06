@@ -119,7 +119,7 @@ const base = z.object({
 const updateSchema = z.object({
   userName: base.shape.userName.optional(),
   avatar: base.shape.avatar.optional()
-}).strict({message: 'This api only update your USERNAME and PROFILE picture'});
+}).strict({message: 'This api only update your USERNAME and PROFILE picture'}).partial();
 const updatePasswordSchema = z.object({
   userPassword: base.shape.userPassword, // current password
   newPassword: z.string()

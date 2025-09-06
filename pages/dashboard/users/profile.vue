@@ -7,6 +7,25 @@ definePageMeta({
 const tabs = ref(['Account','PhoneNumber','Password'])
 const activetab = ref(1)
 
+const updateAccount = async (data, form$)=>{
+    let formdata = form$.data
+
+    const { data: response, error } = await useFetch('/api/user/me', {
+    method: 'PATCH',
+    body: formdata,
+    headers:{
+      apiref:"/api/user/me/PATCH"
+    }
+  });
+
+    if (error.value) {
+    frontEndErrorFeedback().err(error.value)
+  }
+  else{
+      useAuthStore().loggedInUser = response.value.data
+  }
+}
+
 </script>
 
 <template>
@@ -17,32 +36,27 @@ const activetab = ref(1)
                 <MazTabsContentItem :tab="1" class="maz-py-4">
                     <template v-if="activetab == 1" >
                         <ClientOnly>
-                            <Vueform>
+                            <Vueform :endpoint="updateAccount">
                                 <TextElement
-                                name="text"
-                                label="Text"
+                                name="userName"
                                 :columns="{
                                     container: 8,
                                 }"
-                                />
-                                <TextElement
-                                name="email"
-                                input-type="email"
+                                :addons="{
+                                    before: 'userName:',
+                                }"
                                 :rules="[
                                     'nullable',
-                                    'email',
                                 ]"
-                                label="Email"
-                                :columns="{
-                                    container: 8,
-                                }"
+                                field-name="userName"
                                 />
                                 <FileElement
-                                name="image"
-                                label="Image"
+                                name="avatar"
+                                label="profile picture"
                                 accept="image/*"
                                 view="image"
                                 :rules="[
+                                    'nullable',
                                     'mimetypes:image/jpeg,image/png,image/gif,image/webp,image/svg+xml,image/tiff',
                                 ]"
                                 :drop="true"
@@ -50,8 +64,21 @@ const activetab = ref(1)
                                 :columns="{
                                     container: 8,
                                 }"
+                                :urls="{}"
+                                :upload-temp-endpoint="false" 
+                                />
+                                <ButtonElement
+                                name="submit"
+                                button-label="update my account info"
+                                :submits="true"
+                                :columns="{
+                                    container: 8,
+                                }"
+                                align="center"
+                                size="sm"
                                 />
                             </Vueform>
+
                         </ClientOnly>
                     </template>
                 </MazTabsContentItem>
