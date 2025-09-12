@@ -123,9 +123,15 @@ export const API_INFO = {
         method: 'PATCH',
         auth: true,
         restrict:[],
-        fileUpload: [],
-        
-        reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateSchema'},
+        fileUpload: [
+            {
+                fieldName: 'avatar',
+                saveFileToFolder: 'users',
+                allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+                type:"image"
+            },
+        ],
+        reqBodyValidation:{ bool:true,modelRef:'user', schemaName: 'updateSchema'},
     },
     "/api/user/me/DELETE" : { 
         method: 'DELETE',

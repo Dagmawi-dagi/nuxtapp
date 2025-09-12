@@ -6,24 +6,21 @@ definePageMeta({
 })
 const tabs = ref(['Account','PhoneNumber','Password'])
 const activetab = ref(1)
+const loggedInUser = useAuthStore().loggedInUser
+const updateAccount = async (FormData, form$)=>{
+    try {
+        const { data } = await $fetch('/api/user/me', {
+            method: 'PATCH',
+            body: FormData,
+            headers:{
+            apiref:"/api/user/me/PATCH"
+            }
+        });
 
-const updateAccount = async (data, form$)=>{
-    let formdata = form$.data
-
-    const { data: response, error } = await useFetch('/api/user/me', {
-    method: 'PATCH',
-    body: formdata,
-    headers:{
-      apiref:"/api/user/me/PATCH"
+        useAuthStore().loggedInUser = data
+    } catch (error) {
+        frontEndErrorFeedback().err(error)
     }
-  });
-
-    if (error.value) {
-    frontEndErrorFeedback().err(error.value)
-  }
-  else{
-      useAuthStore().loggedInUser = response.value.data
-  }
 }
 
 </script>
@@ -38,17 +35,16 @@ const updateAccount = async (data, form$)=>{
                         <ClientOnly>
                             <Vueform :endpoint="updateAccount">
                                 <TextElement
+                                label="userName"
                                 name="userName"
                                 :columns="{
                                     container: 8,
-                                }"
-                                :addons="{
-                                    before: 'userName:',
                                 }"
                                 :rules="[
                                     'nullable',
                                 ]"
                                 field-name="userName"
+                                :default="loggedInUser.userName"
                                 />
                                 <FileElement
                                 name="avatar"
@@ -60,7 +56,6 @@ const updateAccount = async (data, form$)=>{
                                     'mimetypes:image/jpeg,image/png,image/gif,image/webp,image/svg+xml,image/tiff',
                                 ]"
                                 :drop="true"
-                                :auto="false"
                                 :columns="{
                                     container: 8,
                                 }"

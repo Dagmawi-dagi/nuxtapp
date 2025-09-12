@@ -25,12 +25,11 @@ export default withErrorHandler(async (event) => {
         // Check if file upload is expected
         const fileUploadConfigs = apiConfig.fileUpload || [];
         const expectsFileUpload = fileUploadConfigs.length > 0;
-        
         // Read form data only if file upload is expected
         let form;
 
         if (expectsFileUpload) {
-          form = await readMultipartFormData(event);
+          form = await readMultipartFormData(event)
           if (!form) throw createError({ statusCode: 400, message: 'No form data found' });
         }
 
@@ -74,7 +73,7 @@ export default withErrorHandler(async (event) => {
               const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
               const basename = path.basename(part.filename, ext);
               const newFilename = `${basename}_${uniqueSuffix}${ext}`;
-              const filePath = path.join(saveDir, newFilename);
+              const filePath = path.join(saveDir, newFilename.replace(/\s+/g, "_"));
 
               // save the file to memory buffer
               let fileBuffer = part.data;
@@ -84,12 +83,12 @@ export default withErrorHandler(async (event) => {
               event.context.uploadedFiles.push({
                 fieldName: part.name,
                 buffer: fileBuffer,
-                filename: newFilename,
+                filename: newFilename.replace(/\s+/g, "_"), //  replaces spaces
                 filePath,
                 config
               });
               // Add file reference
-              nonFileFields[part.name] = newFilename;
+              nonFileFields[part.name] = newFilename.replace(/\s+/g, "_");
             } else {
               // Handle non-file fields
               nonFileFields[part.name] = part.data.toString('utf-8');

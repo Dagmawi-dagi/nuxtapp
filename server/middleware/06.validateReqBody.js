@@ -20,10 +20,10 @@ export default withErrorHandler( async(event) => {
             const modelRef = event.context.APIINFO.reqBodyValidation.modelRef
             const schemaName = event.context.APIINFO.reqBodyValidation.schemaName
             let validationSchema = modelsRefs[modelRef].zobSchema[schemaName];
-
+             // if the form is multipart use the event.context.modifiedBody
             if(event.context.modifiedBody){
                 result =  validationSchema.safeParse(event.context.modifiedBody) // or `.parse` to directly throw an error
-            }
+            } 
             else{ // if the body is not formdata we can just use the readValidatedBody
                 result = await readValidatedBody(event, body => validationSchema.safeParse(body)) // or `.parse` to directly throw an error
             }

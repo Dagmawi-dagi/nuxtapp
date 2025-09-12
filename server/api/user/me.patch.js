@@ -2,10 +2,11 @@ import modelsRefs from '~/server/database/models/modelsRefs';
 import withErrorHandler from '~/server/utils/catchAsync';
 import { createError } from 'h3';
 import jwt from 'jsonwebtoken';
+import { saveFile } from '@/server/utils/saveFileUpload'
 
 
 export default withErrorHandler(async (event) => {
-  const body = await readBody(event);
+  const body = event.context.modifiedBody;
   const user = event.context.user;
 
   // Prevent password updates through this route
@@ -29,7 +30,8 @@ export default withErrorHandler(async (event) => {
       statusMessage: 'User not found or no changes made'
     });
   }
-
+  // save the uploaded files if the update was successfully
+  for (const file of event.context.uploadedFiles || []) await saveFile(file.buffer, file.filePath); // processed buffer is already ready
   // Fetch updated user
   const updatedUser = await modelsRefs.user.model.findByPk(user.id);
   
