@@ -8,7 +8,7 @@ import { saveFile } from '@/server/utils/saveFileUpload'
 export default withErrorHandler(async (event) => {
   const body = event.context.modifiedBody;
   const user = event.context.user;
-
+  
   // Prevent password updates through this route
   if (body.userPassword) {
     throw createError({
@@ -24,12 +24,7 @@ export default withErrorHandler(async (event) => {
     individualHooks: true
   });
 
-  if (updateCount === 0) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'User not found or no changes made'
-    });
-  }
+
   // save the uploaded files if the update was successfully
   for (const file of event.context.uploadedFiles || []) await saveFile(file.buffer, file.filePath); // processed buffer is already ready
   // Fetch updated user

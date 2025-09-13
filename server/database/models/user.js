@@ -27,7 +27,7 @@ const _schema = {
   },
   avatar:{
     type:  DataTypes.STRING,
-    defaultValue: 'jpeg-default.jpeg'
+    defaultValue: 'jpeg-default.jpeg',
   },
   passwordChangedAt: {type: DataTypes.DATE},
   passwordResetToken: {type: DataTypes.STRING},

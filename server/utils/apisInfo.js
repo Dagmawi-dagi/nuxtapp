@@ -56,9 +56,14 @@ export const API_INFO = {
         auth: false,
         restrict:[],
         fileUpload: [],
-        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'loginSchema'},
-        
+    },
+    "/api/user/logOut/POST" : { 
+        method: 'POST',
+        auth: ['user'],
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{},
     },
      "/api/user/signUp/POST" : { 
         method: 'POST',
@@ -106,18 +111,14 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updatePhonenumberSchema'},
-        
     },
     "/api/user/updateEmail/PATCH" : { 
         method: 'PATCH',
         auth: true,
         restrict:[],
         fileUpload: [],
-        
         reqBodyValidation:{bool:true,modelRef:'user', schemaName: 'updateEmailSchema'},
-        
     },
     "/api/user/me/PATCH" : { 
         method: 'PATCH',
