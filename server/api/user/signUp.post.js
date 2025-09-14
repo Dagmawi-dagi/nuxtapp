@@ -6,10 +6,7 @@ import { setCookie } from 'h3';
 
 
 export default withErrorHandler(async (event) => {
-  let body ;
-
-  if(event.context.modifiedBody)  body =  event.context.modifiedBody
-  else result = await readBody(event); 
+  let body =  event.context.modifiedBody
   
   // Create user
   const user = await modelsRefs.user.model.create(body);

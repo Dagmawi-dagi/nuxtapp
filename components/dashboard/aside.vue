@@ -23,15 +23,15 @@ const sideBarNavs = ref([
     "routes" : [
       {
         "name": "vacancy",
-        "route_name": "vacancy",
+        "route_name": "vacancies",
       },
       {
         "name": "blog",
-        "route_name": "blog",
+        "route_name": "blogs",
       },
       {
         "name": "newsletter",
-        "route_name": "newsletter",
+        "route_name": "newsletters",
       },
     ]
   },

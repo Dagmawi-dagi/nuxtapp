@@ -27,7 +27,6 @@ export default withErrorHandler( async(event) => {
             else{ // if the body is not formdata we can just use the readValidatedBody
                 result = await readValidatedBody(event, body => validationSchema.safeParse(body)) // or `.parse` to directly throw an error
             }
-
             if (!result?.success){
                 throw createError({
                     statusCode: 400,

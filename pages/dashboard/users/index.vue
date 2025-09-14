@@ -65,9 +65,8 @@ const pageSize = ref(10)
     <template #title>
       <div class="myTableHeader">
         <h4>Users</h4>
-        <MazBtn  color="primary" :left-icon="MazPlus" size="xs" v-tooltip.right="{ text: 'create new user', color: 'default', }"></MazBtn>
+        <MazBtn  color="primary" :left-icon="MazPlus" size="xs" v-tooltip.right="{ text: 'create new user', color: 'default', }" @click="$router.push({name:'createUser'})"></MazBtn>
       </div>
-
     </template>
   </MazTable>
 </template>
