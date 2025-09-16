@@ -33,6 +33,7 @@ export default withErrorHandler(async (event) => {
           if (!form) throw createError({ statusCode: 400, message: 'No form data found' });
         }
 
+
         // Resolve paths
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
@@ -46,8 +47,7 @@ export default withErrorHandler(async (event) => {
         fileUploadConfigs.forEach(config => {
           uploadConfigMap.set(config.fieldName, config);
         });
-
-        if (form) {
+          if (form) {
           for (const part of form) {
             if (part.filename) {
               // Validate expected file field
@@ -58,6 +58,7 @@ export default withErrorHandler(async (event) => {
                   message: `Unexpected file upload field: ${part.name}`
                 });
               }
+
               // Validate file type
               const ext = path.extname(part.filename).toLowerCase();
               if (config.allowedTypes && !config.allowedTypes.includes(ext)) {
@@ -66,32 +67,45 @@ export default withErrorHandler(async (event) => {
                   message: `Invalid file type for ${part.name}. Allowed: ${config.allowedTypes.join(', ')}`
                 });
               }
+
               // Prepare save directory
               const saveDir = path.join(publicDir, config.saveFileToFolder);
               await fs.mkdir(saveDir, { recursive: true });
+
               // Generate unique filename
               const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
               const basename = path.basename(part.filename, ext);
-              const newFilename = `${basename}_${uniqueSuffix}${ext}`;
-              const filePath = path.join(saveDir, newFilename.replace(/\s+/g, "_"));
+              const newFilename = `${basename}_${uniqueSuffix}${ext}`.replace(/\s+/g, "_");
+              const filePath = path.join(saveDir, newFilename);
 
-              // save the file to memory buffer
+              // Save to buffer
               let fileBuffer = part.data;
-              // Process file 
-              if (config.type === 'image') {fileBuffer  = await processImage(part.data, filePath);}
+              if (config.type === "image") {
+                fileBuffer = await processImage(part.data, filePath);
+              }
+
               if (!event.context.uploadedFiles) event.context.uploadedFiles = [];
               event.context.uploadedFiles.push({
                 fieldName: part.name,
                 buffer: fileBuffer,
-                filename: newFilename.replace(/\s+/g, "_"), //  replaces spaces
+                filename: newFilename,
                 filePath,
                 config
               });
-              // Add file reference
-              nonFileFields[part.name] = newFilename.replace(/\s+/g, "_");
+
+              // ✅ Allow multiple files per field
+              if (nonFileFields[part.name]) {
+                if (Array.isArray(nonFileFields[part.name])) {
+                  nonFileFields[part.name].push(newFilename);
+                } else {
+                  nonFileFields[part.name] = [nonFileFields[part.name], newFilename];
+                }
+              } else {
+                nonFileFields[part.name] = newFilename;
+              }
             } else {
-              // Handle non-file fields
-              nonFileFields[part.name] = part.data.toString('utf-8');
+              // Handle non-file fields (leave as single value, unless you want multiple too)
+              nonFileFields[part.name] = part.data.toString("utf-8");
             }
           }
         }
@@ -99,7 +113,6 @@ export default withErrorHandler(async (event) => {
         // since we need {} for bodyValidation to work with readValidatedBody 
         // we need to pass the nonFileFields to event.context
         if( Object.keys(nonFileFields).length >0) event.context.modifiedBody = nonFileFields
-        // return  event.context.modifiedBody;
     }
   
 });

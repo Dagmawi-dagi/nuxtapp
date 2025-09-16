@@ -1,38 +1,42 @@
 <script setup>
 // libs
 import { format } from 'date-fns';
-// composable
-// import { use_apicalls_from_store } from '../../composables/store-apicalls';
-//store
+
 
 const { any_open_modal } = storeToRefs( useUtilStore() )
-const { vacancies,page,perPage } = storeToRefs( useVacancyVtore() )
-// const { apicall_from_store } = use_apicalls_from_store();
+const { page,perPage } = storeToRefs( useVacancyVtore() )
 
 
 const openVacancyApplyModal = (vac)=>{
-    any_open_modal.value.bool = true
-    any_open_modal.value.id = 'applyVacancyModal'   
-    any_open_modal.value.AnythingTopass = vac
+    const UtilStore = useUtilStore()
+    UtilStore.any_open_modal.bool = true
+    UtilStore.any_open_modal.id = 'applyVacancyModal'   
+    UtilStore.any_open_modal.AnythingTopass = vac
 }
 
-// apicall_from_store( 'vacancy','vacancy-getList',{ queryObj : { page:page.value, perPage: 100 }, onSucSaveTheJsonOn: 'vacancies'})
-
+const { data: vacancies } = await useFetch('/api/vacancy', {
+  headers: {
+    apiref: '/api/vacancy/GET',
+  },
+}).catch(err=>{
+    console.log(err);
+    frontEndErrorFeedback().err(err)
+})
 </script>
 
 <template>
     <div class="job-container">
         <h3 class="job-header">Vacancy openings</h3>
         <div class="job-details" >
-            <h5 class="job-header" style="border: none;" v-if="vacancies.length === 0">No posted vacancy for now!!!</h5>
+            <h5 class="job-header" style="border: none;" v-if="vacancies.data.length === 0">No posted vacancy for now!!!</h5>
             <!-- Position Section -->
-            <div class="section" v-for="(vac,i) in vacancies">
+            <div class="section" v-for="(vac,i) in vacancies.data" :key="i">
                 <details>
                     <summary>
                         <div class="job-discriptions"> 
                             <h5 class="dis">Position: <span class="value"> {{ vac.position_name }} </span> </h5>
                             <h5 class="dis">company: <span class="value"> {{ vac.company }} </span> </h5>
-                            <h5 class="dis">location: <span class="value">  {{ vac.locations.join() }} </span> </h5>
+                            <h5 class="dis">location: <span class="value">  {{ JSON.parse(vac.locations).join(",") }} </span> </h5>
                             <h5 class="dis">deadline: <span class="value">  {{  format(new Date(vac.deadline), 'MMMM dd,yyyy') }} </span> </h5>
                             <h5 class="dis">salary: <span class="value"> {{ vac.salary }} </span> </h5>
                         </div>
@@ -46,7 +50,7 @@ const openVacancyApplyModal = (vac)=>{
                     <div class="apply-button"  @click="openVacancyApplyModal(vac)" >
                         <button >To Apply, Click Here</button>
                     </div>
-                </details>
+                </details>      
             </div>
 
         </div>
@@ -56,6 +60,7 @@ const openVacancyApplyModal = (vac)=>{
 
 <style scoped lang="scss">
 @use "@/assets/style/variables" as *;;
+@use "@/assets/style/global.scss" as *;
 /* Main container */
 .job-container {
     max-width: 800px;

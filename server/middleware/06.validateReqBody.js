@@ -11,7 +11,6 @@ import withErrorHandler from '../utils/catchAsync';
 import { createError } from 'h3';
 
 export default withErrorHandler( async(event) => {
-
     const url = getRequestURL(event).pathname;
     // Only run if the URL includes '/api/'
     if (url.includes('/api/')) {

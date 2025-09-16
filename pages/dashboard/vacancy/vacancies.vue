@@ -7,12 +7,12 @@ definePageMeta({
   middleware:['auth'],
 })
 
-const { data: users } = await useFetch('/api/user', {
+const { data: vacancies } = await useFetch('/api/vacancy', {
+  method:'get',
   headers: {
-    apiref: '/api/test/GET',
+    apiref: '/api/vacancy/GET',
   },
 }).catch(err=>{
-    console.log(err);
     frontEndErrorFeedback().err(err)
 })
 
@@ -40,23 +40,19 @@ const pageSize = ref(10)
     selected-key="id"
     :headers="[
       { label:'#', key: 'index', align: 'center', width: '2rem', sortable: false },
-      { label:'userName', key: 'userName' },
-      { label: 'email', key: 'email', align: 'center'  },
-      { label: 'phoneNumber', key: 'phoneNumber' },
-      { label: 'lastLoggedIn', key: 'lastLoggedIn', align: 'center', classes: 'maz-font-bold' },
-      { label: 'role', key: 'role', align: 'center', classes: 'maz-font-bold' },
-      { label: 'createdAt', key: 'createdAt', align: 'center', classes: 'maz-font-bold' },
+      { label:'company', key: 'company' },
+      { label: 'position name', key: 'position_name' },
+      { label: 'locations', key: 'locations',   },
+      { label: 'description', key: 'description', align: 'center', },
+      { label: 'salary', key: 'salary', align: 'center',  },
+      { label: 'deadline', key: 'deadline', align: 'center',  },
+      { label: 'createdAt', key: 'createdAt', align: 'center',  },
+      { label: 'createdBy', key: 'createdBy', align: 'center',  },
     ]"
-    :rows="users?.data"
+    :rows="vacancies?.data"
   >
     <template #cell-index="{ value }">
       <span class="maz-text-base">{{value}}</span>
-    </template>
-    <template #cell-userName="{ row, value }">
-      <div class="maz-flex maz-items-center maz-gap-2">
-        <MazAvatar :src="`/users/${row.avatar}`" size="0.5rem"></MazAvatar>
-        <span>{{value}}</span>
-      </div>
     </template>
     <template #actions>
       <MazBtn  rounded-size="full" color="danger" :left-icon="MazTrash" size="xs" v-tooltip.left="{ text: 'delete vacancy', color: 'default' }"/>

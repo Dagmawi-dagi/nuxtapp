@@ -7,8 +7,22 @@ definePageMeta({
 })
 
 
-const postVacancy =async ()=>{
-
+const postNewVacancy = async (FormD,form$)=>{
+    const createdBy = useAuthStore().loggedInUser.id
+    
+    try {
+        await $fetch('/api/vacancy',{
+            method:'POST',
+            body: {...form$.data,createdBy},
+            headers:{
+                apiref: '/api/vacancy/POST',
+            },
+        })
+        frontEndErrorFeedback().success('new vacancy posted successfully')
+    } catch (error) {
+        frontEndErrorFeedback().err(error)
+    }
+ 
 }
 
 </script>

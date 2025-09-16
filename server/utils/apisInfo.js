@@ -158,5 +158,34 @@ export const API_INFO = {
         
         reqBodyValidation:{},
     },
-
+    // ------------------------------vacancy--------------------------
+    "/api/vacancy/GET" : { 
+        method: 'GET',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
+    "/api/vacancy/POST" : { 
+        method: 'POST',
+        auth: true,
+        restrict:[],
+        fileUpload:[],
+        reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'base'},
+    },
+    "/api/vacancy/apply/POST" : { 
+        method: 'POST',
+        auth: true,
+        restrict:[],
+        fileUpload: [
+            {
+                fieldName: 'uploaded_files',
+                saveFileToFolder: 'vacancyApplicationFiles',
+                allowedTypes: ['.pdf'],
+                type:"file",
+                isarray: true
+            },
+        ],
+        reqBodyValidation:{ bool:true,modelRef:'vacancyApplication', schemaName: 'base'},
+    },
 }
