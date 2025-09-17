@@ -24,9 +24,7 @@ const vacancyApplication = sequelize.define('vacancyApplication', _schema, {
 });
 
 const base = z.object({
-  uploaded_files: z.array(
-      z.string().url("Each file reference must be a valid URL")
-    )
+  uploaded_files: z.array(z.string()) // multiple files
     .nonempty("At least one file must be uploaded")
     .max(5, "Maximum 5 files allowed")
     .refine(files => files.every(file => {

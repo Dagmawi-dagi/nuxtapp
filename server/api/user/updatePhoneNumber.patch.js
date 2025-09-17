@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export default withErrorHandler(async (event) => {
-  const body = await readBody(event);
+  const body = event.context.modifiedBody;
   const user = event.context.user;
 
   // Fetch user with password

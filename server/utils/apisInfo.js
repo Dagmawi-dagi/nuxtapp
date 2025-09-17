@@ -46,7 +46,6 @@ export const API_INFO = {
         auth: false,
         restrict:[],
         fileUpload: [],
-        
         reqBodyValidation:{},
         
     },
@@ -152,11 +151,27 @@ export const API_INFO = {
     // ------------------------------blog--------------------------
     "/api/blog/GET" : { 
         method: 'GET',
-        auth: true,
+        auth: false,
         restrict:[],
         fileUpload: [],
-        
         reqBodyValidation:{},
+    },
+    "/api/blog/post/POST" : { 
+        method: 'POST',
+        auth: true,
+        restrict:[],
+        fileUpload: [
+            {
+                fieldName: 'coverImg',
+                saveFileToFolder: 'blog',
+                allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+                type:"file",
+                isarray: false
+
+            },
+        ],
+        reqBodyValidation:{ bool:true,modelRef:'blog', schemaName: 'base'},
+        addCreatedBy:true
     },
     // ------------------------------vacancy--------------------------
     "/api/vacancy/GET" : { 
@@ -172,12 +187,13 @@ export const API_INFO = {
         restrict:[],
         fileUpload:[],
         reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'base'},
+        addCreatedBy:true
     },
     "/api/vacancy/apply/POST" : { 
         method: 'POST',
         auth: true,
         restrict:[],
-        fileUpload: [
+        fileUpload: [[
             {
                 fieldName: 'uploaded_files',
                 saveFileToFolder: 'vacancyApplicationFiles',
@@ -185,7 +201,7 @@ export const API_INFO = {
                 type:"file",
                 isarray: true
             },
-        ],
+        ]],
         reqBodyValidation:{ bool:true,modelRef:'vacancyApplication', schemaName: 'base'},
     },
 }

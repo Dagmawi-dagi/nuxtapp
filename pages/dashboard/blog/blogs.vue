@@ -6,9 +6,10 @@ definePageMeta({
   name: 'blogs',
   middleware:['auth'],
 })
-const { data: users } = await useFetch('/api/user', {
+const { data: users } = await useFetch('/api/blog', {
+  method:'get',
   headers: {
-    apiref: '/api/test/GET',
+    apiref: '/api/blog/GET',
   },
 }).catch(err=>{
     console.log(err);
@@ -38,25 +39,19 @@ const pageSize = ref(10)
     background-even
     selected-key="id"
     :headers="[
-      { label:'#', key: 'index', align: 'center', width: '2rem', sortable: false },
-      { label:'userName', key: 'userName' },
-      { label: 'email', key: 'email', align: 'center'  },
-      { label: 'phoneNumber', key: 'phoneNumber' },
-      { label: 'lastLoggedIn', key: 'lastLoggedIn', align: 'center', classes: 'maz-font-bold' },
-      { label: 'role', key: 'role', align: 'center', classes: 'maz-font-bold' },
+      { label:'Doc id', key: 'id', align: 'center', width: '4rem', sortable: false },
+      { label:'title', key: 'title' },
+      { label: 'category', key: 'category', align: 'center'  },
+      { label: 'content', key: 'content' },
+      { label: 'createdBy', key: 'createdBy', align: 'center', classes: 'maz-font-bold' },
       { label: 'createdAt', key: 'createdAt', align: 'center', classes: 'maz-font-bold' },
     ]"
     :rows="users?.data"
   >
-    <template #cell-index="{ value }">
+    <template #cell-id="{ value }">
       <span class="maz-text-base">{{value}}</span>
     </template>
-    <template #cell-userName="{ row, value }">
-      <div class="maz-flex maz-items-center maz-gap-2">
-        <MazAvatar :src="`/users/${row.avatar}`" size="0.5rem"></MazAvatar>
-        <span>{{value}}</span>
-      </div>
-    </template>
+ 
     <template #actions>
       <MazBtn  rounded-size="full" color="danger" :left-icon="MazTrash" size="xs" v-tooltip.left="{ text: 'delete blog post', color: 'default' }"/>
     </template>

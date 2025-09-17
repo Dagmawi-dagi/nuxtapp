@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
 export default withErrorHandler(async (event) => {
-  const body = await readBody(event);
+  const body = event.context.modifiedBody;
   
   // Find user with password
   const user = await modelsRefs.user.model.findOne({

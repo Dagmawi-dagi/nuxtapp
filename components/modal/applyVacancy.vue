@@ -2,7 +2,7 @@
 // libs
 import { format } from 'date-fns';
 
-const { any_open_modal } = storeToRefs(useUtilStore())
+const { any_open_modal } = useUtilStore()
 
 const props =  defineProps({ vacancy: Object })
 
@@ -30,8 +30,6 @@ async function applyVacancy (FD, form$){
     } catch (error) {
         frontEndErrorFeedback().err(error)
     }
-
-
 }
 
 </script>

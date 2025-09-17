@@ -51,7 +51,7 @@ const base = z.object({
     
   coverImg: z.string()
     .min(1, "Cover image is required")
-    .url("Cover image must be a valid URL"),
+    .nonempty("blog cover image is required"),
     
   category: z.array(
       z.enum(ALLOWED_CATEGORIES, {

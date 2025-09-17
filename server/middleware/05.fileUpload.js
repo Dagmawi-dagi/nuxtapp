@@ -16,7 +16,6 @@ import { createError } from 'h3';
 
 // Main handler
 export default withErrorHandler(async (event) => {
-
     const url = getRequestURL(event).pathname;
     // Only run if the URL includes '/api/'
     if (url.includes('/api/')) {
@@ -97,15 +96,23 @@ export default withErrorHandler(async (event) => {
               if (nonFileFields[part.name]) {
                 if (Array.isArray(nonFileFields[part.name])) {
                   nonFileFields[part.name].push(newFilename);
-                } else {
-                  nonFileFields[part.name] = [nonFileFields[part.name], newFilename];
-                }
+                } 
               } else {
-                nonFileFields[part.name] = newFilename;
+                if (config.isarray ) {
+                  nonFileFields[part.name] = [newFilename];
+                }else nonFileFields[part.name] = newFilename;
               }
-            } else {
-              // Handle non-file fields (leave as single value, unless you want multiple too)
-              nonFileFields[part.name] = part.data.toString("utf-8");
+            }  else {
+              const value = part.data.toString("utf-8");
+              const arrayMatch = part.name.match(/^(.+)\[(\d+)\]$/); // detect field[index]
+              if (arrayMatch) {
+                const field = arrayMatch[1];
+                const index = parseInt(arrayMatch[2], 10);
+                if (!nonFileFields[field]) nonFileFields[field] = [];
+                nonFileFields[field][index] = value; // preserve order
+              } else {
+                nonFileFields[part.name] = value;
+              }
             }
           }
         }

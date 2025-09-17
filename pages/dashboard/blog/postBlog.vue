@@ -5,27 +5,32 @@ definePageMeta({
   middleware:['auth'],
 })
 
-const blog_catagories = ref([
-    {
-    value: 'news',
-    label: 'news',
-    },
-    {
-    value: 'info',
-    label: 'info',
-    },
-    {
-    value: 'social',
-    label: 'social',
-    },
-    {
-    value: 'event',
-    label: 'event',
-    },
-])
+const postNewBlogPost =async (FD, form$)=>{
+    function extractFirstWords(html, wordCount = 20) {
+        // Create a temporary element to parse the HTML
+        let tempElement = document.createElement("div");
+        tempElement.innerHTML = html;
+        // Extract the text content (without tags)
+        let text = tempElement.textContent || tempElement.innerText || "";
+        // Split the text into words and get the first 'wordCount' words
+        let words = text.trim().split(/\s+/).slice(0, wordCount);
+        return words.join(" ");
+    }
+    
+    FD.append('content_short', extractFirstWords(form$.data.content))
 
-const postNewBlogPost = ()=>{
-
+    try {
+        await $fetch('/api/blog/post',{
+            method:'POST',
+            body: FD,
+            headers:{
+                apiref: '/api/blog/post/POST',
+            },
+        })
+        frontEndErrorFeedback().success('new blog posted successfully')
+    } catch (error) {
+        frontEndErrorFeedback().err(error,'vueform')
+    }
 }
 
 </script>
@@ -61,7 +66,24 @@ const postNewBlogPost = ()=>{
                 name="category"
                 :close-on-select="false"
                 :search="true"
-                :items="blog_catagories"
+                :items="[
+                        {
+                        value: 'news',
+                        label: 'news',
+                        },
+                        {
+                        value: 'info',
+                        label: 'info',
+                        },
+                        {
+                        value: 'social',
+                        label: 'social',
+                        },
+                        {
+                        value: 'event',
+                        label: 'event',
+                        },
+                    ]"
                 label="category"
                 input-type="search"
                 autocomplete="off"

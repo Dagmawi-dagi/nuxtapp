@@ -3,6 +3,8 @@ import withErrorHandler from '@/server/utils/catchAsync';
 import { createError } from 'h3';
 
 export default withErrorHandler(async (event) => {
+
+  return 'sad'
   // Get authenticated user from middleware context
   const currentUser = event.context.user;
 
@@ -20,7 +22,7 @@ export default withErrorHandler(async (event) => {
 
   if (!user) {
     throw createError({
-      statusCode: 404,
+      statusCode: 404, 
       statusMessage: 'User not found'
     });
   }

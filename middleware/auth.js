@@ -4,8 +4,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   if (!auth.loggedInUser) {
     const { data: user, error } = await useFetch('/api/user/me', {
+      method:'GET',
       headers: {
-        apiref: "/api/user/[id]/GET",
+        apiref: "/api/user/me/GET",
       },
     })
 

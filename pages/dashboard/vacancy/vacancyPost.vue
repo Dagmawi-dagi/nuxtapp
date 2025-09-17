@@ -9,6 +9,7 @@ definePageMeta({
 
 const postNewVacancy = async (FormD,form$)=>{
     const createdBy = useAuthStore().loggedInUser.id
+    console.log(form$);
     
     try {
         await $fetch('/api/vacancy',{
