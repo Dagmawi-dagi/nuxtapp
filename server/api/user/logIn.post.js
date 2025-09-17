@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 
 export default withErrorHandler(async (event) => {
   const body = event.context.modifiedBody;
-  
+
   // Find user with password
   const user = await modelsRefs.user.model.findOne({
     where: { email: body.email },
@@ -29,8 +29,7 @@ export default withErrorHandler(async (event) => {
     // Save token inside cookie (httpOnly, secure)
   setCookie(event, 'jwt', token, {
     httpOnly: true,  // prevents JS access
-    // secure: process.env.NODE_ENV === 'production',
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
     path: '/',       // cookie available to all routes
     maxAge: 60 * 60 * 24 * 7 // 7 days

@@ -4,7 +4,6 @@ import { createError } from 'h3';
 
 export default withErrorHandler(async (event) => {
 
-  return 'sad'
   // Get authenticated user from middleware context
   const currentUser = event.context.user;
 

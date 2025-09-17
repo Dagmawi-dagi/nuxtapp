@@ -4,7 +4,7 @@
 export const API_INFO = {   
     "/api/test/GET" : { 
         method: 'GET',
-        auth: true,
+        auth: false,
         restrict:[],
         fileUpload: [],
         
@@ -92,9 +92,7 @@ export const API_INFO = {
         auth: true,
         restrict:[],
         fileUpload: [],
-        
         reqBodyValidation:{},
-        
     },
     "/api/user/updatePassword/PATCH" : { 
         method: 'PATCH',
@@ -143,7 +141,7 @@ export const API_INFO = {
     },
     "/api/user/GET" : { 
         method: 'GET',
-        auth: true,
+        auth: false,
         restrict:['admin'],
         fileUpload: [],
         reqBodyValidation:{},
@@ -156,7 +154,7 @@ export const API_INFO = {
         fileUpload: [],
         reqBodyValidation:{},
     },
-    "/api/blog/post/POST" : { 
+    "/api/blog/postBlog/POST" : { 
         method: 'POST',
         auth: true,
         restrict:[],
@@ -193,7 +191,7 @@ export const API_INFO = {
         method: 'POST',
         auth: true,
         restrict:[],
-        fileUpload: [[
+        fileUpload: [
             {
                 fieldName: 'uploaded_files',
                 saveFileToFolder: 'vacancyApplicationFiles',
@@ -201,7 +199,32 @@ export const API_INFO = {
                 type:"file",
                 isarray: true
             },
-        ]],
+        ],
         reqBodyValidation:{ bool:true,modelRef:'vacancyApplication', schemaName: 'base'},
     },
+
+    // ------------------------------newsletterSub--------------------------
+    "/api/newsletterSub/GET" : { 
+        method: 'GET',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
+    "/api/newsletterSub/POST" : { 
+        method: 'GET',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{ bool:true,modelRef:'newsletterSub', schemaName: 'base'},
+    },
+    // ------------------------------newsletter--------------------------
+    "/api/newsletter/GET" : { 
+        method: 'GET',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
+
 }

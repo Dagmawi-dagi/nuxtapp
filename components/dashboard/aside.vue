@@ -33,6 +33,10 @@ const sideBarNavs = ref([
         "name": "newsletter",
         "route_name": "newsletters",
       },
+      {
+        "name": "newsletter Subscriptions",
+        "route_name": "newsletterSub",
+      },
     ]
   },
 ])

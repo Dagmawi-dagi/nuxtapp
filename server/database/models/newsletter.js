@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import  sequelize  from '@/server/database/sequelizeConnection';
 import { z } from 'zod';
-
+import Email from '~/server/utils/email';
 
 const _schema = {
   id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
@@ -132,7 +132,10 @@ newsletter.beforeCreate('', async function(model,options){
     //----------------------------------------------------------------------------------------------------//
     // if we have at least 1 sent email the newsletter must be saved 
     if (email_sending_errors.length != 0 ) {
-      throw new app_error_feedback(400, `email_sending_errors: ${ JSON.stringify(email_sending_errors) }`)
+          throw createError({
+            statusCode: 400,
+            statusMessage: `email_sending_errors: ${ JSON.stringify(email_sending_errors) }`
+          });
     }
   }
   catch (error) {

@@ -8,6 +8,7 @@ const props =  defineProps({ vacancy: Object })
 
 async function applyVacancy (FD, form$){ 
     const formData = new FormData()
+    
     formData.append('vacancyId', props.vacancy.id)
     form$.data.uploaded_files.forEach(file => { formData.append("uploaded_files", file)});
     formData.append('application_form', JSON.stringify({ 

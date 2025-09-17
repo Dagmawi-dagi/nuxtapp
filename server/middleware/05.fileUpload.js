@@ -51,6 +51,7 @@ export default withErrorHandler(async (event) => {
             if (part.filename) {
               // Validate expected file field
               const config = uploadConfigMap.get(part.name);
+     
               if (!config) {
                 throw createError({
                   statusCode: 400,

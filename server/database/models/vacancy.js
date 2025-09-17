@@ -61,7 +61,8 @@ const base = z.object({
 
   createdBy: z.coerce.number()
     .int("Created by must be an integer")
-    .positive("Created by must be a positive number"),
+    .positive("Created by must be a positive number")
+    .optional()
 });
 
 const full = base.extend({

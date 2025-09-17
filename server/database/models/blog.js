@@ -23,7 +23,7 @@ const _schema = {
       }
     },
   },
-  createdBy:{ type:  DataTypes.INTEGER, allowNull: true}, // to pass the joi validation
+  createdBy:{ type:  DataTypes.INTEGER, allowNull: false}, // to pass the joi validation
 }
 
 const blog = sequelize.define('blog', _schema, {
@@ -68,7 +68,6 @@ const base = z.object({
     .int("Created by must be an integer")
     .positive("Created by must be positive")
     .optional()
-    .nullable() // To match allowNull: true
 });
 
 

@@ -1,6 +1,8 @@
 import { DataTypes } from 'sequelize';
 import  sequelize  from '@/server/database/sequelizeConnection';
 import { z } from 'zod';
+import Email from '~/server/utils/email';
+import { createError } from 'h3';
 
 const _schema = {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
@@ -74,8 +76,11 @@ newsletterSub.afterCreate('', async function(model,options){
         })
     } catch (error) { 
         model.destroy({force:true})
-        throw new app_error_feedback(400, `confirmation email failed. plaese try again later', ${ JSON.stringify(error) }`)
-    }
+       throw createError({
+            statusCode: 400,
+            statusMessage: `confirmation email failed. plaese try again later', ${ JSON.stringify(error) }`
+          });
+      }
 })
 
 export default {

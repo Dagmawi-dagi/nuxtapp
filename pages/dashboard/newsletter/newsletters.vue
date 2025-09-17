@@ -7,9 +7,9 @@ definePageMeta({
   middleware:['auth'],
 })
 
-const { data: users } = await useFetch('/api/user', {
+const { data: newsletters } = await useFetch('/api/newsletter', {
   headers: {
-    apiref: '/api/test/GET',
+    apiref: '/api/newsletter/GET',
   },
 }).catch(err=>{
     console.log(err);
@@ -40,24 +40,14 @@ const pageSize = ref(10)
     selected-key="id"
     :headers="[
       { label:'#', key: 'index', align: 'center', width: '2rem', sortable: false },
-      { label:'userName', key: 'userName' },
-      { label: 'email', key: 'email', align: 'center'  },
-      { label: 'phoneNumber', key: 'phoneNumber' },
-      { label: 'lastLoggedIn', key: 'lastLoggedIn', align: 'center', classes: 'maz-font-bold' },
-      { label: 'role', key: 'role', align: 'center', classes: 'maz-font-bold' },
+      { label:'subject', key: 'subject' },
+      { label: 'content', key: 'content', align: 'center'  },
+      { label: 'recipientsIds', key: 'recipientsIds' },
+      { label: 'createdBy', key: 'createdBy', align: 'center', classes: 'maz-font-bold' },
       { label: 'createdAt', key: 'createdAt', align: 'center', classes: 'maz-font-bold' },
     ]"
-    :rows="users?.data"
+    :rows="newsletters?.data"
   >
-    <template #cell-index="{ value }">
-      <span class="maz-text-base">{{value}}</span>
-    </template>
-    <template #cell-userName="{ row, value }">
-      <div class="maz-flex maz-items-center maz-gap-2">
-        <MazAvatar :src="`/users/${row.avatar}`" size="0.5rem"></MazAvatar>
-        <span>{{value}}</span>
-      </div>
-    </template>
     <template #title>
       <div class="myTableHeader">
         <h4>Sent Newsletters</h4>

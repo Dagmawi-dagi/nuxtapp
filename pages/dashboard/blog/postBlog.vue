@@ -20,11 +20,11 @@ const postNewBlogPost =async (FD, form$)=>{
     FD.append('content_short', extractFirstWords(form$.data.content))
 
     try {
-        await $fetch('/api/blog/post',{
+        await $fetch('/api/blog/postBlog',{
             method:'POST',
             body: FD,
             headers:{
-                apiref: '/api/blog/post/POST',
+                apiref: '/api/blog/postBlog/POST',
             },
         })
         frontEndErrorFeedback().success('new blog posted successfully')

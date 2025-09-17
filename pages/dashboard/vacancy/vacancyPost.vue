@@ -8,13 +8,10 @@ definePageMeta({
 
 
 const postNewVacancy = async (FormD,form$)=>{
-    const createdBy = useAuthStore().loggedInUser.id
-    console.log(form$);
-    
     try {
         await $fetch('/api/vacancy',{
             method:'POST',
-            body: {...form$.data,createdBy},
+            body: form$.data,
             headers:{
                 apiref: '/api/vacancy/POST',
             },
@@ -23,7 +20,6 @@ const postNewVacancy = async (FormD,form$)=>{
     } catch (error) {
         frontEndErrorFeedback().err(error)
     }
- 
 }
 
 </script>

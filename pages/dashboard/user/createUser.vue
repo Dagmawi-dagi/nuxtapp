@@ -6,8 +6,6 @@ definePageMeta({
 })
 
 const createNewUser = async (FormD,form$)=>{
-    console.log(FormD);
-    console.log(form$);
     try {
         await $fetch('/api/user/signUp',{
             method: 'POST',
