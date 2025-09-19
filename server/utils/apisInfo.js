@@ -218,6 +218,13 @@ export const API_INFO = {
         fileUpload: [],
         reqBodyValidation:{ bool:true,modelRef:'newsletterSub', schemaName: 'base'},
     },
+    "/api/newsletter/sub/confirm/[id]/PATCH" : { 
+        method: 'PATCH',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{ bool:true,modelRef:'newsletterSub', schemaName: 'updateSchema'},
+    },
     // ------------------------------newsletter--------------------------
     "/api/newsletter/GET" : { 
         method: 'GET',

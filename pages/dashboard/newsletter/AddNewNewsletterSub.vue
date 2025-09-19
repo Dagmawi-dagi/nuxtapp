@@ -8,17 +8,18 @@ definePageMeta({
 
 
 const AddNewNewsletterSub = async (FormD,form$)=>{
+    const name = `${form$.data.email}`.split('@')[0]
     try {
-        await $fetch('/api/newsletter/subs',{
+        await $fetch('/api/newsletter/sub/',{
             method:'POST',
-            body: form$.data,
+            body:{name,...form$.data},
             headers:{
                 apiref: '/api/newsletterSub/POST',
             },
         })
         frontEndErrorFeedback().success('New Newsletter Subscriptions Created successfully')
     } catch (error) {
-        frontEndErrorFeedback().err(error)
+        console.log(error);
     }
 }
 
@@ -38,16 +39,6 @@ const AddNewNewsletterSub = async (FormD,form$)=>{
                 bottom="2"
                 style="color: #1492E6;"
                 />
-            <TextElement
-            name="name"
-            label="Name"
-            :rules="[
-                'required',
-            ]"
-            :columns="{
-                container: 8,
-            }"
-            />
             <TextElement
             name="email"
             input-type="email"

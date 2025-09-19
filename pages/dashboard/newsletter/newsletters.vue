@@ -7,7 +7,7 @@ definePageMeta({
   middleware:['auth'],
 })
 
-const { data: newsletters } = await useFetch('/api/newsletter', {
+const { data: newsletters } = await useFetch('/api/newsletter/', {
   headers: {
     apiref: '/api/newsletter/GET',
   },

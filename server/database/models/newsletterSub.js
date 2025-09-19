@@ -46,8 +46,7 @@ const full = base.extend({
 const updateSchema = base.partial();
 const subscribeSchema = base.pick({ name: true, email: true });
 const unsubscribeSchema = z.object({ email: z.string().email("Valid email is required") });
-
-
+  
 // create associations
 newsletterSub.associate = (models)=>{
     newsletterSub.belongsToMany(models.newsletter, {
@@ -71,7 +70,7 @@ newsletterSub.afterCreate('', async function(model,options){
        await new Email().confirm_newsletterSub({
         email: subscriber.email,
         name: subscriber.name,
-        frontEnd: `${process.env.FRONTENDURL}/newsletter-confirm/${subscriber.id}`,
+        frontEnd: `${process.env.FRONTENDURL}/confirmSub/${subscriber.id}`,
         createdAt: subscriber.createdAt,
         })
     } catch (error) { 
