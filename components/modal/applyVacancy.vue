@@ -35,7 +35,7 @@ async function applyVacancy (FD, form$){
 
 </script>
 
-<template>
+<template>  
     <div class="modal-overlay" @click.self="any_open_modal.bool = false">
         <div class="container">
             <div class="summary">

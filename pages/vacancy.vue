@@ -4,14 +4,11 @@ import { format } from 'date-fns';
 
 
 const { any_open_modal } = storeToRefs( useUtilStore() )
-const { page,perPage } = storeToRefs( useVacancyVtore() )
-
 
 const openVacancyApplyModal = (vac)=>{
-    const UtilStore = useUtilStore()
-    UtilStore.any_open_modal.bool = true
-    UtilStore.any_open_modal.id = 'applyVacancyModal'   
-    UtilStore.any_open_modal.AnythingTopass = vac
+    any_open_modal.value.bool = true
+    any_open_modal.value.id = 'applyVacancyModal'   
+    any_open_modal.value.AnythingTopass = vac
 }
 
 const { data: vacancies } = await useFetch('/api/vacancy', {

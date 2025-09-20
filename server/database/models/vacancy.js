@@ -32,6 +32,7 @@ const _schema = {
 const vacancy = sequelize.define('vacancy', _schema, {
   tableName: 'vacancies',
   timestamps: true,
+  paranoid: true,     // enables soft delete by adding deletedAt
 });
 
 

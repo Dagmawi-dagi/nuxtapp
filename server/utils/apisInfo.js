@@ -186,6 +186,13 @@ export const API_INFO = {
         fileUpload:[],
         reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'base'},
         addCreatedBy:true
+    },    
+    "/api/vacancy/DELETE" : { 
+        method: 'DELETE',
+        auth: true,
+        restrict:['admin'],
+        fileUpload:[],
+        reqBodyValidation:{ },
     },
     "/api/vacancy/apply/POST" : { 
         method: 'POST',
@@ -203,8 +210,12 @@ export const API_INFO = {
         reqBodyValidation:{ bool:true,modelRef:'vacancyApplication', schemaName: 'base'},
     },
 
+
+
+
+
     // ------------------------------newsletterSub--------------------------
-    "/api/newsletterSub/GET" : { 
+    "/api/newsletter/sub/GET" : { 
         method: 'GET',
         auth: false,
         restrict:[],

@@ -7,9 +7,10 @@ definePageMeta({
   middleware:['auth'],
 })
 
-const { data: newsletterSubs } = await useFetch('/api/newsletter/subs', {
+const { data: newsletterSubs } = await useFetch('/api/newsletter/sub', {
+  method:'get',
   headers: {
-    apiref: '/api/newsletterSub/GET',
+    apiref: '/api/newsletter/sub/GET',
   },
 }).catch(err=>{
     console.log(err);
@@ -48,6 +49,9 @@ const pageSize = ref(10)
     ]"
     :rows="newsletterSubs?.data"
   >
+    <template #actions>
+      <MazBtn  rounded-size="full" color="danger" :left-icon="MazTrash" size="xs" v-tooltip.left="{ text: 'delete subscriber', color: 'default' }"/>
+    </template>
     <template #title>
       <div class="myTableHeader">
         <h4>Newsletter Subscriptions</h4>

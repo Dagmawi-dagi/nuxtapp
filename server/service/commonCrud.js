@@ -144,34 +144,33 @@ export const commonController = (event, model) => {
     });
   };
 
+  const deleteOne = async (id)=>{
+
+    if (!id) {
+      throw createError({ statusCode: 400, statusMessage: 'Invalid delete id' });
+    }
+
+    const doc = await model.findByPk(id);
+
+    if (!doc) {
+      throw createError({ statusCode: 404, statusMessage: 'doc not found' });
+    }
+
+    // Soft delete (paranoid enabled in model)
+    return await doc.destroy();
+  }
+
   const deleteMany = async (where) => {
-    // Validate conditions - prevent accidental deletion of all records
-    if (!where || Object.keys(where).length === 0) {
-      throw createError({
-        statusCode: 400,
-        message: 'Deletion conditions required for safety'
-      });
-    }
-
-    // Perform deletion
-    const deletedCount = await model.destroy({
-      where: where
-    });
-
-    // Handle no records found
-    if (deletedCount === 0) {
-      throw createError({
-        statusCode: 404,
-        message: 'No records found matching the conditions'
-      });
-    }
-    return deletedCount
+   
   };
+
+
 
   return {
     create,
     get,
     updateMany,
+    deleteOne,
     deleteMany
   };
 };
