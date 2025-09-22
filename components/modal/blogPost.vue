@@ -19,8 +19,8 @@ const showimg = (imgRef,isArr,index)=>{
 </script>
 
 <template>
-    <div class="modal-overlay" @click.self="any_open_modal.bool = false">
-        <div class="container">
+    <Overlay>
+        <template #container>
             <div class="header-image-container" @click.stop="showimg(`${serverUrl}/${blogPost?.coverImg.split('-')[0]}/blog/${blogPost?.coverImg}`,false,0)">
                     <!-- Background dots layers -->
                     <div class="dots-pattern"></div>
@@ -38,8 +38,8 @@ const showimg = (imgRef,isArr,index)=>{
                     <div  class="quill-html-content" v-html="`${blogPost.content}`"> </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </template>
+    </Overlay>
 </template>
 
 <style lang="scss" scoped>
@@ -49,22 +49,6 @@ const showimg = (imgRef,isArr,index)=>{
     position: absolute;
     top: 40px;
     z-index: 99999999;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    overflow-y: auto;
-    padding: 3rem 20px;
-    cursor: pointer;
 }
 
 /* Container */

@@ -2,7 +2,7 @@ import withErrorHandler from '@/server/utils/catchAsync';
 
 export default withErrorHandler(async (event) => {
   const url = getRequestURL(event).pathname;
-    /// NOTE we will be using the event.context.modifiedBody after this middle ware
+  // NOTE we will be using the event.context.modifiedBody after this middleware
 
   if (url.includes("/api/")) {
     const apiConfig = event.context.APIINFO;
@@ -16,9 +16,14 @@ export default withErrorHandler(async (event) => {
       }
     }
 
-    // Add createdBy if required
-    if (apiConfig.addCreatedBy) {
+    // Add createdBy if required (for new resources)
+    if (apiConfig.addCreatedBy && event.node.req.method === "POST") {
       event.context.modifiedBody.createdBy = event.context.user.id;
+    }
+
+    // Add updatedBy if required (for updates)
+    if (apiConfig.addUpdatedBy && ["PUT", "PATCH"].includes(event.node.req.method)) {
+      event.context.modifiedBody.updatedBy = event.context.user.id;
     }
   }
 });

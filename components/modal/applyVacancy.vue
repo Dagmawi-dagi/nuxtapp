@@ -2,8 +2,6 @@
 // libs
 import { format } from 'date-fns';
 
-const { any_open_modal } = useUtilStore()
-
 const props =  defineProps({ vacancy: Object })
 
 async function applyVacancy (FD, form$){ 
@@ -36,8 +34,8 @@ async function applyVacancy (FD, form$){
 </script>
 
 <template>  
-    <div class="modal-overlay" @click.self="any_open_modal.bool = false">
-        <div class="container">
+    <Overlay>
+        <template #container>
             <div class="summary">
                 <div class="job-discriptions">
                     <h5 class="dis">Position: <span class="value"> {{ vacancy.position_name }} </span> </h5>
@@ -334,32 +332,11 @@ async function applyVacancy (FD, form$){
                 :loading="apicall_from_store_loading"
                 />
             </Vueform>
-        </div>
-    </div>
+        </template>
+    </Overlay>
 </template>
 <style scoped lang="scss">
-.container {
-    width: min(95%, 700px);
-    height: max-content;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 2rem;
-}
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    z-index: 999;
-    overflow-y: auto;
-    padding: 3rem 20px;
-    cursor: pointer;
-}
 
 .summary {
     padding: 10px 15px;

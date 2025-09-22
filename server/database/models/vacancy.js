@@ -26,7 +26,8 @@ const _schema = {
     allowNull: false
   },
 
-  createdBy:{ type:  DataTypes.INTEGER, allowNull: false},
+  createdBy:{ type:  DataTypes.INTEGER, allowNull: true},
+  updatedBy:{ type:  DataTypes.INTEGER, allowNull: true},
 }
 
 const vacancy = sequelize.define('vacancy', _schema, {
@@ -78,6 +79,7 @@ export { base, full, updateSchema };
 // add association
 vacancy.associate = function (models){
   vacancy.belongsTo(models.user,  { foreignKey: 'createdBy', targetKey: 'id',});
+  vacancy.belongsTo(models.user,  { foreignKey: 'updatedBy', targetKey: 'id',});
   vacancy.hasMany(models.vacancyApplication);
 }
 

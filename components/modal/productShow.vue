@@ -1,7 +1,6 @@
 <script setup>
 // libs
 import gsap from 'gsap';
-const {any_open_modal} = storeToRefs( useUtilStore() )
 defineProps({
     productData : Object,
 })
@@ -10,7 +9,6 @@ onMounted(()=>{
     gsap.fromTo('.pro-img',{  scale: 0},{ scale: 1.1, direction: 1 })
 })
 
-
 const getImageUrl = (imgName) => {
     return new URL(`../../assets/pictures/Products/${imgName}`, import.meta.url).href
 }
@@ -18,13 +16,12 @@ const getImageUrl = (imgName) => {
 </script>
 
 <template>
-    <div class="modal-overlay" @click.self="any_open_modal.bool = false">
+    <Overlay>
         <div class="main-container">
             <div class="image-container">
                 <!-- Background dots layers -->
                 <div class="dots-pattern"></div>
                 <img class="pro-img" :src="getImageUrl(productData.img)" alt="Heineken Beer Bottle">
-                im                
             </div>
             <div class="content-container">
                 <h1 class="product-title">
@@ -41,28 +38,11 @@ const getImageUrl = (imgName) => {
                 </div>
             </div>
         </div>
-    </div>
+    </Overlay>
 </template>
 
 <style scoped lang="scss">
 @use "@/assets/style/variables" as *;;
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999999;
-    overflow-y: auto;
-    padding: 20px;
-    cursor: pointer;
-}
-
 .main-container {
     display: flex;
     background-color: white;

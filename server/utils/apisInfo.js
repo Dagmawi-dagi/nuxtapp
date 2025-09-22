@@ -187,6 +187,14 @@ export const API_INFO = {
         reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'base'},
         addCreatedBy:true
     },    
+    "/api/vacancy/PATCH" : { 
+        method: 'PATCH',
+        auth: true,
+        restrict:['admin'],
+        fileUpload:[],
+        reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'updateSchema'},
+        addUpdatedBy:true
+    },
     "/api/vacancy/DELETE" : { 
         method: 'DELETE',
         auth: true,
