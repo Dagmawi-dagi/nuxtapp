@@ -28,6 +28,11 @@ const { onhide } = useLightBox()
         <DashboardModalUpdateVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'updateVacancy'" :vacancy="any_open_modal.AnythingTopass"/>
     </transition>
 
+    <transition :name="'fadeIn'">
+        <DashboardModalViewVacancyApplication  v-if="any_open_modal.bool && any_open_modal.id === 'ViewVacancyApplication'" :vacancy="any_open_modal.AnythingTopass"/>
+    </transition>
+
+
     <VueEasyLightbox
     :index="global_vue_easy_lightbox.imgIndex" 
     @hide="onhide"

@@ -13,6 +13,8 @@ async function applyVacancy (FD, form$){
         gender: form$.data.gender,
         workExperience: form$.data.workExperience,
         fullName: form$.data.fullName,
+        phoneNumber: form$.data.phoneNumber,
+        email: form$.data.email,
         skill: form$.data.skill,
         languages: form$.data.languages,
         workExperienceInformation: form$.data.workExperienceInformation,
@@ -69,6 +71,48 @@ async function applyVacancy (FD, form$){
                 :rules="[
                     'required',
                 ]"
+                size="sm"
+                />
+                <StaticElement
+                name="p"
+                tag="p"
+                content="<div>&nbsp;phoneNumber&nbsp;</div>"
+                :columns="{
+                    container: 4,
+                }"
+                size="sm"
+                />
+                <PhoneElement
+                name="phoneNumber"
+                :allow-incomplete="true"
+                :unmask="true"
+                :columns="{
+                    container: 8,
+                }"
+                :rules="[
+                    'required',
+                ]"
+                size="sm"
+                />
+                <StaticElement
+                name="p"
+                tag="p"
+                content="<div>&nbsp;Email&nbsp;</div>"
+                :columns="{
+                    container: 4,
+                }"
+                size="sm"
+                />
+                <TextElement
+                name="email"
+                input-type="email"
+                :rules="[
+                    'nullable',
+                    'email',
+                ]"
+                :columns="{
+                    container: 8,
+                }"
                 size="sm"
                 />
                 <StaticElement

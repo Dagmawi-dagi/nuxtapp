@@ -19,9 +19,13 @@ try {
       apiref: '/api/vacancy/applications/GET',
     },
   })
-  applications.value = data.value?.data  // important: use .value
+
+  applications.value = data.value?.data.map(app => ({
+    ...app,
+    application_form: JSON.parse(app.application_form), // convert string → object
+  }))
 } catch (error) {
-    console.log(error );
+  console.log(error);
 }
 
 const selectedIds = ref()
@@ -35,9 +39,12 @@ const deleteApplication = ()=>{
 
 }
 
-const showApplication = ()=>{
-
+const showApplication = (application)=>{
+  any_open_modal.id = 'ViewVacancyApplication'
+  any_open_modal.AnythingTopass = application
+  any_open_modal.bool = true
 }
+
 const tableRef = ref(null)
 useResizableColumns(tableRef, {
   skipClasses: ['actions-column', 'selection-column'],
@@ -64,9 +71,11 @@ useResizableColumns(tableRef, {
     selected-key="id"
     :headers="[
       { label:'#', key: 'id', align: 'center',  classes: 'selection-column',sortable: true },
-      { label:'fullName', key: 'application_form', classes:'trancate'  },
-      { label:'application_form', key: 'application_form', classes:'trancate'  },
-      { label: 'uploaded_files name', key: 'uploaded_files', },
+      { label:'vacancy', key: 'vacancyId', classes:'trancate'  },
+      { label:'fullName', key: 'fullName', classes:'trancate'  },
+      { label:'phoneNumber', key: 'phoneNumber', classes:'trancate'  },
+      { label:'email', key: 'email', classes:'trancate'  },
+      { label: 'uploaded_files name', key: 'uploaded_files', classes:'trancate' },
       { label: 'createdAt', key: 'createdAt', align: 'center', classes:'trancate'  },
       { label: '', key: 'actions', align: 'center', classes:'actions-column', sortable: false,}, // Added empty header for actions
     ]"
@@ -75,9 +84,17 @@ useResizableColumns(tableRef, {
     <template #cell-createdAt="{ value }">
       <span >{{  format(new Date(value), 'MMM dd,yyyy') }}</span>
     </template>
+  
+    <template #cell-fullName="{ row }">
+      <span>{{ row.application_form.fullName }}</span>
+    </template>
 
-    <template #cell-fullName="{ value }">
-      <span> {{value}} </span>
+    <template #cell-phoneNumber="{ row }">
+      <span>{{ row.application_form?.phoneNumber || null }}</span>
+    </template>
+
+    <template #cell-email="{ row }">
+      <span>{{ row.application_form?.email || null }}</span>
     </template>
 
     <template #cell-actions="{ row }">
