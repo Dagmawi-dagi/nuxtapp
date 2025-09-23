@@ -5,13 +5,13 @@ export const useVacancyStore= defineStore('vacancyStore',()=>{
   const perPage = ref(10) 
 
   const vacancies = ref([])
-  const appledVac = ref(null)
+  const applications = ref([])
 
   return {
     page,
     perPage,
 
     vacancies,
-    appledVac,
+    applications,
   }
 })

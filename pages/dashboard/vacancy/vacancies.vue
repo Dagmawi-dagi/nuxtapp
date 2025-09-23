@@ -56,19 +56,18 @@ const updateVacancy = (vacancy)=>{
   any_open_modal.bool = true
 }
 
-onMounted(() => {
- const rows  =  document.querySelectorAll('.m-table-row')
-  rows.forEach((el)=>{
-    el.addEventListener('mouseover',()=>{
-      console.log(el);
-    })
-  })
-
+const tableRef = ref(null)
+useResizableColumns(tableRef, {
+  skipClasses: ['actions-column', 'selection-column'],
+  minWidth: 70
 })
+
 </script>
+
 
 <template>
 <MazTable 
+    ref="tableRef"
     class="MyMazTable"
     size="sm"
     v-model="selectedIds"
@@ -80,41 +79,45 @@ onMounted(() => {
     color="info"
     sortable
     selectable
-    scrollable
+    scrollable 
     hoverable
     background-even
     selected-key="id"
     :headers="[
-      { label:'#', key: 'id', align: 'center', width: '1rem', sortable: true },
-      { label:'company', key: 'company',  },
-      { label: 'position name', key: 'position_name' },
-
+      { label:'#', key: 'id', align: 'center',  classes: 'selection-column',sortable: true },
+      { label:'company', key: 'company', classes:'trancate'  },
+      { label: 'position name', key: 'position_name', classes:'trancate' },
+      { label: 'locations', key: 'locations', classes:'trancate' },
+      { label: 'description', key: 'description', align: 'center', classes:'trancate'},
+      { label: 'salary', key: 'salary', align: 'center', classes:'trancate' },
+      { label: 'requirements', key: 'requirements', align: 'center', classes:'trancate' },
+      { label: 'deadline', key: 'deadline', align: 'center', classes:'trancate' },
+      { label: 'createdAt', key: 'createdAt', align: 'center', classes:'trancate'  },
+      { label: 'createdBy', key: 'createdBy', align: 'center', classes:'trancate'  },
+      { label: 'updatedBy', key: 'createdBy', align: 'center', classes:'trancate' },
+      { label: '', key: 'actions', align: 'center', classes:'actions-column', sortable: false,}, // Added empty header for actions
     ]"
     :rows="vacancies"
   >
     <template #cell-createdAt="{ value }">
-      <span >{{  format(new Date(value), 'MMMM dd,yyyy') }}</span>
+      <span >{{  format(new Date(value), 'MMM dd,yyyy') }}</span>
     </template>
       <template #cell-deadline="{ value }">
-      <span >{{  format(new Date(value), 'MMMM dd,yyyy') }}</span>
+      <span >{{  format(new Date(value), 'MMM dd,yyyy') }}</span>
     </template>
-    
 
-    <template #actions="{ row }"  v-if="false">
-      <div 
-        class="actions-container" 
-      >
+    <template #cell-actions="{ row }">
+      <div class="actions-container">
+        <MazBtn 
+          @click="updateVacancy(row)" 
+          color="primary" :left-icon="MazPencil" size="xs" 
+          v-tooltip.left="{ text: 'update vacancy', color: 'default' }"
+        />
         <MazBtn 
           :loading="isLoading(row.id)"
           @click="deleteVacancy(row)" 
           color="danger" :left-icon="MazTrash" size="xs" 
           v-tooltip.left="{ text: 'delete vacancy', color: 'default' }"
-        />
-        <MazBtn 
-          :loading="isLoading(row.id)"
-          @click="updateVacancy(row)" 
-          color="primary" :left-icon="MazPencil" size="xs" 
-          v-tooltip.left="{ text: 'update vacancy', color: 'default' }"
         />
       </div>
     </template>
@@ -129,34 +132,5 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-  @use "@/assets/style/variables" as *;
-
-  .myTableHeader{
-    display: flex;
-    gap: 1rem;
-    margin-left: 2rem;
-    color: $text-blue;
-  }
-
-  .MyMazTable :deep(.truncate) {
-    max-width: 250px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .actions-container{
-    background-color: brown;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    right: 1rem;
-    transform: translate(-50%, -50%);
-    gap: 0 .5rem;
-    display: flex;
-    & .m-btn{
-      min-width: max-content;
-    }
-  }
-
-
+  @use "@/assets/style/dashboard/mazTableUi.scss" as *;
 </style>

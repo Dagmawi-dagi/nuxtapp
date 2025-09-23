@@ -67,18 +67,21 @@ watch(deep_active_acc,()=>{
           <span v-if="!item[`${sub_ref}`]"  class="accoordion-item" @click="$emit('handleAccChoice',item)" >{{ item[item_ref] }} </span>
 
           <template v-if="item[sub_ref]">
-            <accordion_ class="deep_acc"
-              :id="deep_acc_id"
-              :items='item[sub_ref]' 
-              :item_ref="item_ref"
-              :head="item[item_ref]"
-              :accordion_open="deep_active_acc === item[item_ref] "
-              :border="true"
-              :toggler_icon="toggler_icon" 
-              :sub_ref="sub_ref"
-              @accActive="deep_active_acc === item[item_ref] ? deep_active_acc = '' :  deep_active_acc = $event" 
-              @handleAccChoice="$emit('handleAccChoice',$event)"
-            />
+            <ClientOnly>
+
+              <accordion_ class="deep_acc"
+                :id="deep_acc_id"
+                :items='item[sub_ref]' 
+                :item_ref="item_ref"
+                :head="item[item_ref]"
+                :accordion_open="deep_active_acc === item[item_ref] "
+                :border="true"
+                :toggler_icon="toggler_icon" 
+                :sub_ref="sub_ref"
+                @accActive="deep_active_acc === item[item_ref] ? deep_active_acc = '' :  deep_active_acc = $event" 
+                @handleAccChoice="$emit('handleAccChoice',$event)"
+              />
+            </ClientOnly>
           </template>
 
         </template>  

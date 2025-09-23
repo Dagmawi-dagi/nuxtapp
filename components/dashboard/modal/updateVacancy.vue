@@ -1,24 +1,30 @@
 <script setup>
 const { any_open_modal } = useUtilStore()
-const { vacancies } = useVacancyStore()
+const { vacancies } = storeToRefs(useVacancyStore())
 
 const vacancy  = any_open_modal.AnythingTopass
 
-const updateVacancy = async (FormD,form$) => {
+const updateVacancy = async (FormD, form$) => {
   console.log(vacancy) // access like this
 
   try {
-    const response = await $fetch(`/api/vacancy/${vacancy.id}`,{
+    const {data} = await $fetch(`/api/vacancy/${vacancy.id}`,{
         method:'PATCH',
         headers:{
             apiref:'/api/vacancy/PATCH'
         },
         body: form$.data,
     })
-    // ✅ update store by id
-    const index = vacancies.findIndex(v => v.id === vacancy.id)
-    if (index !== -1) vacancies[index] = response // replace with updated data from API
     
+    // ✅ Reactive update using splice
+    const index = vacancies.value.findIndex(v => v.id === vacancy.id)
+  // ✅ Reactive update by creating new array
+    if (index !== -1) {
+        const updatedVacancies = [...vacancies.value]
+        updatedVacancies[index] = data[0]
+        vacancies.value = updatedVacancies
+    }
+        
     frontEndErrorFeedback().success('vacancy updated successfully')
   } catch (error) {
     frontEndErrorFeedback().err(error,'vueForm')
@@ -164,7 +170,7 @@ const updateVacancy = async (FormD,form$) => {
                     />
                     <ButtonElement
                     name="post"
-                    button-label="Post New Vacancy"
+                    button-label="update Vacancy"
                     :submits="true"
                     align="center"
                     size="sm"

@@ -1,10 +1,7 @@
 import { ref } from 'vue';
 
-
 export const useLightBox = (  )=>{
   const { global_vue_easy_lightbox } = storeToRefs( useUtilStore() )
-
-
   // VueEasyLightbox needs array of img urls and then display one of those using imgIndex...starter value index 0
   // w|h is set when you choose one of the imgs from the imgs array
   // but if we are working with 1 img imgIndex = 0 

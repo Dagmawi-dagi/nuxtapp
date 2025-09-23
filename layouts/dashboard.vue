@@ -2,7 +2,6 @@
 const { desktop,laptop,mobilePhone,tablet } = useBreakPoint()
 const { sideBarOpen } = storeToRefs(useUtilStore())
 
-
 const expand = computed(()=>{
   if( (desktop.value || laptop.value) && !sideBarOpen.value  ) return true
   if( (mobilePhone.value || tablet.value) ) return true
@@ -15,9 +14,9 @@ const expand = computed(()=>{
         <DashboardTopnav/>
         <div class="main">
             <DashboardAside/>
-            <div  class="router-view" :class="{ expand }"  ref="router_view_container" >
-                <slot/>
-            </div>
+              <div  class="router-view" :class="{ expand }"  ref="router_view_container" >
+                  <slot/>
+              </div>
         </div>
 </template>
 

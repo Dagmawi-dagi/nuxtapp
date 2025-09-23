@@ -15,7 +15,7 @@ export const useUtilStore = defineStore('utilStore',()=>{
     imgIndex: 0
   })
 
-  const sideBarOpen = ref(false)
+  const sideBarOpen = ref(true)
 
   return{
     any_open_modal,

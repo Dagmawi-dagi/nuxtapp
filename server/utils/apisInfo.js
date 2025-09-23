@@ -217,8 +217,13 @@ export const API_INFO = {
         ],
         reqBodyValidation:{ bool:true,modelRef:'vacancyApplication', schemaName: 'base'},
     },
-
-
+    "/api/vacancy/applications/GET" : { 
+        method: 'GET',
+        auth: true,
+        restrict:['admin'],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
 
 
 

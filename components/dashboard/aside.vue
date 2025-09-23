@@ -23,7 +23,16 @@ const sideBarNavs = ref([
     "routes" : [
       {
         "name": "vacancy",
-        "route_name": "vacancies",
+        "sub_routes":[
+          {
+            "name": "posted vacancies",
+            "route_name": "vacancies",
+          },
+          {
+            "name": "vacancy applications",
+            "route_name": "vacancy applications",
+          },
+        ]
       },
       {
         "name": "blog",
@@ -48,43 +57,46 @@ const sideBarNavs = ref([
 </script>
 
 <template>
-  <div class="container" :class="{ position:  tablet || mobilePhone , open: sideBarOpen, close: !sideBarOpen  }"  >
-     <div class="userContainer" @click="$router.push({name:'userProfile'})">
-        <MazAvatar :src="`/users/${loggedInUser?.avatar}`" 
-        :caption="loggedInUser?.userName"
-        size=".8rem"
+    <div class="container" :class="{ position:  tablet || mobilePhone , open: sideBarOpen, close: !sideBarOpen  }"  >
+      <div class="userContainer" >
+          <MazAvatar :src="`/users/${loggedInUser?.avatar}`" 
+          :caption="loggedInUser?.userName"
+          size=".8rem"
+          clickable
+          loading="eager"
+          @click="$router.push({name:'userProfile'})"
+          />
+          <img src="" alt="">
+          <div class="user" >
+            <span>{{loggedInUser?.email}}</span>
+            <span> {{loggedInUser?.userName}} </span>
+            <!-- <span> {{loggedInUser}} </span> -->
+          </div>
+      </div>
+      <br>
+      <br>
+        <ReusableAccordion v-for="(obj, i) in sideBarNavs" :key="i" 
+          :id="`${i}`"
+          :items='obj.routes' 
+          :head="obj.role"
+          :accordion_open="active_acc === obj.role"
+          :border="true"
+          :toggler_icon="false" 
+          :sub_ref="'sub_routes'"
+          :item_ref="'name'"
+          @accActive="active_acc === obj.role ? active_acc = '' :  active_acc = $event" 
+          @handleAccChoice="$router.push({name: $event.route_name})"
         />
-        <img src="" alt="">
-        <div class="user" >
-          <span>{{loggedInUser?.email}}</span>
-          <span> {{loggedInUser?.userName}} </span>
-          <!-- <span> {{loggedInUser}} </span> -->
-        </div>
-     </div>
-     <br>
-     <br>
-  
-    <ReusableAccordion v-for="(obj, i) in sideBarNavs" :key="i" 
-      :id="`${i}`"
-      :items='obj.routes' 
-      :head="obj.role"
-      :accordion_open="active_acc === obj.role"
-      :border="true"
-      :toggler_icon="false" 
-      :sub_ref="'sub_routes'"
-      :item_ref="'name'"
-      @accActive="active_acc === obj.role ? active_acc = '' :  active_acc = $event" 
-      @handleAccChoice="$router.push({name: $event.route_name})"
-    />
-  </div>
+
+    </div>
 
 
 
-  <span class="sideNavToggler"  @click="sideBarOpen = !sideBarOpen"  >
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-      <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-    </svg>
-  </span>
+    <span class="sideNavToggler"  @click="sideBarOpen = !sideBarOpen"  >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+        <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+      </svg>
+    </span>
 
 </template>
 
