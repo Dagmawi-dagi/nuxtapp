@@ -21,17 +21,20 @@ const { onhide } = useLightBox()
     </transition>
 
     <transition :name="'fadeIn'">
-        <ModalApplyVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'applyVacancyModal'" :vacancy="any_open_modal.AnythingTopass"/>
+        <ModalApplyVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'applyVacancyModal'" />
     </transition>
 
     <transition :name="'fadeIn'">
-        <DashboardModalUpdateVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'updateVacancy'" :vacancy="any_open_modal.AnythingTopass"/>
+        <DashboardModalUpdateVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'updateVacancy'" />
     </transition>
 
     <transition :name="'fadeIn'">
-        <DashboardModalViewVacancyApplication  v-if="any_open_modal.bool && any_open_modal.id === 'ViewVacancyApplication'" :vacancy="any_open_modal.AnythingTopass"/>
+        <DashboardModalViewVacancyApplication  v-if="any_open_modal.bool && any_open_modal.id === 'ViewVacancyApplication'" />
     </transition>
 
+    <transition :name="'fadeIn'">
+        <DashboardModalUpdateBlog  v-if="any_open_modal.bool && any_open_modal.id === 'updateBlog'" />
+    </transition>
 
     <VueEasyLightbox
     :index="global_vue_easy_lightbox.imgIndex" 

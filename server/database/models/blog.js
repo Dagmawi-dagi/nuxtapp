@@ -29,6 +29,7 @@ const _schema = {
 const blog = sequelize.define('blog', _schema, {
   tableName: 'blogs',
   timestamps: true,
+  paranoid: true,     // enables soft delete by adding deletedAt
 });
 
 blog.searchColumns = ['title','content_short','content'];

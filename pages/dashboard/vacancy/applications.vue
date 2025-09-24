@@ -1,7 +1,7 @@
 <script setup>
 // lib
 import { format } from 'date-fns';
-import { MazTrash,MazEye,MazPencil } from '@maz-ui/icons'
+import { MazTrash,MazEye } from '@maz-ui/icons'
 
 definePageMeta({
   layout:"dashboard",
@@ -34,9 +34,24 @@ const searchQuery = ref()
 const loadingIds = ref([]) // holds the ids of rows being deleted
 const isLoading = (id) => loadingIds.value.includes(id)
 
+const deleteApplication = async (application)=>{
+  if (!application?.id) return
+  loadingIds.value.push(application.id)
 
-const deleteApplication = ()=>{
-
+  try {
+    await $fetch(`/api/vacancy/application/${application.id}`,{
+      method:'DELETE',
+      headers:{
+        apiref:"/api/vacancy/application/[id]DELETE"
+      }
+    })
+    frontEndErrorFeedback().success(' vacancy deleted successfully')
+    applications.value = applications.value.filter(p => p.id !== application.id)
+  } catch (error) {
+      frontEndErrorFeedback().err(error)
+  } finally {
+    loadingIds.value = loadingIds.value.filter(id => id !== application.id)
+  }
 }
 
 const showApplication = (application)=>{

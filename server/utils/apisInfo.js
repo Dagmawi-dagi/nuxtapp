@@ -171,6 +171,21 @@ export const API_INFO = {
         reqBodyValidation:{ bool:true,modelRef:'blog', schemaName: 'base'},
         addCreatedBy:true
     },
+    "/api/blog/[id]/PATCH" : { 
+        method: 'PATCH',
+        auth: true,
+        restrict:['admin'],
+        fileUpload:[],
+        reqBodyValidation:{ bool:true,modelRef:'blog', schemaName: 'updateSchema'},
+        addUpdatedBy:true
+    },
+    "/api/blog/[id]/DELETE" : { 
+        method: 'DELETE',
+        auth: true,
+        restrict:['admin'],
+        fileUpload:[],
+        reqBodyValidation:{ },
+    },
     // ------------------------------vacancy--------------------------
     "/api/vacancy/GET" : { 
         method: 'GET',
@@ -224,7 +239,13 @@ export const API_INFO = {
         fileUpload: [],
         reqBodyValidation:{},
     },
-
+    "/api/vacancy/application/[id]DELETE" : { 
+        method: 'DELETE',
+        auth: true,
+        restrict:['admin'],
+        fileUpload:[],
+        reqBodyValidation:{ },
+    },
 
 
     // ------------------------------newsletterSub--------------------------

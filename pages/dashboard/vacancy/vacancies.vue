@@ -84,7 +84,7 @@ useResizableColumns(tableRef, {
     background-even
     selected-key="id"
     :headers="[
-      { label:'#', key: 'id', align: 'center',  classes: 'selection-column',sortable: true },
+      { label:'Doc id', key: 'id', align: 'center',  classes: 'selection-column',sortable: true },
       { label:'company', key: 'company', classes:'trancate'  },
       { label: 'position name', key: 'position_name', classes:'trancate' },
       { label: 'locations', key: 'locations', classes:'trancate' },
