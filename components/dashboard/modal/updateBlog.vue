@@ -15,7 +15,7 @@ const updateBlog = async (FormD, form$) => {
         let words = text.trim().split(/\s+/).slice(0, wordCount);
         return words.join(" ");
     }
-    if(form$.data.content) FD.append('content_short', extractFirstWords(form$.data.content))
+    if(form$.data.content) FormD.append('content_short', extractFirstWords(form$.data.content))
 
   try {
     const {data} = await $fetch(`/api/blog/${blogPost.id}`,{
@@ -23,7 +23,7 @@ const updateBlog = async (FormD, form$) => {
         headers:{
             apiref:'/api/blog/[id]/PATCH'
         },
-        body: FD,
+        body: FormD,
     })
     
     // ✅ Reactive update using splice
@@ -32,7 +32,8 @@ const updateBlog = async (FormD, form$) => {
     if (index !== -1) {
         const updatedblogPosts = [...blogPosts.value]
         updatedblogPosts[index] = data[0]
-        blogPosts.value = updatedVacancies
+        updatedblogPosts[index].category =  JSON.parse(data[0].category)
+        blogPosts.value = updatedblogPosts
     }
     frontEndErrorFeedback().success('blog updated successfully')
   } catch (error) {
@@ -98,13 +99,14 @@ const updateBlog = async (FormD, form$) => {
                 <FileElement
                 name="coverImg"
                 label="coverImg"
+                :preview-url="`${useRuntimeConfig().public.baseURL}/blog/`" 
                 :urls="{}"
                 info="blog cover Img"
                 :drop="true"
                 accept="image/*" 
                 view="image"
-                :clickable="false"
-                :url="false"
+                :clickable="true"
+                :url="`${useRuntimeConfig().public.baseURL}/blog/`"
                 :upload-temp-endpoint="false" 
                 />
                 <ButtonElement

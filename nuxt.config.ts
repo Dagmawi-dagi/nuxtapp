@@ -15,4 +15,9 @@ export default defineNuxtConfig({
     injectUseThemeHandler: true,
     devtools: true,
   },
+  runtimeConfig:{
+    public: {
+      baseURL: process.env.NUXT_PUBLIC_BASE_URL || 'http://localhost:3000', // default for dev
+    },
+  }
 })

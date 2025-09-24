@@ -175,7 +175,16 @@ export const API_INFO = {
         method: 'PATCH',
         auth: true,
         restrict:['admin'],
-        fileUpload:[],
+         fileUpload: [
+            {
+                fieldName: 'coverImg',
+                saveFileToFolder: 'blog',
+                allowedTypes: ['.jpg', '.jpeg', '.png', '.gif'],
+                type:"file",
+                isarray: false
+
+            },
+        ],
         reqBodyValidation:{ bool:true,modelRef:'blog', schemaName: 'updateSchema'},
         addUpdatedBy:true
     },
