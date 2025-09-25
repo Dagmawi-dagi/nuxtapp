@@ -2,7 +2,7 @@ import modelsRefs from '@/server/database/models/modelsRefs';
 import withErrorHandler from '@/server/utils/catchAsync';
 import { createError,setCookie } from 'h3';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 export default withErrorHandler(async (event) => {
   const body = event.context.modifiedBody;

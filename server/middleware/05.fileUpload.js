@@ -7,7 +7,7 @@
 // this way we can do validation onthe body even thought the data was formdata
 
 import withErrorHandler from '@/server/utils/catchAsync'
-import {processImage} from  '@/server/utils/processImage';
+// import {processImage} from  '@/server/utils/processImage';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -80,9 +80,9 @@ export default withErrorHandler(async (event) => {
 
               // Save to buffer
               let fileBuffer = part.data;
-              if (config.type === "image") {
-                fileBuffer = await processImage(part.data, filePath);
-              }
+              // if (config.type === "image") {
+              //   fileBuffer = await processImage(part.data, filePath);
+              // }
 
               if (!event.context.uploadedFiles) event.context.uploadedFiles = [];
               event.context.uploadedFiles.push({

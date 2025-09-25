@@ -1,7 +1,7 @@
 import modelsRefs from '~/server/database/models/modelsRefs';
 import withErrorHandler from '~/server/utils/catchAsync';
 import { createError } from 'h3';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export default withErrorHandler(async (event) => {
