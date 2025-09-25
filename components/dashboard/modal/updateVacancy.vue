@@ -2,7 +2,8 @@
 const { any_open_modal } = useUtilStore()
 const { vacancies } = storeToRefs(useVacancyStore())
 
-const vacancy  = any_open_modal.AnythingTopass
+let vacancy  = any_open_modal.AnythingTopass
+const modifiedvacancy = {...vacancy,locations:JSON.parse(vacancy.locations)}
 
 const updateVacancy = async (FormD, form$) => {
   console.log(vacancy) // access like this
@@ -11,7 +12,7 @@ const updateVacancy = async (FormD, form$) => {
     const {data} = await $fetch(`/api/vacancy/${vacancy.id}`,{
         method:'PATCH',
         headers:{
-            apiref:'/api/vacancy/PATCH'
+            apiref:'/api/vacancy/[id]/PATCH'
         },
         body: form$.data,
     })
@@ -30,13 +31,16 @@ const updateVacancy = async (FormD, form$) => {
     frontEndErrorFeedback().err(error,'vueForm')
   }
 }
+
+
+
 </script>
 
 <template>
     <Overlay>
         <template #container>
             <ClientOnly>
-                <Vueform :endpoint="updateVacancy">
+                <Vueform @response="handleResponse" :endpoint="updateVacancy" :default="modifiedvacancy">
                     <StaticElement
                     name="h3"
                     tag="h3"
@@ -61,7 +65,6 @@ const updateVacancy = async (FormD, form$) => {
                     :rules="[
                         'required',
                     ]"
-                    :default="vacancy.position_name"
                     />
                     <StaticElement
                     name="p_1"
@@ -79,7 +82,6 @@ const updateVacancy = async (FormD, form$) => {
                     :rules="[
                         'required',
                     ]"
-                    :default="vacancy.company"
                     />
                     <StaticElement
                     name="p_3"
@@ -94,10 +96,6 @@ const updateVacancy = async (FormD, form$) => {
                     :columns="{
                         container: 10,
                     }"
-                    :rules="[
-                        'required',
-                    ]"
-                    :default="vacancy.salary"
                     />
                     <StaticElement
                     name="p_2"
@@ -124,6 +122,7 @@ const updateVacancy = async (FormD, form$) => {
                         value: 'ayder',
                         label: 'ayder',
                         },
+                        ...modifiedvacancy.locations
                     ]"
                     input-type="search"
                     autocomplete="off"
@@ -138,15 +137,10 @@ const updateVacancy = async (FormD, form$) => {
                     :rules="[
                         'required',
                     ]"
-                    :default="JSON.parse(vacancy.locations)"
                     />
                     <TextareaElement
                     name="description"
                     label="description"
-                    :rules="[
-                        'required',
-                    ]"
-                    :default="vacancy.description"
                     />
                     <EditorElement
                     name="requirements"
@@ -154,19 +148,17 @@ const updateVacancy = async (FormD, form$) => {
                     :rules="[
                         'required',
                     ]"
-                    :default="vacancy.requirements"
                     />
                     <DateElement
                     name="deadline"
                     label="deadline"
                     size="sm"
-                    :rules="[
-                        'required',
-                    ]"
                     :columns="{
                         container: 4,
                     }"
-                    :default="vacancy.deadline"
+                    :rules="[
+                        'required',
+                    ]"
                     />
                     <ButtonElement
                     name="post"
@@ -183,7 +175,3 @@ const updateVacancy = async (FormD, form$) => {
         </template>
     </Overlay>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

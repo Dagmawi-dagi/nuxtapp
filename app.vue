@@ -21,7 +21,7 @@ const { onhide } = useLightBox()
     </transition>
 
     <transition :name="'fadeIn'">
-        <ModalApplyVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'applyVacancyModal'" />
+        <ModalApplyVacancy  v-if="any_open_modal.bool && any_open_modal.id === 'applyVacancyModal'" :vacancy="any_open_modal.AnythingTopass"/>
     </transition>
 
     <transition :name="'fadeIn'">

@@ -50,7 +50,7 @@ const updateBlog = async (FormD, form$) => {
                 <StaticElement
                 name="h3"
                 tag="h3"
-                content="Post New Blog Post"
+                content="Update Blog Post"
                 style="color: #1492E6;"
                 bottom="2"
                 />
@@ -90,11 +90,7 @@ const updateBlog = async (FormD, form$) => {
                 input-type="search"
                 autocomplete="off"
                 info="blog category"
-                :create="true"
-                :add-option-on="[
-                    'enter',
-                    ',',
-                ]"
+                :create="false"
                 />
                 <FileElement
                 name="coverImg"
@@ -111,7 +107,7 @@ const updateBlog = async (FormD, form$) => {
                 />
                 <ButtonElement
                 name="post"
-                button-label="Post New Blog Post"
+                button-label="Update Blog Post"
                 :submits="true"
                 size="sm"
                 :columns="{

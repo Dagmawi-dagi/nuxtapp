@@ -334,15 +334,17 @@ async function applyVacancy (FD, form$){
                         }"
                         size="sm"
                     />
-                    <TextElement
-                        name="company/employerContact"
-                        :columns="{
+                    <PhoneElement
+                    name="company/employerContact"
+                    :allow-incomplete="true"
+                    :unmask="true"
+                    :columns="{
                         container: 6,
-                        }"
-                        :rules="[
+                    }"
+                    :rules="[
                         'required',
-                        ]"
-                        size="sm"
+                    ]"
+                    size="sm"
                     />
                     </ObjectElement>
                 </template>

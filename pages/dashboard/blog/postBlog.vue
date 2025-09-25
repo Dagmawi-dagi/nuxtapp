@@ -88,11 +88,7 @@ const postNewBlogPost =async (FD, form$)=>{
                 input-type="search"
                 autocomplete="off"
                 info="blog category"
-                :create="true"
-                :add-option-on="[
-                    'enter',
-                    ',',
-                ]"
+                :create="false"
                 :rules="[
                 'required',
                 ]"

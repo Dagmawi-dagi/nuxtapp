@@ -211,12 +211,12 @@ export const API_INFO = {
         reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'base'},
         addCreatedBy:true
     },    
-    "/api/vacancy/PATCH" : { 
+    "/api/vacancy/[id]/PATCH" : { 
         method: 'PATCH',
         auth: true,
         restrict:['admin'],
         fileUpload:[],
-        reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'updateSchema'},
+        reqBodyValidation:{ bool:true, modelRef:'vacancy', schemaName: 'updateSchema'},
         addUpdatedBy:true
     },
     "/api/vacancy/DELETE" : { 
