@@ -36,9 +36,14 @@ export default withErrorHandler(async (event) => {
         // Resolve paths
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
-        const publicDir = path.join(__dirname, '..', '..', 'public');
-
-        
+        let publicDir;
+        if (process.env.NODE_ENV === 'production') {
+          // In production, use .output/public
+          publicDir = path.join(process.cwd(), 'public')
+        } else {
+          // In dev, use normal /public
+          publicDir = path.join(__dirname, '..', '..', 'public')
+        }
         const nonFileFields = {};
         const uploadConfigMap = new Map();
 

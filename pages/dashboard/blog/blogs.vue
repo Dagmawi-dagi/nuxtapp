@@ -19,10 +19,15 @@ try {
     },
   })
   
-   blogPosts.value = data.value?.data?.map(blog => ({
-    ...blog,
-    category: JSON.parse(blog.category), // convert string → object
-  }))
+  if(process.env.NODE_ENV === 'development'){
+    blogPosts.value = data.value?.data?.map(blog => ({
+     ...blog,
+     category: JSON.parse(blog.category), // convert string → object
+   }))
+  }else{
+    blogPosts.value = data.value?.data
+  }
+
 } catch (error) {
   console.log(error);
 }

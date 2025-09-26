@@ -40,7 +40,7 @@ const updateVacancy = async (FormD, form$) => {
     <Overlay>
         <template #container>
             <ClientOnly>
-                <Vueform @response="handleResponse" :endpoint="updateVacancy" :default="modifiedvacancy">
+                <Vueform  :endpoint="updateVacancy" :default="modifiedvacancy">
                     <StaticElement
                     name="h3"
                     tag="h3"
