@@ -15,18 +15,18 @@ onMounted(()=>{
 
     gsap.to(".img2",{ marginLeft: "54%",  duration: 2, delay: 1, ease:"linear"})
     gsap.to(".img3",{ marginRight: "54%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img4",{ marginLeft: "58%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img5",{ marginRight: "58%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img6",{ marginLeft: "62%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img7",{ marginRight: "62%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img8",{ marginLeft: "66%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img9",{ marginRight: "66%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img10",{ marginLeft: "22%", duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img4",{ marginLeft: "61%",  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img5",{ marginRight: "61%", duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img6",{ marginLeft: "67%",  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img7",{ marginRight: "67%", duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img8",{ marginLeft: "72%",  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img9",{ marginRight: "72%", duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img10",{ marginLeft: "15%", duration: 2, delay: 1, ease:"linear"})
     // stagger effect (fade in one by one)
     gsap.to(".img",{ opacity: 1, duration: 3, delay:1, stagger: .3})
     // the neon light
     const tl = gsap.timeline()
-    tl.to(".neon-light",{ width: "350px", duration: 4,ease:"slow" })
+    tl.to(".neon-light",{ width: "450px", duration: 4,ease:"slow" })
     .to(".neon-light",{ top: "20%", duration: 1})
     .to(".neon-light",{ top: "0", duration: 1,ease:"slow" })
     .to(".neon-light",{ top: "40%", duration: 1,ease:"slow" })
@@ -49,7 +49,7 @@ const scrollToSection = (id) => {
                     <p class="info__subtitle">{{ herosction.subHeader }}</p>
                     <div class="info__buttons">
                         <button @click="scrollToSection('products')" class="btn btn--primary">Explore Our Brand</button>
-                        <NuxtLink to="/about-us" class="btn btn--secondary">About Us</NuxtLink>
+                        <NuxtLink to="/aboutUs" class="btn btn--secondary">About Us</NuxtLink>
                     </div>
                 </div>
             </section>
@@ -72,7 +72,7 @@ const scrollToSection = (id) => {
             <img  class="img img10" src="/pictures/Products/ananas.png" alt="pruduct image">
         </div>
 
-        <div class="chat" @click="$router.push('/contact-us')">    
+        <div class="chat" @click="$router.push('/contactUs')">    
             <div class="chat-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>

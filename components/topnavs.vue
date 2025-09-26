@@ -7,6 +7,8 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
 <template>
     <!-- Top bar -->
     <div class="top-bar">
+              <!-- Background dots layers -->
+        <div class="dots-pattern"></div>
       <div class="container">
         <div class="contact-info">
           <div class="contact-item">
@@ -56,7 +58,7 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
           <NuxtLink to="/" class="logo-link">
             <div class="logo-icon">
               <div class="logo-letter">
-                <img src="/assets/pictures/logo.jpg" alt="">
+                <img src="/assets/pictures/desta-logo.png" alt="">
               </div>
             </div>
             <div class="logo-text">

@@ -56,7 +56,8 @@ const getImageUrl = (imgName) => {
 
 .image-container {
     flex: 1;
-    background: radial-gradient(circle at 50% 50%,#152a4a,#0a1525 100%);
+    // background: radial-gradient(circle at 50% 50%,#152a4a,#0a1525 100%);
+    background: radial-gradient(circle at 50% 50%, #0072b8, #152a4a 130%);
     display: flex;
     justify-content: center;
     align-items: center;

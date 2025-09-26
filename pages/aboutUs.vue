@@ -3,8 +3,6 @@ definePageMeta({
     layout:"default",
     name: 'aboutUs',
 })
-
-
 //utills
 // import { serverUrl } from '@/utils/server';
 // assets
@@ -38,36 +36,72 @@ const getImageUrl = (imgName) => new URL(`../assets/pictures/desta-logo.png`, im
 <template>
     <div class="main-container">
         <h3 class="about-header">About Us</h3>
-
+        
         <div class="containerr">
             <section class="hero">
+                
                 <div class="brand-info">
                     <p class="brand-tagline">SINCE</p>
                     <h1 class="brand-name">2001 G.C</h1>
                 </div>
                 <div class="product-image">
-                    <div class="img-container" @click="openProductModal(products[0])">
+                    <div class="img-container">
                         <div class="dots-pattern"></div>
-                        <img src="../assets/pictures/Products/vodka.png" alt="desta uzo">
+                        <img src="/public/pictures/Products/vodka.png" alt="Premium Vodka" class="vodka-bottle">
                     </div>
-                    <div class="img-container second" @click="openProductModal(products[2])">
+                    <div class="img-container">
                         <div class="dots-pattern"></div>
-                        <img src="../assets/pictures/Products/gin.png" alt="vodka">
+                                      <img src="/public/pictures/Products/uozo.png" alt="Premium Vodka" class="vodka-bottle">
+
                     </div>
-                    <div class="img-container three" @click="openProductModal(products[1])">
+                    <div class="img-container">
                         <div class="dots-pattern"></div>
-                        <img src="../assets/pictures/Products/uozo.png" alt="vodka">
+                        <img src="/public/pictures/Products/gin.png" alt="Premium Vodka" class="vodka-bottle">
                     </div>
                 </div>
                 <div class="about-content">
-                    <!-- <h2 class="section-label">ABOUT US</h2> -->
-                    <h3 class="section-title">ABOUT US</h3>
+                    <h3 class="section-title">ABOUT US
+                        <!-- <button class="read-more-btn" @click="$router.push('/contact-us')">CONTACT</button> -->
+                    </h3>
+                    
                     <div class="section-text">
-                        <template v-for="(par, i) in aboutUs_p" :key="i">
-                            <p> {{ par }}</p>
-                        </template>
+                    <template v-for="(par, i) in aboutUs_p" :key="i">
+                    <!-- Normal paragraph -->
+                    <p v-if="!par.includes('•') && !par.includes('<ul>')">
+                        {{ par }}
+                    </p>
+
+                    <!-- Section with title and description -->
+                    <div v-else-if="par.includes('•') && !par.includes('<ul>')">
+                        <h3
+                        class="section-title"
+                        style="opacity:0.9; top: 10px;  margin-bottom: 20px;"
+                        >
+                        • {{ par.split('•')[1] }}
+                        </h3>
+                        <p>{{ par.split('•')[2] }}</p>
                     </div>
-                    <button class="read-more-btn" @click="$router.push('/contact-us')">CONTACT</button>
+
+                    <!-- Section with unordered list -->
+                    <div v-else-if="par.includes('<ul>')">
+                        <h3
+                        class="section-title"
+                        style="opacity:0.9; top: 10px; margin-bottom: 20px;"
+                        >
+                        • {{ par.split('•')[1] }}
+                        </h3>
+                        <ul class="custom-list">
+                        <li style="margin-bottom: 10px;"
+                            v-for="(item, j) in par.split('<ul>')[1].split('-').filter(str => str.trim() !== '')"
+                            :key="j"
+                        >
+                            {{ item.trim() }}
+                        </li>
+                        </ul>
+                    </div>
+                    </template>
+
+                    </div>
                 </div>
             </section>
         </div>

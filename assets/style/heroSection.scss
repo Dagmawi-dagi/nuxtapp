@@ -4,7 +4,8 @@
 $color-gray: #a0a8b8;
 
 .hero {
-    background: linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+    // background: linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+    background: linear-gradient(135deg, #0072b8 0%, #152a4a 100%);
     width: 100%;
     padding: 0 7%;
     min-height: 400px;
@@ -21,17 +22,16 @@ $color-gray: #a0a8b8;
     height: 100%;
     background-image: radial-gradient(circle, $text-blue, 1px, transparent 1px);
     background-size: 16px 16px;
-    opacity: .13;
+    opacity: .16;
     pointer-events: none;
   }
 }
 
 .continer{
-    color: #fff;
+    color: #FFF;
     max-width: 500px;
     align-self: center;
     min-height: 300px;
-
 }
 
 .container-2{
@@ -175,6 +175,7 @@ $color-gray: #a0a8b8;
   font-weight: 700;
   margin-bottom: 1rem;
   line-height: 1.2;
+  opacity: 1 !important;
 }
 
 .info__subtitle {
@@ -210,22 +211,22 @@ $color-gray: #a0a8b8;
   transition: all 0.3s ease;
   
   &--primary {
-    background-color:var(--dark-blue);
-    color: var(--white);
+    background-color:#103961;
+    color: #FFF;
     
     &:hover {
-      background-color: color.adjust($dark-blue, $lightness: -5%);
+      background-color: #0c345c;
     }
   }
   
   &--secondary {
     background-color: transparent;
     color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     
     &:hover {
       background-color: inherit;
-      border-color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.409);
     }
   }
 }
@@ -255,14 +256,14 @@ $color-gray: #a0a8b8;
     justify-content: center;
     width: 30px;
     height: 30px;
-    background-color: var(--dark-blue);
+    background-color: #103961;
     border-radius: 50%;
     color: var(--white);
   }
   
   .chat_btn{
       background-color: #fff;
-      color: $text-dark-gray;
+      color: #103961;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       border-radius: 1rem;
       padding: 5px 10px;

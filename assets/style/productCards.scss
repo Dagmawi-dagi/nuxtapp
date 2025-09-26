@@ -92,9 +92,11 @@
 }
 
 .alcohol{
-    color:#fff;
-    background: linear-gradient(200deg, #0a1525 0%, #152a4a 100%);
-    // background-color: $text-light-red;
+    color:#000;
+    background: transparent;
+    border: 1px #152a4a;
+    border-left: 0px ;
+    border-style: dashed;
     position: absolute;
     top: 20px;
     left: 0px;

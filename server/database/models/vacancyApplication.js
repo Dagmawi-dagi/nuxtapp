@@ -15,7 +15,7 @@ const _schema = {
         }
       },
     },
-    application_form: { type:  DataTypes.TEXT, allowNull: false},
+    application_form: { type:  DataTypes.JSON, allowNull: false},
 }
 
 const vacancyApplication = sequelize.define('vacancyApplication', _schema, {

@@ -3,7 +3,10 @@
 
 /* Footer Styles */
 .footer {
-    background:linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+    // background:linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+    // background: linear-gradient(135deg, #0072b8 0%, #152a4a 100%);
+    background: radial-gradient(circle at 50% 50%, #0072b8, #152a4a 150%);
+
     color: white;
     padding: 40px 0 20px;
     width: 100%;
@@ -16,7 +19,7 @@
     height: 100%;
     background-image: radial-gradient(circle, $text-blue, 1px, transparent 1px);
     background-size: 16px 16px;
-    opacity: .09;
+    opacity: .16;
     pointer-events: none;
   }
 }

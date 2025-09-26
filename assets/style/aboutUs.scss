@@ -256,11 +256,11 @@ header {
 /* Hero section */
 .hero {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
     grid-template-areas: 
-        "brand-info product-image"
+        "brand-info brand-info"
         "about-content product-image";
-    gap: 30px 100px;
+    gap: 30px 10px;
     margin: 40px 0;
 }
 
@@ -290,29 +290,15 @@ header {
 .product-image {
     grid-area: product-image;
     display: flex;
-    height: 500px;
-    width: 300px;
-    margin: 0 auto;
-    @media (max-width: 1000px) {
-        justify-content: center;
-        .img-container.second{
-            top: 40%;
-            left: 60%;
-        }
-    
-        .img-container.three{
-            top: 40%;
-            left: -28%;
-        }
-    }
-
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .img-container{
-    position: absolute;
     width: 200px;
     height: 250px;
-    background: radial-gradient(circle at 50% 50%, #152a4a, #0a1525 100%);
+    // background: radial-gradient(circle at 50% 50%, #152a4a, #0a1525 100%);
+    background: radial-gradient(circle at 50% 50%, #0072b8, #152a4a 200%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -336,15 +322,7 @@ header {
     }
 }
 
-.img-container.second{
-    top: 40%;
-    left: 40%;
-}
 
-.img-container.three{
-    top: 40%;
-    left: -40%;
-}
 
 .vodka-bottle {
     max-width: 100%;
@@ -369,16 +347,31 @@ header {
     font-weight: 600;
     margin-bottom: 20px;
     line-height: 1.2;
+    color: #000;
 }
 
 .section-text {
     font-size: 15px;
-    color: #666;
+    color: #333;
     margin-bottom: 30px;
     max-width: 90%;
+    text-align: justify;
+    line-height: 1.5;
     p{
         margin-top: 10px;
     }
+}
+.custom-list {
+  list-style: none;
+  padding-left: 3rem;
+  max-width: 600px;
+
+}
+
+.custom-list li::before {
+  content: "✔";
+  margin-right: 8px;
+  margin-left: -18px;
 }
 
 .read-more-btn {
@@ -434,18 +427,11 @@ header {
         max-width: 100%;
         text-align: justify;
     }
-
-    .product-image {
-        height: 400px;
-    }
 }
 
 @media (max-width: 576px) {
 
-    .img-container{
-        width: 200px;
-    }
-
+ 
     .section-title {
         font-size: 24px;
     }
