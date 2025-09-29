@@ -59,7 +59,7 @@ const openProductModal = (product)=>{
                     <div v-else-if="par.includes('•') && !par.includes('<ul>')">
                         <h3
                         class="section-title"
-                        style="opacity:0.9; top: 10px;  margin-bottom: 20px;"
+                        style="opacity:0.9; top: 10px;  margin-bottom: 20px; color: #0072b8; font-weight: bold;"
                         >
                         • {{ par.split('•')[1] }}
                         </h3>
@@ -70,7 +70,7 @@ const openProductModal = (product)=>{
                     <div v-else-if="par.includes('<ul>')">
                         <h3
                         class="section-title"
-                        style="opacity:0.9; top: 10px; margin-bottom: 20px;"
+                        style="opacity:0.9; top: 10px;  margin-bottom: 20px; color: #0072b8; font-weight: bold;"
                         >
                         • {{ par.split('•')[1] }}
                         </h3>
@@ -198,7 +198,7 @@ const openProductModal = (product)=>{
                     <img src="/public/pictures/manager.jpg" alt="Desta Areki" class="profile-image">
                     <div style="display: flex; flex-direction: column; align-self:center">
                         <h4 class="profile-name">Mussie Hagos </h4>
-                        <p class="profile-title">Manager</p>
+                        <p class="profile-title">General Manager</p>
                     </div>
                 </div>
             </div>
