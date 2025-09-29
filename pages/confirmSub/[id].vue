@@ -24,7 +24,7 @@ const handleConfirm = async () => {
         isConfirmed.value = true
         loading.false
     } catch (error) {
-       frontEndErrorFeedback().err(error)
+       frontEndErrorFeedback().err(error?.response?._data?.message || null)
        loading.false
     }
 }

@@ -12,7 +12,7 @@ onBeforeMount(async ()=>{
     try {
       const {data} = await  $fetch(`/api/newsletter/sub/delete/${route.params.id}`,{
           method:'PATCH',
-          body:{confirmed: false},
+          body:{unsubscribe: true},
           headers:{
             apiref:'/api/newsletter/sub/delete/[id]/PATCH'
           }
@@ -20,7 +20,7 @@ onBeforeMount(async ()=>{
       frontEndErrorFeedback().success(' Unsubscribed successfully')
 
   } catch (error) {
-      frontEndErrorFeedback().err(error)
+      console.log(error?.response?._data?.message || null)
   } 
 })
 </script>
