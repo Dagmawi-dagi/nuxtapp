@@ -85,7 +85,7 @@ const onsearch  = ()=>{
             <main class="main-content">
                 <!-- Blog posts -->
                 <MazCard  v-for="(blogPost,i) in blogPosts" :key="i" 
-                    :images="[`https://unsplash.com/photos/welcome-center-building-with-mountain-backdrop-VMlIOzs_kkg`]" 
+                    :images="[`blog/${blogPost.coverImg}`]" 
                     :orientation="mobilePhone ? 'column' : 'row'  " 
                     :galleryWidth=" tablet ?  '250px': '300px' "
                     :galleryHeight="'250px'"

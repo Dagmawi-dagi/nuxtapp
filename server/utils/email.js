@@ -46,7 +46,7 @@ export default class Email {
 
   // here work for the newsletter app's feature
   sendNewsletter(info){
-    const newsletter_email_html_template = renderHtmlTemplate('server/utils/email/newsletter/newsletter.html', info);
+    const newsletter_email_html_template = renderHtmlTemplate('server/utils/emailTemplates/newsletter/newsletter.html', info);
 
     return this.transport().sendMail({
       to: info.email,

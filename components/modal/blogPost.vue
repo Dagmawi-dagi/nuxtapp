@@ -21,7 +21,7 @@ const showimg = (imgRef,isArr,index)=>{
                     <div class="dots-pattern"></div>
                     <img class="header-image"  :src="`/blog/${blogPost?.coverImg}`" alt="blog cover image" >
                 <div class="cat"> 
-                    <span>news</span>
+                    <span v-for="cat in blogPost.category">{{ cat }}</span>
                 </div>
                 <img src="/public/pictures/logo.jpg" alt="logo" class="author-image">
             </div>

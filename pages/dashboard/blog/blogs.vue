@@ -57,6 +57,12 @@ const updateBlog = (blog)=>{
   any_open_modal.bool = true
 }
 
+const openBlogPostModal = (post)=>{
+    any_open_modal.bool = true
+    any_open_modal.id = 'blogModal'
+    any_open_modal.AnythingTopass = post
+}
+
 const tableRef = ref(null)
 useResizableColumns(tableRef, {
   skipClasses: ['actions-column', 'selection-column'],
@@ -104,6 +110,7 @@ useResizableColumns(tableRef, {
     <template #cell-actions="{ row }">
       <div class="actions-container">
         <MazBtn 
+          @click="openBlogPostModal(row)" 
           color="info" :left-icon="MazEye" size="xs" 
           v-tooltip.left="{ text: 'view blog post', color: 'default' }"
         />

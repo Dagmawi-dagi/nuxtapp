@@ -9,7 +9,7 @@ async function applyVacancy (FD, form$){
     
     formData.append('vacancyId', props.vacancy.id)
     form$.data.uploaded_files.forEach(file => { formData.append("uploaded_files", file)});
-    formData.append('application_form', JSON.parse({ 
+    formData.append('application_form', JSON.stringify({ 
         gender: form$.data.gender,
         workExperience: form$.data.workExperience,
         fullName: form$.data.fullName,

@@ -98,7 +98,7 @@ useResizableColumns(tableRef, {
     </template>
   
     <template #cell-fullName="{ row }">
-      <span>{{ typeof(row.application_form) }}</span>
+      <span>{{ row.application_form?.fullName || null }}</span>
     </template>
 
     <template #cell-phoneNumber="{ row }">

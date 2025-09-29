@@ -1,53 +1,73 @@
 <script setup>
-import { MazTrash,MazPlus } from '@maz-ui/icons'
+// lib
+import { format } from 'date-fns';
+import { MazTrash,MazPlus,MazPencil } from '@maz-ui/icons'
   
 definePageMeta({
   layout:"dashboard",
   name: 'newsletters',
   middleware:['auth'],
 })
+const { newsletters,page,perPage } = storeToRefs(useNewsLetterStore())
 
-const { data: newsletters } = await useFetch('/api/newsletter/', {
-  headers: {
-    apiref: '/api/newsletter/GET',
-  },
-}).catch(err=>{
-    console.log(err);
-    frontEndErrorFeedback().err(err)
-})
+
+try {
+  const { data } = await useFetch('/api/newsletter/', {
+    headers: {
+      apiref: '/api/newsletter/GET',
+    },
+  })
+  newsletters.value = data.value?.data  // important: use .value
+} catch (error) {
+  console.log(error );
+}
+
 
 const selectedIds = ref()
 const searchQuery = ref()
-const page = ref(1)
-const pageSize = ref(10)
 
+const tableRef = ref(null)
+useResizableColumns(tableRef, {
+  skipClasses: ['actions-column', 'selection-column'],
+  minWidth: 70
+})
 </script>
 
 <template>
 <MazTable 
+    ref="tableRef"
+    class="MyMazTable"
     size="sm"
     v-model="selectedIds"
     v-model:search-query="searchQuery"
     v-model:page="page"
-    v-model:page-size="pageSize"
+    v-model:page-size="perPage"
     search
     pagination
     color="info"
     sortable
     selectable
+    scrollable 
     hoverable
     background-even
     selected-key="id"
     :headers="[
-      { label:'#', key: 'index', align: 'center', width: '2rem', sortable: false },
-      { label:'subject', key: 'subject' },
-      { label: 'content', key: 'content', align: 'center'  },
-      { label: 'recipientsIds', key: 'recipientsIds' },
-      { label: 'createdBy', key: 'createdBy', align: 'center', classes: 'maz-font-bold' },
-      { label: 'createdAt', key: 'createdAt', align: 'center', classes: 'maz-font-bold' },
+      { label:'Doc id', key: 'id', align: 'center', classes: 'selection-column trancate',sortable: true },
+      { label:'subject', key: 'subject',classes:'trancate' },
+      { label: 'content', key: 'content', align: 'center',classes:'trancate'  },
+      { label: 'recipientsIds', key: 'recipientsIds',classes:'trancate' },
+      { label: 'createdBy', key: 'createdBy', align: 'center', classes: 'maz-font-bold trancate' },
+      { label: 'createdAt', key: 'createdAt', align: 'center', classes: 'maz-font-bold trancate' },
+      { label: '', key: 'actions', align: 'center', classes:'actions-column', sortable: false,}, // Added empty header for actions
     ]"
-    :rows="newsletters?.data"
+    :rows="newsletters"
   >
+
+    <template #cell-createdAt="{ value }">
+      <span >{{  format(new Date(value), 'MMM dd,yyyy') }}</span>
+    </template>
+
+
     <template #title>
       <div class="myTableHeader">
         <h4>Sent Newsletters</h4>
@@ -58,12 +78,5 @@ const pageSize = ref(10)
 </template>
 
 <style scoped lang="scss">
-  @use "@/assets/style/variables" as *;
-
-  .myTableHeader{
-    display: flex;
-    gap: 1rem;
-    margin-left: 2rem;
-    color: $text-blue;
-  }
+  @use "@/assets/style/dashboard/mazTableUi.scss" as *;
 </style>

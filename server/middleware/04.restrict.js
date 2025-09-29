@@ -8,15 +8,16 @@ import { createError } from 'h3';
 export default withErrorHandler( async(event) => {
   const url = getRequestURL(event).pathname;
   // If no restrictions are set, skip role check
-  if (url.includes('/api/') && event.context.APIINFO?.restrict && event.context.APIINFO?.length > 0) {
+  if (url.includes('/api/') && event.context.APIINFO?.restrict.length >0  &&  event.context.APIINFO?.auth) {
     // Get authenticated user from context
-    const currentUser = event.context.user;
-    if (!currentUser) {
-      throw createError({
-        statusCode: 401,
-        statusMessage: 'Please log in to continue'
-      });
-    }
+
+      const currentUser = event.context.user;
+      if (!currentUser) {
+        throw createError({
+          statusCode: 401,
+          statusMessage: 'Please log in to continue'
+        });
+      }
 
     // Fetch user from DB
     const user = await modelsRefs.user.model.findByPk(currentUser.id);
@@ -30,16 +31,16 @@ export default withErrorHandler( async(event) => {
 
     // User roles stored as JSON array in DB
     const userRoles = user.role ;
-     
     // Check if user has any required role
-    const hasPermission = restrict.some(requiredRole =>
+    const hasPermission =  event.context.APIINFO?.restrict.some(requiredRole =>
       userRoles.includes(requiredRole)
     );
+
     // return hasPermission
     if (!hasPermission) {
       throw createError({
         statusCode: 403,
-        statusMessage: `Forbidden: Only ${restrict.join(', ')} can perform this action`
+        statusMessage: `Forbidden: Only ${event.context.APIINFO?.restrict.join(', ')} can perform this action`
       });
     }
   }

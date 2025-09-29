@@ -21,6 +21,7 @@ const _schema = {
 const vacancyApplication = sequelize.define('vacancyApplication', _schema, {
     tableName: 'vacancyApplications',
     timestamps: true,
+    paranoid: true
 });
 
 const base = z.object({

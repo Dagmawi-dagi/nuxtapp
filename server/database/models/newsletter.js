@@ -23,6 +23,7 @@ const _schema = {
 const newsletter = sequelize.define('newsletter', _schema, {
   tableName: 'newsletters',
   timestamps: true,
+  paranoid:true,
 });
 
 const base = z.object({
@@ -68,13 +69,13 @@ newsletter.associate = (models)=>{
   // Successful Recipients
   newsletter.belongsToMany(models.newsletterSub, {
     through: 'newsletter Successful Recipients',
-    as: 'successful Recipients', 
+    as: 'successfulRecipients', 
   });
 
   // Failed Recipients
   newsletter.belongsToMany(models.newsletterSub, {
     through: 'newsletter Failed Recipients',
-    as: 'failed Recipients',
+    as: 'failedRecipients',
   });
 }
 
@@ -87,11 +88,11 @@ newsletter.beforeFind('',function(options){
     through: { attributes: [] }, // Exclude junction table fields
     },
     {
-      association: 'successful Recipients', // Use the alias defined in your association
+      association: 'successfulRecipients', // Use the alias defined in your association
       through: { attributes: [] }, // Exclude junction table fields
     },
     {
-      association: 'failed Recipients', // Use the alias defined in your association
+      association: 'failedRecipients', // Use the alias defined in your association
       through: { attributes: [] }, // Exclude junction table fields
     },
   );
@@ -118,7 +119,7 @@ newsletter.beforeCreate('', async function(model,options){
             email: recipient.email,
             name: recipient.name,
             frontEnd: process.env.FRONTENDURL,
-            UnsubscribeLink: `${process.env.FRONTENDURL}/newsletter-unsub/${recipient.id}`,
+            UnsubscribeLink: `${process.env.FRONTENDURL}/unsub/${recipient.id}`,
             createdAt: newsletter.createdAt,
             content: newsletter.content
           })
@@ -139,7 +140,10 @@ newsletter.beforeCreate('', async function(model,options){
     }
   }
   catch (error) {
-    throw new app_error_feedback(400,`${error}`)
+      throw createError({
+        statusCode: 400,
+        statusMessage: error
+      });
   }
 })
 
@@ -149,8 +153,8 @@ newsletter.afterCreate('', async function (model,options){
   const uniqueFailed = [...new Set(failedRecipients)];
 
   await model.addRecipients(model.recipientsIds);
-  await model.addSuccessful_recipients(uniqueSuccessful);
-  await model.addFailed_recipients(uniqueFailed);
+  await model.addSuccessfulRecipients(uniqueSuccessful);
+  await model.addFailedRecipients(uniqueFailed);
 
 })
 

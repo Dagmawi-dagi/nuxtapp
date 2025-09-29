@@ -40,6 +40,7 @@ const scrollToSection = (id) => {
 
 <template>
     <div class="hero">
+        <div  @dblclick="$router.push('/dashboard')" style="width: 2rem; height: 2rem; background-color: transparent; position: absolute; top:0;left: 0;"></div>
         <!-- Background dots layers -->
         <div class="dots-pattern"></div>
         <div class="continer">

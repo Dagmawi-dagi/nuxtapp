@@ -7,8 +7,22 @@ definePageMeta({
 })
 
 
-const postNewsletter = async ()=>{
+const postNewsletter = async (FD, form$)=>{
 
+  try {
+      const response = await $fetch('/api/newsletter',{
+        method:'post',
+        headers: {
+          apiref: '/api/newsletter/GET',
+        },
+        body:form$.data,
+      })
+      console.log(response);
+      
+    frontEndErrorFeedback().success('newsletter sent successfully')
+  } catch (err) {
+    frontEndErrorFeedback().err(err)
+  }
 }
 
 </script>
@@ -49,9 +63,13 @@ const postNewsletter = async ()=>{
           input-type="search"
           autocomplete="off"
           :items="async function(query, input){
-             const res = await axios.get('http://localhost:8888/api/newsletter/subscriber')
-             let mappedData = res.data.data.map(({ id, name }) => ({ value: id, label: name }))
-              // mappedData.unshift({ value: 'all', label: 'All' })
+              const { data } = await useFetch('/api/newsletter/sub', {
+                method:'get',
+                headers: {
+                  apiref: '/api/newsletter/sub/GET',
+                },
+              })
+             let mappedData = data.value.data.map(({ id, name }) => ({ value: id, label: name }))
               return mappedData
           }"
           info="email Recipients"
