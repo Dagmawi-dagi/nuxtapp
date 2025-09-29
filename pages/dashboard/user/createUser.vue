@@ -87,16 +87,41 @@ const createNewUser = async (FormD,form$)=>{
                     container: 9,
                 }"
                 />
-                <ButtonElement
-                name="submit"
-                button-label="Create New User"
-                :submits="true"
-                :columns="{
-                    container: 9,
-                }"
-                align="center"
-                size="md"
-                />
+              
+                <CheckboxgroupElement
+                    name="role"
+                    view="tabs"
+                    :items="[
+                        {
+                        value: 'user',
+                        label: 'user',
+                        },
+                        {
+                        value: 'admin',
+                        label: 'admin',
+                        },
+                    ]"
+                    label="user role"
+                    size="sm"
+                    :rules="[
+                        'required',
+                    ]"
+                    :columns="{
+                        container: 9,
+                    }"
+                    :default="['user']"
+                    />
+                    
+                    <ButtonElement
+                    name="submit"
+                    button-label="Create New User"
+                    :submits="true"
+                    :columns="{
+                        container: 9,
+                    }"
+                    align="center"
+                    size="md"
+                    />
             </Vueform>
         </ClientOnly>
     </div>
