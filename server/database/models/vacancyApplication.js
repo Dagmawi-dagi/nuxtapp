@@ -34,10 +34,7 @@ const base = z.object({
       message: "Files must be PDF, DOC, DOCX, or TXT format"
     })),
     
-  application_form: z.string()
-    .min(1, "Application form content is required")
-    .min(50, "Application form must be at least 50 characters")
-    .max(5000, "Application form too long (max 5000 characters)")
+  // application_form: z.object()
 });
 
 const full = base.extend({

@@ -20,10 +20,7 @@ try {
     },
   })
 
-  applications.value = data.value?.data.map(app => ({
-    ...app,
-    application_form: JSON.parse(app.application_form), // convert string → object
-  }))
+  applications.value = data.value?.data
 } catch (error) {
   console.log(error);
 }
@@ -101,7 +98,7 @@ useResizableColumns(tableRef, {
     </template>
   
     <template #cell-fullName="{ row }">
-      <span>{{ row.application_form.fullName }}</span>
+      <span>{{ typeof(row.application_form) }}</span>
     </template>
 
     <template #cell-phoneNumber="{ row }">

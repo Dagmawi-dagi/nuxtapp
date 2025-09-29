@@ -8,11 +8,6 @@ defineProps({
 onMounted(()=>{
     gsap.fromTo('.pro-img',{  scale: 0},{ scale: 1.1, direction: 1 })
 })
-
-const getImageUrl = (imgName) => {
-    return new URL(`../../assets/pictures/Products/${imgName}`, import.meta.url).href
-}
-
 </script>
 
 <template>
@@ -21,11 +16,11 @@ const getImageUrl = (imgName) => {
             <div class="image-container">
                 <!-- Background dots layers -->
                 <div class="dots-pattern"></div>
-                <img class="pro-img" :src="getImageUrl(productData.img)" alt="Heineken Beer Bottle">
+                <img class="pro-img" :src="`/pictures/Products/${productData.img}`" :alt="`Desta ${ productData.img }`">
             </div>
             <div class="content-container">
                 <h1 class="product-title">
-                    <img src="/assets/pictures/logo.jpg" alt="logo" class="logo" >
+                    <img src="/assets/pictures/desta-logo.png" alt="logo" class="logo" >
                     {{ productData.name }}.
                 </h1>
                 <p class="product-description">{{ productData.description }}</p>
@@ -91,21 +86,23 @@ const getImageUrl = (imgName) => {
 }
 
 .product-title {
+    display: flex;
+    align-items: center;
     font-size: 24px;
     margin-bottom: 15px;
     color: #0a1525;
     font-weight: 500;
-    vertical-align: middle;
     opacity: 1;
+    gap: 1rem;
     .logo{
         display: inline-block;
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
     }
 }
 
 .product-description {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
     color: #666;
     margin-bottom: 25px;
@@ -119,7 +116,7 @@ const getImageUrl = (imgName) => {
 }
 
 .product-values {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     color: #666;
     margin-bottom: 20px;

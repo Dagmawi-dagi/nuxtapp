@@ -29,7 +29,7 @@ export default withErrorHandler( async(event) => {
     }
 
     // User roles stored as JSON array in DB
-    const userRoles =JSON.parse(user.role) ;
+    const userRoles = user.role ;
      
     // Check if user has any required role
     const hasPermission = restrict.some(requiredRole =>

@@ -113,8 +113,8 @@
   
   .logo-icon {
     @include flexbox();
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
     margin-right: 0.5rem;
   }
   
@@ -128,7 +128,7 @@
     }
     
     .logo-tagline {
-      font-size: 0.75rem;
+      font-size: 14px;
       color: var(--text-light-gray);
       font-style: italic;
     }

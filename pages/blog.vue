@@ -3,8 +3,6 @@ definePageMeta({
     layout:"default",
     name: 'blog',
 })
-
-
 // libs
 import { format } from 'date-fns';
 import gsap from 'gsap';
@@ -46,29 +44,27 @@ const catagoriesCount = ref({
     news: 0,
 })
 const totalBlogCount = ref()
-
-
-// global_apihandler('blog-getList',{}).then((res)=>{ 
-//     totalBlogCount.value =  res.data.count 
-//     catagoriesCount.value.info = res.data.data.filter((data)=> data.category.includes('info')).length
-//     catagoriesCount.value.event = res.data.data.filter((data)=> data.category.includes('event')).length
-//     catagoriesCount.value.social = res.data.data.filter((data)=> data.category.includes('social')).length
-//     catagoriesCount.value.news = res.data.data.filter((data)=> data.category.includes('news')).length
-// });
-
 const searcq = ref('')
 const recentPosts = ref()
-// global_apihandler('blog-recent',{}).then((res)=> recentPosts.value = res.data.data );
+
+try {
+    const { data } = await useFetch('/api/blog', {
+        headers: {
+            apiref: '/api/blog/GET',
+        },
+    })
+    blogPosts.value = data.value?.data
+} catch (err) {
+    frontEndErrorFeedback().err(err)
+    console.log(err);
+}
 
 function pagination_change () {
-    apicall_from_store( 'blog','blog-getList',{ queryObj : { page:page.value,perPage: perPage.value,sort: `-createdAt`},fresh:true, list: true, onSucSaveTheJsonOn: 'blog_posts'}).then(()=>{
-        const element = document.getElementById('blog-main-container');
-        if (element) element.scrollIntoView({ behavior: "instant"});
-    })
+    console.log('blog pagination_change');
 }
 
 const onsearch  = ()=>{
-    apicall_from_store( 'blog','blog-getList',{ queryObj : { page:page.value,perPage: perPage.value,search: searcq.value },fresh:true, list: true, onSucSaveTheJsonOn: 'blog_posts'})
+    console.log('blog onsearch');
 }
 
 </script>
@@ -76,7 +72,7 @@ const onsearch  = ()=>{
     <div class="main-container" id="blog-main-container">
         <h3 class="header">Blog</h3>
 
-        <div class="chat" @click="$router.push('/contact-us')">
+        <div class="chat" @click="$router.push('/contactUs')">
             <div class="chat-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -88,7 +84,7 @@ const onsearch  = ()=>{
         <div class="container" >
             <main class="main-content">
                 <!-- Blog posts -->
-                <MazCard  v-for="(blog_post,i) in blog_posts" :key="i" 
+                <MazCard  v-for="(blogPost,i) in blogPosts" :key="i" 
                     :images="[`https://unsplash.com/photos/welcome-center-building-with-mountain-backdrop-VMlIOzs_kkg`]" 
                     :orientation="mobilePhone ? 'column' : 'row'  " 
                     :galleryWidth=" tablet ?  '250px': '300px' "
@@ -96,13 +92,13 @@ const onsearch  = ()=>{
                     class="blogcard"
                 >
                     <template #title>
-                        <span  class="blog-card-date"> {{  format(blog_post.createdAt, 'MMMM dd,yyyy') }} </span>
-                        <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500;"> {{ blog_post.title }} </h3>
+                        <span  class="blog-card-date"> {{  format(blogPost.createdAt, 'MMMM dd,yyyy') }} </span>
+                        <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500;"> {{ blogPost.title }} </h3>
                     </template>
                     <template #content>
-                        <div class="maz-text-muted aaaaa" >
-                            <div  class="quill-html-content" v-html="`${blog_post.content_short}`"> </div>
-                            <a href="#" class="card__link"  @click.stop="openBlogPostModal(blog_post)">Read Full Article <span class="arrow">→</span></a>
+                        <div class="maz-text-muted" >
+                            <div  class="quill-html-content" v-html="`${blogPost.content_short}`"> </div>
+                            <a href="#" class="card__link"  @click.stop="openBlogPostModal(blogPost)">Read Full Article <span class="arrow">→</span></a>
                         </div>
                     </template>
                 </MazCard>
@@ -129,15 +125,15 @@ const onsearch  = ()=>{
                 <div class="widget">
                     <h3>Recent Posts</h3>
                     <div class="recent-posts">
-                        <MazCard   v-for="(blog_post,i) in recentPosts" :key="i" 
-                            @click.stop="openBlogPostModal(blog_post)"
+                        <MazCard   v-for="(blogPost,i) in recentPosts" :key="i" 
+                            @click.stop="openBlogPostModal(blogPost)"
                             :images="[`https://unsplash.com/photos/welcome-center-building-with-mountain-backdrop-VMlIOzs_kkg`]" 
                             :orientation="'row'" 
                             :galleryWidth="'50px'"
                             class="blogcard recent">
                             <template #title>
-                                <span  class="blog-card-date" style="display: block;"> {{  format(blog_post.createdAt, 'MMMM dd,yyyy') }} </span>
-                                <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500;"> {{ blog_post.title }} </h3>
+                                <span  class="blog-card-date" style="display: block;"> {{  format(blogPost.createdAt, 'MMMM dd,yyyy') }} </span>
+                                <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500;"> {{ blogPost.title }} </h3>
                             </template>
                         </MazCard>
                     </div>
@@ -146,9 +142,9 @@ const onsearch  = ()=>{
         </div>
 
         <PaginationBar v-if="!searcq" class="vpag" v-model="page" :total-row="totalBlogCount" :align="'left'" @change="pagination_change">
-            <PaginationPreviousPage />
-            <PaginationPageNumbers />
-            <PaginationNextPage />
+            <PaginationPreviousPage/>
+            <PaginationPageNumbers/>
+            <PaginationNextPage/>
         </PaginationBar>
 
         <NewsletterSub style="margin-top: 4rem;"/>
@@ -160,7 +156,7 @@ const onsearch  = ()=>{
     @use "@/assets/style/mixins" as *;
 
     .blogcard :deep(.m-gallery__item__image){
-        background-color: #152a4a !important;
+        background-color: #9999996c !important;
     }
 
     .blogcard.recent :deep(.m-card__content__wrapper) {
@@ -255,39 +251,6 @@ const onsearch  = ()=>{
         display: flex;
         flex-direction: column;
         gap: 2rem;
-    }
-
-    .blog-post {
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 1.5rem;
-        padding: 1rem;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .blog-post img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 4px;
-    }
-
-    .post-content h2 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .post-content p {
-        color: #666;
-        margin-bottom: 1rem;
-    }
-
-    .read-more {
-        color: #e74c3c;
-        text-decoration: none;
-        font-weight: 500;
     }
 
     .sidebar {
@@ -416,14 +379,6 @@ const onsearch  = ()=>{
     @media (max-width: 768px) {
         .container {
             grid-template-columns: 350px;
-        }
-
-        .blog-post {
-            grid-template-columns: 1fr;
-        }
-
-        .blog-post img {
-            height: 200px;
         }
 
         .chat{

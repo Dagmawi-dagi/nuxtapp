@@ -17,7 +17,7 @@ $background: #ffffff;
 .login-page {
   @include flexbox;
   min-height: 100vh;
-  background: #161f32;
+  background: radial-gradient(circle at 50% 50%, #0072b8, #152a4a 80%);
   padding: 1.5rem;
   position: relative;
   overflow: auto;
@@ -54,7 +54,7 @@ $background: #ffffff;
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, $primary-color, #161f32);
+    background: linear-gradient(to right,#152a4a, #0c4c7e);
     transform: rotate(-6deg);
     border-radius: 1.5rem;
     z-index: -1;

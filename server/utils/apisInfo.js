@@ -139,6 +139,13 @@ export const API_INFO = {
         
         reqBodyValidation:{},
     },
+    "/api/user/[id]/DELETE" : { 
+        method: 'DELETE',
+        auth: true,
+        restrict:['admin'],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
     "/api/user/GET" : { 
         method: 'GET',
         auth: false,

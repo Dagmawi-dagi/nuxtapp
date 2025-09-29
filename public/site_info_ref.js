@@ -3,10 +3,10 @@ export const address = {
     email: ['dagmawu']
 }
 
-
 export const manager = {
     quote: "Research, Consult, Train, Elevate Excellence in Every Endeavor.",
     p:[
+        "Lorem Ipsum Dolor Sit Amet Consectetur a Risus Lacus Dapibus Consequat Egestas Blandit. Id Orci Mauris Cursus Nibh Mi Sed Urna Vestibulum. Proin Vel A Gravida Vulputate Auctor Odio Quis Nullam Cursus. Lacus Enim Urna Dapibus Volutpat Cras Consequat Id Facilisis. Feugiat Semper Ultricies Volutpat Adipiscing Velit.",
         "Lorem Ipsum Dolor Sit Amet Consectetur a Risus Lacus Dapibus Consequat Egestas Blandit. Id Orci Mauris Cursus Nibh Mi Sed Urna Vestibulum. Proin Vel A Gravida Vulputate Auctor Odio Quis Nullam Cursus. Lacus Enim Urna Dapibus Volutpat Cras Consequat Id Facilisis. Feugiat Semper Ultricies Volutpat Adipiscing Velit.",
         "Viverra Ornare Vulputate Ac Accumsan Sem Sagittis Lacus Pharetra Malesuada Mauris Tristique Iaculis Rutrum. Et Id Imperdiet Auctor Ultricies Sit Vel Senectus Ac. Nisi Enim Urna Gravida Nami Sagittis Et Aliquam Amet. Tellus Natoque Sed Accumsan Nunc Sed Egestas Eu Quis Dolor."
     ]
@@ -31,7 +31,7 @@ export const aboutUsCardswithIcon = {
         p:"Our dedication to excellence has earned us prestigious industry awards. Each bottle reflects our commitment to quality, craftsmanship, and innovation, making our spirits truly exceptional."
     },
     "premium Vodka":{
-        p:"Crafted from the finest ingredients, our vodka delivers an ultra-smooth and refined taste. Each bottle undergoes a meticulous distillation process to ensure exceptional purity, resulting in a premium product."
+        p:"providing the first of its kind desta Vodka, it is ultra premium, specifically  distilled and excellently filtered Vodka,  Best test, perfection in every detail that excites and make you enjoy & feel your best!"
     }
 }
 
@@ -45,7 +45,7 @@ export const ourNumbers = {
 
 export const  products = [
     {   
-        name: "premier Vodka", 
+        name: "Premium Vodka", 
         img: 'vodka.png',
         description: "providing the first of its kind desta Vodka, it is ultra premium, specifically  distilled and excellently filtered Vodka,  Best test, perfection in every detail that excites and make you enjoy & feel your best!",
         values: ['Alcohol: 41%','sugar: 0.0 g/100ml','Energy: 176 kJ/100ml','Methanol: 450 mg/L','Ethanol Purity: 0.0 g/100ml','Microbial Safety: 0.0 g/100ml','Additives: None','Clarity: Crystal clear','Vol: 1lt, 700ml, 500ml'],

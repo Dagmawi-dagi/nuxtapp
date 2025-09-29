@@ -63,6 +63,7 @@ const user = sequelize.define('user', _schema, {
   defaultScope: {
     attributes: { exclude: ['userPassword','active'] },
   },
+  paranoid: true,  // enables soft delete by adding deletedAt
 });
 
 

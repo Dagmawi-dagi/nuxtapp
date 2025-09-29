@@ -1,17 +1,51 @@
 @use "@/assets/style/variables" as *;;
+@use "@/assets/style/mixins" as *;
 
-.container {
+.wrapper {
     max-width: 1200px;
     margin: 0 auto;
     padding: 4rem 2rem;
 }
 
-/* Features section */
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 2rem;
+    justify-content: center;
+    min-width: fit-content;
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Main content */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: sticky;
+    top: 100px; /* Adjust this value to control when it sticks */
+    height: fit-content; /* Viewport height minus top and bottom padding */
+    overflow-y: auto; /* Make it scrollable if content is too tall */
+}
+
+
+// -------------feature
+
 .features {
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
+    margin: 6rem auto;
 }
 
 .feature {
@@ -45,15 +79,11 @@
     display: inline-block;
     max-width: 400px;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 15px;
     color: #666;
     line-height: 1.6;
 }
 
-/* SVG icons */
-.organic-icon {
-    // fill: #4a6fa5;
-}
 
 .distillery-icon {
     fill: #2c3e8f;
@@ -63,20 +93,15 @@
     fill: #4a6fa5;
 }
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    .features {
-        flex-direction: column;
-    }
-
-    .feature {
-        max-width: 100%;
-    }
-}
 
 .blogcard :deep(.m-gallery__item__image){
-    background-color: #152a4a !important;
+    background-color: #9999996c !important;
 }
+
+.blogcard :deep(.m-gallery){
+    border-radius: 7px;
+}
+
 .card__link {
   display: flex;
   align-items: center;
@@ -99,50 +124,15 @@
     transition: transform 0.2s ease;
   }
 }
-
-.card-col{
-    width: 300px;
-    :deep(.card__title) {
-        margin-bottom: 5px;
-    }
-    :deep(.card__description) {
-        margin-bottom: 10px;
-    }
-}
     
-$primary-color: #333;
-$secondary-color: #555;
-$accent-color: #4a4a4a;
-$background-color: #fff;
-$border-color: #eaeaea;
-$font-main: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-// Breakpoints
-$tablet-width: 800px;
-$mobile-width: 480px;
-
-// Mixins
-@mixin tablet {
-    @media (max-width: #{$tablet-width}) {
-        @content;
-    }
-}
-
-@mixin mobile {
-    @media (max-width: #{$mobile-width}) {
-        @content;
-    }
-}
-
 
 .profile-card {
     display: flex;
     flex-direction: row;
     width: 100%;
-    background-color: $background-color;
     border-radius: 8px;
     overflow: hidden;
-    padding: 30px 50px;
+    padding: 30px 0px;
     margin: 2rem auto;
     gap: 2rem;
 
@@ -151,10 +141,6 @@ $mobile-width: 480px;
         align-items: center;
         padding: 20px;
         display: flex;
-    }
-    
-    @include mobile {
-        padding: 15px;
     }
 }
 
@@ -166,18 +152,22 @@ $mobile-width: 480px;
     gap:1rem;
 }
 
+.profile-right{
+    align-content: center;
+    text-align: justify;
+}
+
 .profile-image {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 4px solid $background-color;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10%;
+    border: 4px solid #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
 }
 .profile-container{
     display: flex;
+    flex-direction: column;
     margin-right: auto;
-    padding-left: 3rem;
     gap:1rem
 }
 
@@ -191,21 +181,6 @@ $mobile-width: 480px;
     color: #666;
     margin-bottom: 20px;
     text-align: center;
-
-}
-
-.profile-right {
-    @include tablet {
-        display: contents; // This allows children to be positioned by the parent flex container
-    }
-}
-
-.quote-container {
-    
-}
-
-.bio-container {
-    max-width: 550px;
 }
 
 .profile-quote {
@@ -213,56 +188,18 @@ $mobile-width: 480px;
     color: #000000;
     font-weight: bold;
     padding-left: 15px;
-    border-left: 3px solid $border-color;
-    
-    @include tablet {
-        text-align: center;
-    }
+    border-left: 3px solid lightseagreen;
 }
 
 .profile-bio {
     color: #666;
+    font-size: 15px;
+    line-height: 1.6;
 }
 
-.features{
-    gap: 1rem;
-}
-.feature{
-    min-width: 200px;
-    padding: 15px;
-}
-.main-container{
-    max-width: 1200px;
-    margin: 1rem auto;
-    margin-top: 2rem;
-    overflow-x: hidden;
-}
+//-------------- end of profile card
 
-.containerr {
-    width: 90%;
-    margin: auto;
-}
 
-/* Header styles */
-header {
-    padding: 20px 0;
-}
-
-.about-header {
-    text-align: center;
-    font-weight: 500;
-}
-
-/* Hero section */
-.hero {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-template-areas: 
-        "brand-info brand-info"
-        "about-content product-image";
-    gap: 30px 10px;
-    margin: 40px 0;
-}
 
 /* Brand info section */
 .brand-info {
@@ -271,33 +208,43 @@ header {
     flex-direction: column;
     justify-content: flex-end;
     align-self: self-start;
-}
+    .brand-name {
+        font-weight: 700;
+        color: #1a365d;
+        line-height: 1;
+    }
+    
+    .brand-tagline {
+        font-size: 16px;
+        letter-spacing: 2px;
+        color: #1a365d;
+        margin-top: 5px;
+    }
 
-.brand-name {
-    font-weight: 700;
-    color: #1a365d;
-    line-height: 1;
-}
-
-.brand-tagline {
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: #1a365d;
-    margin-top: 5px;
+   .header {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
 }
 
 /* Product image section */
 .product-image {
-    grid-area: product-image;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    @media (max-width: 900px) {
+        flex-direction: row;
+        flex-wrap: wrap;    
+        justify-content: center;
+    }
 }
 
 .img-container{
-    width: 200px;
+    width: 250px;
     height: 250px;
-    // background: radial-gradient(circle at 50% 50%, #152a4a, #0a1525 100%);
     background: radial-gradient(circle at 50% 50%, #0072b8, #152a4a 200%);
     display: flex;
     justify-content: center;
@@ -323,17 +270,12 @@ header {
 }
 
 
-
-.vodka-bottle {
+.bottle {
     max-width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-/* About content section */
-.about-content {
-    grid-area: about-content;
-}
 
 .section-label {
     font-size: 14px;
@@ -354,9 +296,8 @@ header {
     font-size: 15px;
     color: #333;
     margin-bottom: 30px;
-    max-width: 90%;
     text-align: justify;
-    line-height: 1.5;
+    line-height: 1.6;
     p{
         margin-top: 10px;
     }
@@ -374,53 +315,13 @@ header {
   margin-left: -18px;
 }
 
-.read-more-btn {
-    background-color: #1a365d;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.read-more-btn:hover {
-    background-color: #2c4c7c;
-}
-
-.customer-name{
-    color: #000;
-    font-size: 110%;
-    text-transform: capitalize;
-    font-weight: 500;
-}
-
-.customer-location{
-    color: #666;
-    font-weight: 500;
-}
 
 /* Responsive styles */
 @media (max-width: 992px) {
-    .hero {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-            "brand-info"
-            "product-image"
-            "about-content";
-    }
-
     .brand-info {
         justify-content: center;
         align-items: center;
         text-align: center;
-    }
-
-    .about-content {
-        text-align: center;
-        padding: 40px 0;
     }
 
     .section-text {
@@ -430,13 +331,20 @@ header {
 }
 
 @media (max-width: 576px) {
-
  
     .section-title {
         font-size: 24px;
     }
 
-    .product-image {
-        height: 300px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+    }
+
+    .feature {
+        max-width: 100%;
     }
 }

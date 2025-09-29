@@ -32,7 +32,6 @@ const updateBlog = async (FormD, form$) => {
     if (index !== -1) {
         const updatedblogPosts = [...blogPosts.value]
         updatedblogPosts[index] = data[0]
-        updatedblogPosts[index].category =  JSON.parse(data[0].category)
         blogPosts.value = updatedblogPosts
     }
     frontEndErrorFeedback().success('blog updated successfully')

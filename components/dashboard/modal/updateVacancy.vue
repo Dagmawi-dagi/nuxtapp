@@ -2,14 +2,13 @@
 const { any_open_modal } = useUtilStore()
 const { vacancies } = storeToRefs(useVacancyStore())
 
-let vacancy  = any_open_modal.AnythingTopass
-const modifiedvacancy = {...vacancy,locations:JSON.parse(vacancy.locations)}
+let vacancy  = ref(any_open_modal.AnythingTopass)
 
 const updateVacancy = async (FormD, form$) => {
   console.log(vacancy) // access like this
 
   try {
-    const {data} = await $fetch(`/api/vacancy/${vacancy.id}`,{
+    const {data} = await $fetch(`/api/vacancy/${vacancy.value.id}`,{
         method:'PATCH',
         headers:{
             apiref:'/api/vacancy/[id]/PATCH'
@@ -18,7 +17,7 @@ const updateVacancy = async (FormD, form$) => {
     })
     
     // ✅ Reactive update using splice
-    const index = vacancies.value.findIndex(v => v.id === vacancy.id)
+    const index = vacancies.value.findIndex(v => v.id === vacancy.value.id)
   // ✅ Reactive update by creating new array
     if (index !== -1) {
         const updatedVacancies = [...vacancies.value]
@@ -32,15 +31,13 @@ const updateVacancy = async (FormD, form$) => {
   }
 }
 
-
-
 </script>
 
 <template>
     <Overlay>
         <template #container>
             <ClientOnly>
-                <Vueform  :endpoint="updateVacancy" :default="modifiedvacancy">
+                <Vueform  :endpoint="updateVacancy" :default="vacancy">
                     <StaticElement
                     name="h3"
                     tag="h3"
@@ -122,7 +119,7 @@ const updateVacancy = async (FormD, form$) => {
                         value: 'ayder',
                         label: 'ayder',
                         },
-                        ...modifiedvacancy.locations
+                        ...vacancy.locations
                     ]"
                     input-type="search"
                     autocomplete="off"

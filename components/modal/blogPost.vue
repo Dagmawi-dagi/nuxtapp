@@ -1,49 +1,45 @@
 <script setup>
-// libs
 import { format } from 'date-fns';
-// util
-// import { serverUrl } from '@/utils/'
-
-const { any_open_modal } = storeToRefs( useUtilStore() )
-const { show_global_vueEasyLightbox } = useLightBox()
 
 defineProps({
     blogPost : Object,
 })
 
+const { show_global_vueEasyLightbox } = useLightBox()
+
 const showimg = (imgRef,isArr,index)=>{
     let  imges = imgRef
     show_global_vueEasyLightbox(isArr ? null : imges, isArr ? imges:null , isArr ? index : 0)
 }
-
 </script>
 
 <template>
     <Overlay>
-        <template #container>
-            <div class="header-image-container" @click.stop="showimg(`${serverUrl}/${blogPost?.coverImg.split('-')[0]}/blog/${blogPost?.coverImg}`,false,0)">
+        <div class="container">
+            <div class="header-image-container" @click.stop="showimg(`/blog/${blogPost?.coverImg}`,false,0)">
                     <!-- Background dots layers -->
                     <div class="dots-pattern"></div>
-                    <img class="header-image"  :src="`${serverUrl}/${blogPost?.coverImg.split('-')[0]}/blog/${blogPost?.coverImg}`" alt="blog_cover_image" >
-                    <div class="cat" > 
-                        <span v-for="(cat,i) in blogPost.category" :Key="i">{{ cat }}</span>
-                    </div>
-                <img src="/assets/pictures/logo.jpg" alt="desta logo" class="author-image">
+                    <img class="header-image"  :src="`/blog/${blogPost?.coverImg}`" alt="blog cover image" >
+                <div class="cat"> 
+                    <span>news</span>
+                </div>
+                <img src="/public/pictures/logo.jpg" alt="logo" class="author-image">
             </div>
-            
             <div class="content">
                 <div class="date">{{  format(new Date(blogPost.createdAt), 'MMMM dd,yyyy') }} </div>
                 <h3 class="blog-title">{{ blogPost.title }}</h3>
+                <!-- <h3 class="blog-title">Celebrating 25 Years of Success: A Milestone of Growth and Gratitude</h3> -->
                 <div class="blog-content">
                     <div  class="quill-html-content" v-html="`${blogPost.content}`"> </div>
                 </div>
             </div>
-        </template>
+        </div>
     </Overlay>
 </template>
 
 <style lang="scss" scoped>
-@use "@/assets/style/variables" as *;;
+@use "@/assets/style/variables" as *;
+@use "@/assets/style/global.scss" as *;
 
 .emoji {
     position: absolute;
@@ -54,6 +50,7 @@ const showimg = (imgRef,isArr,index)=>{
 /* Container */
 .container {
     max-width: 800px;
+    width: 800px;
     margin: auto;
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -88,7 +85,8 @@ const showimg = (imgRef,isArr,index)=>{
 /* Header image */
 
 .header-image-container{
-    background: linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+    background: radial-gradient(circle at 50% 50%, #0072b8, #152a4a 130%);
+    
     // Dots pattern
     .dots-pattern {
         position: absolute;
@@ -104,7 +102,7 @@ const showimg = (imgRef,isArr,index)=>{
 }
 .header-image {
     width: 100%;
-    max-height: 600px;
+    max-height: 400px;
     min-height: 300px;
     object-fit: fill;
     display: block;
@@ -117,11 +115,11 @@ const showimg = (imgRef,isArr,index)=>{
 
 .author-image {
     position: absolute;
-    bottom: -25px;
+    bottom: -35px;
     right: 20px;
     z-index: 2;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 15px;
