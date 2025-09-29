@@ -1,24 +1,21 @@
 <script setup>
-// composables
-// import { use_apicalls_from_store } from '../../composables/store-apicalls';
-
-// const { apicall_from_store,apicall_from_store_loading } = use_apicalls_from_store()
-
 const showSuccMsg = ref(false)
 const errMsg = ref(false)
-const subscribe = (FD,form$)=>{
-  const obj = {
-    name :form$.data.email.split('@')[0] || '',
-    email: form$.data.email
-  } 
-
-  showSuccMsg.value = false
-  errMsg.value = false
-  // apicall_from_store('newsletter','newsletter-subscribe',{ onSucSaveTheJsonOn: 'subscriber', data:obj }).then(res=>{
-  //   if(res.data.status === "success") return showSuccMsg.value = true
-  //   showSuccMsg.value = false
-  //   errMsg.value = res.data.errMessage
-  // })
+const subscribe =async (FD,form$)=>{
+    const name = `${form$.data.email}`.split('@')[0]
+    try {
+        await $fetch('/api/newsletter/sub/',{
+            method:'POST',
+            body:{name,...form$.data},
+            headers:{
+                apiref: '/api/newsletterSub/POST',
+            },
+        })
+      showSuccMsg.value = true
+      errMsg.value = false
+    } catch (error) {
+        errMsg.value = error.data.message
+    }
 }
 
 </script>
@@ -76,7 +73,7 @@ const subscribe = (FD,form$)=>{
         No spam ever, we are care about the protection of your data.
       </p>
       <!-- Success message -->
-      <div class="message success-message" v-if="false && showSuccMsg && !errMsg">
+      <div class="message success-message" v-if="showSuccMsg && !errMsg">
         <div class="message-icon success-icon">
           <!-- Check Circle SVG Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

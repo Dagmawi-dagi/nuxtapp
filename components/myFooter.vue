@@ -13,23 +13,33 @@ const openProductModal = (product)=>{
     any_open_modal.value.AnythingTopass = product
 }
 
-
 const showSuccMsg = ref(false)
 const errMsg = ref(false)
 const email = ref()
-const subscribe = ()=>{
+const loading = ref(false)
+const subscribe =async ()=>{
+  if(loading.value === true) return 
   const obj = {
     name :email.value.split('@')[0] || '',
     email: email.value
   } 
-
-  showSuccMsg.value = false
-  errMsg.value = false
-//   apicall_from_store('newsletter','newsletter-subscribe',{ onSucSaveTheJsonOn: 'subscriber', data:obj }).then(res=>{
-//     if(res.data.status === "success") return showSuccMsg.value = true
-//     showSuccMsg.value = false
-//     errMsg.value = res.data.errMessage
-//   })
+  loading.value = true
+    try {
+        await $fetch('/api/newsletter/sub/',{
+            method:'POST',
+            body:obj,
+            headers:{
+                apiref: '/api/newsletterSub/POST',
+            },
+        })
+        showSuccMsg.value = true
+        errMsg.value = false
+        loading.value = false
+    } catch (error) {
+        loading.value = false
+        showSuccMsg.value = false
+        errMsg.value = error.data.message
+    }
 }
 
 
@@ -63,12 +73,12 @@ const subscribe = ()=>{
                         <button class="newsletter-button" @click="subscribe">
                             <!-- Background dots layers -->
                             <div class="dots-pattern"></div>
-                            <ReusableSpinner :color="'red'" :width="'1rem'" style="margin: auto;" v-if="false"/>
-                          <span v-if="!false">Subscribe</span>  
+                            <ReusableSpinner :color="'#fff'" :width="'1rem'" style="margin: auto;" v-if="loading"/>
+                          <span v-if="!loading">Subscribe</span>  
                         </button>
                     </div>
                     <!-- Success message -->
-                    <div class="message success-message" v-if="!false && showSuccMsg && !errMsg">
+                    <div class="message success-message" v-if="showSuccMsg && !errMsg">
                         <div class="message-icon success-icon">
                         <!-- Check Circle SVG Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -82,7 +92,7 @@ const subscribe = ()=>{
                         </div>
                     </div>
                     <!-- Error message -->
-                    <div class="message error-message" v-if="!false && errMsg && !showSuccMsg">
+                    <div class="message error-message" v-if="errMsg && !showSuccMsg">
                         <div class="message-icon error-icon">
                         <!-- X Circle SVG Icon -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -177,5 +187,6 @@ const subscribe = ()=>{
 </template>
 <style scoped lang="scss">
 // @import '../sections/styles/newsletterSub.scss';
+@use '/assets/style/newsletterSub.scss' as *;
 @use '/assets/style/footer/index.scss' as *;
 </style>
