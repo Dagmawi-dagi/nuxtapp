@@ -13,7 +13,7 @@ const postNewsletter = async (FD, form$)=>{
       const response = await $fetch('/api/newsletter',{
         method:'post',
         headers: {
-          apiref: '/api/newsletter/GET',
+          apiref: '/api/newsletter/POST',
         },
         body:form$.data,
       })

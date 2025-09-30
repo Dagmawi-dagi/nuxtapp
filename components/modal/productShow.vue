@@ -21,15 +21,19 @@ onMounted(()=>{
             <div class="content-container">
                 <h1 class="product-title">
                     <img src="/assets/pictures/desta-logo.png" alt="logo" class="logo" >
-                    {{ productData.name }}.
+                    <span :style="{color:productData.color,fontWeight:'bold',marginRight:'-10px'}">{{ productData.name }}</span>
                 </h1>
                 <p class="product-description">{{ productData.description }}</p>
                 <div class="product-values">
                     <p v-for="(v,i) in productData.values" :key="i">• {{v}} </p>
                 </div>
-                <h2 class="nutritional-title">Ingredient</h2>
+                <h2 class="nutritional-title">sizes</h2>
                 <div class="product-values" style="margin-bottom: 0;">
-                    <p v-for="(ingredient,i) in productData.ingredient" :key="i" >• {{ ingredient }}</p>
+                    <p v-for="(size,i) in productData.sizes" :key="i" >• {{ size }}</p>
+                </div>
+                <h2 class="nutritional-title">packaging</h2>
+                <div class="product-values" style="margin-bottom: 0;">
+                    <p v-for="(pac,i) in productData.packaging" :key="i" >• {{ pac }}</p>
                 </div>
             </div>
         </div>

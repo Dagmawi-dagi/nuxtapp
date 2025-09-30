@@ -26,7 +26,7 @@ export default class Email {
     const password_reset_email_html_template = renderHtmlTemplate('server/utils/email/passwordReset.html', info);
     return this.transport().sendMail({
       to: info.email,
-      from: `Desta Alcohol and Liquor Factory <${process.env.AppGmailAccount}>`,
+      from: `Desta Alcohol and Liquor Factory <${process.env.SMTP_USER}>`,
       subject: 'Your password reset token (valid for 10 minutes)',
       html: password_reset_email_html_template,
       text: convert(password_reset_email_html_template)
@@ -37,7 +37,7 @@ export default class Email {
     const confirm_newsletterSub_email_html_template = renderHtmlTemplate('server/utils/emailTemplates/newsletter/confirmSub.html', info);
     return this.transport().sendMail({
       to: info.email,
-      form: `Desta Alcohol and Liquor Factory <${process.env.AppGmailAccount}>`,
+      form: `Desta Alcohol and Liquor Factory <${process.env.SMTP_USER}>`,
       subject: 'destaAlcohol&Liquor newsletter confirmaition',
       html: confirm_newsletterSub_email_html_template,
       text: convert(confirm_newsletterSub_email_html_template)
@@ -50,7 +50,7 @@ export default class Email {
 
     return this.transport().sendMail({
       to: info.email,
-      form: `Desta Alcohol and Liquor Factory <${process.env.AppGmailAccount}>`,
+      form: `Desta Alcohol and Liquor Factory <${process.env.SMTP_USER}>`,
       subject: info.subject,
       html: newsletter_email_html_template,
       text: convert(newsletter_email_html_template)
@@ -60,13 +60,12 @@ export default class Email {
   // Contact us
   contactus(info){
     return this.transport().sendMail({
-      to: process.env.AppGmailAccount,
-      form: `${info.name},${info.phone}, <${info.email}>`,
-      subject: info.subject,
+      to: process.env.SMTP_USER,
+      form: `<${process.env.SMTP_USER}>${info.name},${info.phone}, <${info.email}>`,
+      subject: `FROM DALF WEBSITE : ${info.subject}`,
       text: info.message
     })  
   }
-
 }
 
 

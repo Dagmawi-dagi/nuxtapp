@@ -301,5 +301,21 @@ export const API_INFO = {
         fileUpload: [],
         reqBodyValidation:{},
     },
+    "/api/newsletter/POST" : { 
+        method: 'POST',
+        auth: true,
+        restrict:['admin'],
+        fileUpload: [],
+        reqBodyValidation:{ bool:true,modelRef:'newsletter', schemaName: 'base'},
+    },
 
+    // ------------------------------contact Us--------------------------
+
+    "/api/contactUS/POST" : { 
+        method: 'POST',
+        auth: false,
+        restrict:[],
+        fileUpload: [],
+        reqBodyValidation:{},
+    },
 }

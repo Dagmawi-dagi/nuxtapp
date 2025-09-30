@@ -4,29 +4,78 @@ import { herosction } from "../public/site_info_ref";
 import logo from '@/assets/pictures/Products/alcohol 70.png';
 // libs
 import gsap from 'gsap';
-//vue
-import { onMounted } from 'vue'
+//composables
+const { tablet,mobilePhone } = useBreakPoint()
 
+const resizeImg = computed(()=>{
+    if( mobilePhone.value) {
+        return  [
+            { marginLeft: "54%"},
+            { marginRight: "54%"},
+            { marginLeft: "61%"},
+            { marginRight: "61%"},
+            { marginLeft: "67%"},
+            { marginRight: "67%"},
+            { marginLeft: "72%"},
+            { marginRight: "72%"},
+            { marginLeft: "15%"}
+        ]
+    }
+    if(tablet.value) {
+        return [
+            { marginLeft: "55%"},
+            { marginRight: "55%"},
+            { marginLeft: "64%"},
+            { marginRight: "64%"},
+            { marginLeft: "72%"},
+            { marginRight: "72%"},
+            { marginLeft: "79%"},
+            { marginRight: "79%"},
+            { marginLeft: "4%"}
+        ] 
+    }
+    return [
+            { marginLeft: "56%"},
+            { marginRight: "56%"},
+            { marginLeft: "65%"},
+            { marginRight: "65%"},
+            { marginLeft: "74%"},
+            { marginRight: "74%"},
+            { marginLeft: "82%"},
+            { marginRight: "82%"},
+            { marginLeft: "-1%"}
+        ]
+})
+
+const resizeneon = computed(()=>{
+    if( mobilePhone.value) {
+        return { width: "410px"}
+    }
+    if(tablet.value) {
+        return { width: "570px"}
+    }
+    return { width: "600px"}
+})
 onMounted(()=>{
     
-    gsap.to(".img1",{ scale: "1.5", duration: 1,ease:"linear"}).then((el)=>{
-        gsap.to(".img1",{ scale: "1.3", duration: 3,ease:"linear"})
+    gsap.to(".img1",{ scale: "1.4", duration: 1,ease:"linear"}).then((el)=>{
+        gsap.to(".img1",{ scale: "1.3", duration: 2,ease:"linear"})
     })
 
-    gsap.to(".img2",{ marginLeft: "54%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img3",{ marginRight: "54%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img4",{ marginLeft: "61%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img5",{ marginRight: "61%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img6",{ marginLeft: "67%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img7",{ marginRight: "67%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img8",{ marginLeft: "72%",  duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img9",{ marginRight: "72%", duration: 2, delay: 1, ease:"linear"})
-    gsap.to(".img10",{ marginLeft: "15%", duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img2",{...resizeImg.value[0],  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img3",{ ...resizeImg.value[1], duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img4",{ ...resizeImg.value[2],  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img5",{ ...resizeImg.value[3], duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img6",{ ...resizeImg.value[4],  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img7",{ ...resizeImg.value[5], duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img8",{ ...resizeImg.value[6],  duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img9",{ ...resizeImg.value[7], duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img10",{ ...resizeImg.value[8], duration: 2, delay: 1, ease:"linear"})
     // stagger effect (fade in one by one)
     gsap.to(".img",{ opacity: 1, duration: 3, delay:1, stagger: .3})
     // the neon light
     const tl = gsap.timeline()
-    tl.to(".neon-light",{ width: "450px", duration: 4,ease:"slow" })
+    tl.to(".neon-light",{ ...resizeneon.value, duration: 4,ease:"slow" })
     .to(".neon-light",{ top: "20%", duration: 1})
     .to(".neon-light",{ top: "0", duration: 1,ease:"slow" })
     .to(".neon-light",{ top: "40%", duration: 1,ease:"slow" })

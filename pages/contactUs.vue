@@ -4,6 +4,10 @@ definePageMeta({
     name: 'contactUs',
 })
 
+useHead({
+  title: "contact us"
+})
+
 // store
 // import { global_apihandler } from '../plugIn/axios/global-api-hadler';
 // vue
@@ -14,7 +18,7 @@ const isSubmitting = ref(false)
 const form = reactive({
   name: '',
   email: '',
-  phone: '',
+  phoneNumber: '',
   subject: '',
   message: ''
 })
@@ -22,7 +26,7 @@ const form = reactive({
 const errors = reactive({
   name: '',
   email: '',
-  phone: '',
+  phoneNumber: '',
   subject: '',
   message: ''
 })
@@ -49,13 +53,13 @@ const validateForm = () => {
     isValid = false
   }
 
-  // Phone validation
-  const phoneRegex = /^\+?[\d\s-]{10,}$/
-  if (!form.phone.trim()) {
-    errors.phone = 'Phone number is required'
+  // phoneNumber validation
+  const phoneNumberRegex = /^\+?[\d\s-]{10,}$/
+  if (!form.phoneNumber.trim()) {
+    errors.phoneNumber = 'phoneNumber number is required'
     isValid = false
-  } else if (!phoneRegex.test(form.phone)) {
-    errors.phone = 'Please enter a valid phone number'
+  } else if (!phoneNumberRegex.test(form.phoneNumber)) {
+    errors.phoneNumber = 'Please enter a valid phoneNumber number'
     isValid = false
   }
 
@@ -76,17 +80,18 @@ const validateForm = () => {
 
 const handleSubmit = async () => {
   if (!validateForm()) return
-
   isSubmitting.value = true
-  
   try {
-    const data = await global_apihandler('contactus-contact',{data: form})
-    console.log(data);
-    // Reset form after successful submission
-    Object.keys(form).forEach(key => form[key] = '')
-    alert('Message sent successfully!')
-  } catch (error) {
-    alert('Failed to send message. Please try again.')
+   await $fetch('/api/contactUs',{
+      method:'POST',
+      headers:{
+        apiref:'/api/contactUS/POST'
+      },
+      body:form
+    })
+    frontEndErrorFeedback().success('Message sent successfully!')
+  } catch (err) {
+    frontEndErrorFeedback().err(err)
   } finally {
     isSubmitting.value = false
   }
@@ -104,7 +109,9 @@ const handleSubmit = async () => {
       <div class="contact-info">
         <h4 class="info-title">Have Questions?</h4>
         <h5 class="info-subtitle">Get in Touch!</h5>
-        <p style="margin: 10px 0 20px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ea praesentium impedit debitis animi sint, facilis</p>
+        <p style="margin: 10px 0 20px;">
+          We're here to help and answer any questions you might have. We look forward to hearing from you. Feel free to reach out to us using any of the following contact methods.
+        </p>
         <div class="contact-details">
           <div class="contact-item">
 
@@ -167,12 +174,12 @@ const handleSubmit = async () => {
 
           <div class="form-group">
             <input 
-              v-model="form.phone"
+              v-model="form.phoneNumber"
               type="tel"
-              placeholder="Phone"
-              :class="{ 'error': errors.phone }"
+              placeholder="phoneNumber"
+              :class="{ 'error': errors.phoneNumber }"
             />
-            <span v-if="errors.phone" class="error-message">{{ errors.phone }}</span>
+            <span v-if="errors.phoneNumber" class="error-message">{{ errors.phoneNumber }}</span>
           </div>
 
           <div class="form-group">
@@ -338,7 +345,8 @@ const handleSubmit = async () => {
   min-width: 167px;
   margin-top: 1.5rem;
   padding: 0.75rem 2rem;
-  background:linear-gradient(135deg, #0a1525 0%, #152a4a 100%);
+  background:radial-gradient(circle at 50% 50%, #0072b8, #152a4a 330%);
+  
   color: white;
   border: none;
   border-radius: 0.375rem;
