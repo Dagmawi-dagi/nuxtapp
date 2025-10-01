@@ -317,3 +317,83 @@ export const customerReview = [
         rating: 5
     },
 ]
+
+
+
+export const FactorySellingPrice = [
+    {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 205.31,
+        "Excise tax":164.25,
+        "VAT":55.43,
+        "Excise tax+VAT":219.68,
+        "Total price with Excise tax & VAT":425.00
+    }
+]
+
+export const AgentsSellingPrice = [
+  {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+      {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+      {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+      {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+      {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+      {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+      {
+        "id": 1,
+        "item": '1000 ml Vodka',
+        "Price before any tax": 207.31,
+        "Excise tax":170.25,
+        "VAT":60.43,
+        "Excise tax+VAT":230.68,
+        "Total price with Excise tax & VAT":400.00
+    },
+]

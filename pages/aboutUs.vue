@@ -7,6 +7,54 @@ definePageMeta({
     name: 'aboutUs',
 })
 
+useSeoMeta({
+  title: "About Us - DESTA ALCOHOL & LIQUOR PLC",
+  description: "Learn about DESTA ALCOHOL & LIQUOR PLC, Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Discover our mission, vision, core values, and team.",
+  ogTitle: "About Us - DESTA ALCOHOL & LIQUOR PLC",
+  ogDescription: "Learn about DESTA ALCOHOL & LIQUOR PLC, Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Discover our mission, vision, core values, and team.",
+  ogImage:"https://www.destaalcohol.com/pictures/desta-logo.png", // choose a hero image or team image
+  ogUrl: "https://www.destaalcohol.et/aboutUs",
+  twitterCard: "summary_large_image"
+})
+
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      key: 'about-org',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DESTA ALCOHOL & LIQUOR PLC",
+        "url": "https://www.destaalcohol.et",
+        "logo": "https://www.destaalcohol.com/pictures/desta-logo.png",
+        "foundingDate": "2001",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "Mr. Tsigabu belay Desta"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/destaalcohol",
+          "https://twitter.com/destaalcohol",
+          "https://www.linkedin.com/company/destaalcohol",
+          "https://www.instagram.com/destaalcohol"
+        ],
+        "employee": [
+          {
+            "@type": "Person",
+            "name": "Mussie Hagos",
+            "jobTitle": "General Manager"
+          }
+        ],
+        "description": "DESTA ALCOHOL & LIQUOR PLC is Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Learn about our mission, vision, objectives, and core values."
+      })
+    } 
+  ]
+})
+
+
 const { any_open_modal } = storeToRefs( useUtilStore() )
 const { blogPosts,page,perPage } = storeToRefs( useBlogStore() )
 try {
@@ -218,7 +266,7 @@ const openProductModal = (product)=>{
             <MazCard  v-for="(rev, i) in customerReview" :key="i"  style="min-width: 300px; max-width: 300px;" >
                 <template #content>
                     <div style="display: flex; gap: 10px; align-items: center;">
-                        <img src="/assets/pictures/desta-logo.png" alt="" style="width: 60px; height: 60px;">
+                        <img src="/assets/pictures/desta-logo.png" alt="logo" style="width: 60px; height: 60px;">
                         <div style="display: flex; flex-direction: column;">
                             <span class="customer-name">{{ rev.name }}</span>
                             <span class="customer-location">{{ rev.location }}</span>
@@ -240,7 +288,7 @@ const openProductModal = (product)=>{
 
         <MazCarousel  :hide-scrollbar="false">
             <template #title>  <h4 class="maz-m-0" style="text-align: center;">Latest News</h4> </template>
-            <MazCard class="blogcard" v-for="(blogPost, i) in blogPosts" :key="i"  :images="[`/bslog/${blogPost?.coverImg}`]" :gallery-height="200" style="min-width: 300px; max-width: 400px;" >
+            <MazCard class="blogcard" v-for="(blogPost, i) in blogPosts" :key="i"  :images="[{src:`/bslog/${blogPost?.coverImg}`,alt:'blog post cover image'}]" :gallery-height="200" style="min-width: 300px; max-width: 400px;" >
                 <template #title>
                     <h5 style="margin: 0">  Celebrating 25 Years of Success: A Milestone of Growth and Gratitude </h5>
                     <span style="font-size: 12px; color: #666666;"> {{  format(blogPost.createdAt, 'MMM dd,yyyy') }} </span>

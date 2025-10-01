@@ -4,14 +4,53 @@ definePageMeta({
     name: 'contactUs',
 })
 
-useHead({
-  title: "contact us"
+// Contact Us page SEO
+useSeoMeta({
+  title: "Contact Us - DESTA ALCOHOL & LIQUOR PLC",
+  description: "Get in touch with DESTA ALCOHOL & LIQUOR PLC. Contact us via phone, email, or our contact form for inquiries, orders, and customer support. We're here to help!",
+  ogTitle: "Contact Us - DESTA ALCOHOL & LIQUOR PLC",
+  ogDescription: "Get in touch with DESTA ALCOHOL & LIQUOR PLC. Contact us via phone, email, or our contact form for inquiries, orders, and customer support.",
+  ogUrl: "https://www.destaalcohol.et/contactUs",
+  ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
+  twitterCard: "summary_large_image"
 })
 
-// store
-// import { global_apihandler } from '../plugIn/axios/global-api-hadler';
-// vue
-import { ref, reactive } from 'vue';
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      key: 'contact-org',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Us - DESTA ALCOHOL & LIQUOR PLC",
+        "description": "Contact page for DESTA ALCOHOL & LIQUOR PLC - Premium Alcohol & Liquor producer in Ethiopia",
+        "url": "https://www.destaalcohol.et/contactUs",
+        "mainEntity": {
+          "@type": "Organization",
+          "name": "DESTA ALCOHOL & LIQUOR PLC",
+          "telephone": [
+            "+251 914300007",
+            "+251 914705089", 
+            "+251 914314811"
+          ],
+          "email": "destaalcohol@gmail.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "telephone": "+251 914300007",
+            "email": "destaalcohol@gmail.com",
+            "availableLanguage": ["English", "Amharic"]
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "Ethiopia"
+          }
+        }
+      })
+    }
+  ]
+})
 
 const isSubmitting = ref(false)
 

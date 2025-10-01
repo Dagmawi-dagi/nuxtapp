@@ -12,6 +12,108 @@ import { PaginationBar, PaginationPageNumbers, PaginationPreviousPage, Paginatio
 const { mobilePhone ,tablet } = useBreakPoint()
 const { any_open_modal } = storeToRefs( useUtilStore() )
 const { blogPosts,page,perPage } = storeToRefs( useBlogStore() )
+const catagoriesCount = ref({
+    info: 0,
+    event: 0,
+    social: 0,
+    news: 0,
+})
+const totalBlogCount = ref()
+const searcq = ref('')
+const recentPosts = ref([])
+try {
+    const { data } = await useFetch('/api/blog', {
+        headers: {
+            apiref: '/api/blog/GET',
+        },
+    })
+    blogPosts.value = data.value?.data
+    recentPosts.value =  data.value?.data.slice(0, 3);
+} catch (err) {
+    frontEndErrorFeedback().err(err)
+    console.log(err);
+}
+
+// Blog listing page SEO with composition API
+
+const blogMetaDescription = computed(() => {
+  if (blogPosts.value && blogPosts.value.length > 0) {
+    const categories = [...new Set(blogPosts.value.flatMap(post => post.category))].join(', ')
+    return `Read our latest articles on ${categories}. ${blogPosts.value[0].content_short?.substring(0, 120)}...`
+  }
+  return "Explore the latest news, articles, and updates from DESTA ALCOHOL & LIQUOR PLC."
+})
+
+useSeoMeta({
+  title: "Blog - DESTA ALCOHOL & LIQUOR PLC",
+  description: blogMetaDescription,
+  ogTitle: "Blog - DESTA ALCOHOL & LIQUOR PLC",
+  ogDescription: blogMetaDescription,
+  ogUrl: "https://www.destaalcohol.et/blog",
+  ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
+  twitterCard: "summary_large_image",
+  keywords: computed(() => {
+    if (blogPosts.value && blogPosts.value.length > 0) {
+      const allCategories = blogPosts.value.flatMap(post => post.category)
+      const uniqueCategories = [...new Set(allCategories)]
+      return `desta alcohol blog, ${uniqueCategories.join(', ')}, ethiopia liquor news, premium drinks`
+    }
+    return "alcohol blog, liquor news, DESTA updates, premium drinks"
+  })
+})
+
+// Structured data for blog listing
+const blogSchema = computed(() => ({
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "DESTA ALCOHOL & LIQUOR PLC Blog",
+  "description": "Latest news and articles about premium alcohol products from DESTA ALCOHOL & LIQUOR PLC",
+  "url": "https://www.destaalcohol.et/blog",
+  "publisher": {
+    "@type": "Organization",
+    "name": "DESTA ALCOHOL & LIQUOR PLC",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.destaalcohol.com/pictures/desta-logo.png"
+    }
+  },
+  "blogPost": blogPosts.value?.map(post => ({
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.content_short,
+    "author": {
+      "@type": "Organization",
+      "name": "DESTA ALCOHOL & LIQUOR PLC"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DESTA ALCOHOL & LIQUOR PLC",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.destaalcohol.com/pictures/desta-logo.png"
+      }
+    },
+    "datePublished": post.createdAt,
+    "dateModified": post.updatedAt,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.destaalcohol.et/blog#post-${post.id}`
+    },
+    "image": post.coverImg ? `https://www.destaalcohol.et/${post.coverImg}` : "https://www.destaalcohol.com/pictures/desta-logo.png",
+    "keywords": post.category?.join(', '),
+    "articleSection": post.category?.[0] || "News"
+  })) || []
+}))
+
+useHead({
+  script: [
+    {
+      key: 'blog-org',
+      type: 'application/ld+json',
+      children: JSON.stringify(blogSchema.value)
+    },
+  ]
+})
 
 const openBlogPostModal = (post)=>{
     any_open_modal.value.bool = true
@@ -37,27 +139,7 @@ onMounted(()=>{
     document.querySelectorAll('.blogcard').forEach(el => observer.observe(el));
 })
 
-const catagoriesCount = ref({
-    info: 0,
-    event: 0,
-    social: 0,
-    news: 0,
-})
-const totalBlogCount = ref()
-const searcq = ref('')
-const recentPosts = ref()
 
-try {
-    const { data } = await useFetch('/api/blog', {
-        headers: {
-            apiref: '/api/blog/GET',
-        },
-    })
-    blogPosts.value = data.value?.data
-} catch (err) {
-    frontEndErrorFeedback().err(err)
-    console.log(err);
-}
 
 function pagination_change () {
     console.log('blog pagination_change');
@@ -85,20 +167,21 @@ const onsearch  = ()=>{
             <main class="main-content">
                 <!-- Blog posts -->
                 <MazCard  v-for="(blogPost,i) in blogPosts" :key="i" 
-                    :images="[`blog/${blogPost.coverImg}`]" 
+                    :images="[{src:`blog/${blogPost.coverImg}`,alt:'blog post cover image'}]" 
+                    zoom
                     :orientation="mobilePhone ? 'column' : 'row'  " 
                     :galleryWidth=" tablet ?  '250px': '300px' "
                     :galleryHeight="'250px'"
                     class="blogcard"
                 >
                     <template #title>
-                        <span  class="blog-card-date"> {{  format(blogPost.createdAt, 'MMMM dd,yyyy') }} </span>
+                        <span  class="blog-card-date"> {{  format(blogPost.createdAt, 'MMM dd,yyyy') }} </span>
                         <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500;"> {{ blogPost.title }} </h3>
                     </template>
                     <template #content>
                         <div class="maz-text-muted" >
                             <div  class="quill-html-content" v-html="`${blogPost.content_short}`"> </div>
-                            <a href="#" class="card__link"  @click.stop="openBlogPostModal(blogPost)">Read Full Article <span class="arrow">→</span></a>
+                            <button class="card__link"  @click.stop="openBlogPostModal(blogPost)">Read Full Article <span class="arrow">→</span></button>
                         </div>
                     </template>
                 </MazCard>
@@ -127,13 +210,13 @@ const onsearch  = ()=>{
                     <div class="recent-posts">
                         <MazCard   v-for="(blogPost,i) in recentPosts" :key="i" 
                             @click.stop="openBlogPostModal(blogPost)"
-                            :images="[`https://unsplash.com/photos/welcome-center-building-with-mountain-backdrop-VMlIOzs_kkg`]" 
+                            :images="[{src:`blog/${blogPost.coverImg}`,alt:'blog post cover image'}]" 
                             :orientation="'row'" 
-                            :galleryWidth="'50px'"
+                            :galleryWidth="'100px'"
                             class="blogcard recent">
                             <template #title>
-                                <span  class="blog-card-date" style="display: block;"> {{  format(blogPost.createdAt, 'MMMM dd,yyyy') }} </span>
-                                <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500;"> {{ blogPost.title }} </h3>
+                                <span  class="blog-card-date" style="display: block;"> {{  format(blogPost.createdAt, 'MMM dd,yyyy') }} </span>
+                                <h3 style="margin: 0; margin-bottom: 20px; font-weight: 500; font-size: 12px;"> {{ blogPost.title }} </h3>
                             </template>
                         </MazCard>
                     </div>
