@@ -4,6 +4,8 @@ definePageMeta({
     name: 'order',
 })
 
+const {mobilePhone} = useBreakPoint()
+
 const orderMail = async (FD,form$)=>{
     const formData = new FormData()
     formData.append('fullName', form$.data.fullName)
@@ -34,7 +36,7 @@ const orderMail = async (FD,form$)=>{
 </script>
 
 <template>
-  <Vueform style="width: 50%; margin: 2rem auto;" :endpoint="orderMail" >
+  <Vueform style="margin: 2rem auto;" :endpoint="orderMail" :style="{width: mobilePhone ? '90%':'50%' }" >
     <StaticElement
       name="header"
       tag="h3"
