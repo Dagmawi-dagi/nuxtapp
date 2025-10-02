@@ -100,7 +100,7 @@ const blogSchema = computed(() => ({
       "@id": `https://www.destaalcohol.et/blog#post-${post.id}`
     },
     "image": post.coverImg ? `https://www.destaalcohol.et/${post.coverImg}` : "https://www.destaalcohol.com/pictures/desta-logo.png",
-    "keywords": post.categorys,
+    "keywords": post.category?.join(', '),
     "articleSection": post.category?.[0] || "News"
   })) || []
 }))
