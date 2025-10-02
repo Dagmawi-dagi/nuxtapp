@@ -1,7 +1,24 @@
-export const address = {
-    phonenumbers: ['+251 958555555'] ,
-    email: ['dagmawu']
-}
+export const address = [
+    {
+        name: 'DALF',
+        email: 'destaalcohol@gmail.com'
+    },
+    {
+        name: 'MusseHagos',
+        email: 'destaalcohol@gmail.com',
+        phoneNumber:'+251 914300007'
+    },
+    {
+        name: 'Amdom',
+        email: '2020Amdom@gmail.com',
+        phoneNumber:'+251 914705089'
+    },
+    {
+        name:'Rahel',
+        email:'',
+        phoneNumber:'+251 914314811'
+    }
+]
 
 export const manager = {
     quote: "Research, Consult, Train, Elevate Excellence in Every Endeavor.",
@@ -37,10 +54,10 @@ export const aboutUsCardswithIcon = {
 
 export const ourNumbers = {
     products: "12",
-    Employees: "140",
+    Employees: "80",
     Warehouses: "2",
     Plants:"1",
-    Customers:"100"
+    Customers:"200"
 }
 
 export const  products = [
@@ -54,7 +71,6 @@ export const  products = [
         bgColor: '#e6edff',
         color:'#0072b8',
         borderColor: '#0072b8',
-
     },
     {   
         name: "Desta Uozo", 
@@ -297,7 +313,6 @@ export const customerReview = [
 ]
 
 
-
 export const FactorySellingPrice = [
  {
     "id": 1,
@@ -456,13 +471,4 @@ export const FactorySellingPrice = [
 ]
 
 export const AgentsSellingPrice = [
-  {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
 ]
