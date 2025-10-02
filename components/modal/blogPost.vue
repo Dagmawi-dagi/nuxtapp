@@ -23,7 +23,7 @@ const showimg = (imgRef,isArr,index)=>{
                 <div class="cat"> 
                     <span v-for="cat in blogPost.category">{{ cat }}</span>
                 </div>
-                <img src="/public/pictures/logo.jpg" alt="logo" class="author-image">
+                <img src="/public/pictures/desta-logo.png" alt="logo" class="author-image">
             </div>
             <div class="content">
                 <div class="date">{{  format(new Date(blogPost.createdAt), 'MMMM dd,yyyy') }} </div>

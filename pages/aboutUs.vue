@@ -91,8 +91,8 @@ const openProductModal = (product)=>{
                 <div class="about-content">
 
                     <div class="brand-info">
-                        <p class="brand-tagline">SINCE</p>
-                        <h1 class="brand-name">2001 G.C</h1>
+                        <p class="brand-tagline" style="color: #0072b8;">SINCE</p>
+                        <h1 class="brand-name" style="color: #0072b8;">2001 G.C</h1>
                         <h3 class="header">ABOUT US</h3>
                     </div>
                     
@@ -107,7 +107,7 @@ const openProductModal = (product)=>{
                     <div v-else-if="par.includes('•') && !par.includes('<ul>')">
                         <h3
                         class="section-title"
-                        style="opacity:0.9; top: 10px;  margin-bottom: 20px; color: #0072b8; font-weight: bold;"
+                        style="opacity:0.9; top: 10px;  margin-bottom: 20px; color: #0072b8;"
                         >
                         • {{ par.split('•')[1] }}
                         </h3>
@@ -118,7 +118,7 @@ const openProductModal = (product)=>{
                     <div v-else-if="par.includes('<ul>')">
                         <h3
                         class="section-title"
-                        style="opacity:0.9; top: 10px;  margin-bottom: 20px; color: #0072b8; font-weight: bold;"
+                        style="opacity:0.9; top: 10px;  margin-bottom: 20px; color: #0072b8; "
                         >
                         • {{ par.split('•')[1] }}
                         </h3>
@@ -288,7 +288,7 @@ const openProductModal = (product)=>{
 
         <MazCarousel  :hide-scrollbar="false">
             <template #title>  <h4 class="maz-m-0" style="text-align: center;">Latest News</h4> </template>
-            <MazCard class="blogcard" v-for="(blogPost, i) in blogPosts" :key="i"  :images="[{src:`/bslog/${blogPost?.coverImg}`,alt:'blog post cover image'}]" :gallery-height="200" style="min-width: 300px; max-width: 400px;" >
+            <MazCard class="blogcard" v-for="(blogPost, i) in blogPosts" :key="i"  :images="[{src:`/blog/${blogPost?.coverImg}`,alt:'blog post cover image'}]" :gallery-height="200" style="min-width: 300px; max-width: 400px;" >
                 <template #title>
                     <h5 style="margin: 0">  Celebrating 25 Years of Success: A Milestone of Growth and Gratitude </h5>
                     <span style="font-size: 12px; color: #666666;"> {{  format(blogPost.createdAt, 'MMM dd,yyyy') }} </span>
@@ -296,7 +296,7 @@ const openProductModal = (product)=>{
                 <template #content>
                     <div class="maz-text-muted" style="margin: 0; margin-top: 10px">
                         {{ blogPost.content_short }}
-                        <a href="#" class="card__link"  @click.stop="openBlogPostModal(blogPost)">Readmore <span class="arrow">→</span></a>
+                        <button  class="card__link"  @click.stop="openBlogPostModal(blogPost)">Readmore <span class="arrow">→</span></button>
                     </div>
                 </template>
             </MazCard>

@@ -215,61 +215,39 @@ export const  products = [
     },
 ]
 
-export const communityImages = {
-    sport : [
-        {
-            img : "test.jpg",
-            p: ["","",""]
-        },
-        {
-            img : "test.jpg",
-            p: ["","",""]
-
-        },
-        {
-            img : "test.jpg",
-            p: ["","",""]
-        },
-        {
-            img : "test.jpg",
-            p: ["","",""]
-
-        },
-        
-        {
-            img: "test2.png",
-            p: ["","",""]
-        },
-                {
-            img: "test2.png",
-            p: ["","",""]
-        },
-                {
-            img: "test2.png",
-            p: ["","",""]
-        },
-                {
-            img: "test2.png",
-            p: ["","",""]
-        },
-                {
-            img: "test2.png",
-            p: ["","",""]
-        },
-    ],
-    others: [
-        {
-            img : "test.jpg",
-            p: ["","",""]
-
-        },
-        {
-            img: "test2.png",
-            p: ["","",""]
-
-        }
-    ]
-}
+export const Gallery = [
+    {   
+        "title": "Community Sport",
+        "images" : ["test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg"],
+        "p": [
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint."
+        ]
+    },
+    {   
+        "title": "Certifications",
+        "images" : ["test.jpg"],
+        "p": [
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint."
+        ]
+    },
+    {   
+        "title": "our Compound",
+        "images" : ["test.jpg"],
+        "p": [
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+        ]
+    },
+    {   
+        "title": "our Stuff",
+        "images" : ["test.jpg"],
+        "p": [
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+        ]
+    },
+]
 
 export const aboutUs_p = [
     "Desta Alcohol and Liquors Factory Plc. was started its operating businesses in 2001 G.C by the leading purposes of producing and supplying high quality alcohols and liquors targeted for domestic and export markets. The factory is situated in the northern region of Ethiopia, in the capital city of Tigray, Mekelle. It is found and laid down on a total land area of 43,000m2 in the endowed high land area of Quiha. Since its establishment, the factory has served its customers for above two decades.",
@@ -321,73 +299,164 @@ export const customerReview = [
 
 
 export const FactorySellingPrice = [
+ {
+    "id": 1,
+    "item": "Vodka 1000ml",
+    "Price before any tax": 659.66,
+    "Excise tax": 527.73,
+    "VAT": 178.11,
+    "Excise tax+VAT": 705.84,
+    "Total price with Excise tax & VAT": 1400.00
+  },
+  {
+    "id": 2,
+    "item": "Vodka 750ml",
+    "Price before any tax": 563.04,
+    "Excise tax": 450.43,
+    "VAT": 151.97,
+    "Excise tax+VAT": 602.40,
+    "Total price with Excise tax & VAT": 1195.01
+  },
+  {
+    "id": 3,
+    "item": "Vodka 500ml",
+    "Price before any tax": 466.43,
+    "Excise tax": 373.14,
+    "VAT": 125.88,
+    "Excise tax+VAT": 499.02,
+    "Total price with Excise tax & VAT": 989.45
+  },
+  {
+    "id": 4,
+    "item": "Ouzo 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
     {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 205.31,
-        "Excise tax":164.25,
-        "VAT":55.43,
-        "Excise tax+VAT":219.68,
-        "Total price with Excise tax & VAT":425.00
-    }
+    "id": 5,
+    "item": "Gin 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+    {
+    "id": 6,
+    "item": "Gin 500ml",
+    "Price before any tax": 70.29,
+    "Excise tax": 56.23,
+    "VAT": 18.94,
+    "Excise tax+VAT": 75.17,
+    "Total price with Excise tax & VAT": 145.46
+  },
+  {
+    "id": 7,
+    "item": "Gin 250ml",
+    "Price before any tax": 32.37,
+    "Excise tax": 25.89,
+    "VAT": 8.74,
+    "Excise tax+VAT": 34.63,
+    "Total price with Excise tax & VAT": 66.00
+  },
+  {
+    "id": 8,
+    "item": "Zebib 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+  {
+    "id": 9,
+    "item": "Superment 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+  {
+    "id": 10,
+    "item": "Lemon 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+  {
+    "id": 11,
+    "item": "Coffee 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+  {
+    "id": 12,
+    "item": "Apple 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+  {
+    "id": 13,
+    "item": "Annanas 890ml",
+    "Price before any tax": 157.25,
+    "Excise tax": 125.80,
+    "VAT": 42.16,
+    "Excise tax+VAT": 167.96,
+    "Total price with Excise tax & VAT": 325.41
+  },
+ 
+  {
+    "id": 14,
+    "item": "Denature Alcohol 95% 1000ml",
+    "Price before any tax": 286.96,
+    "Excise tax": 0.00,
+    "VAT": 43.04,
+    "Excise tax+VAT": 43.04,
+    "Total price with Excise tax & VAT": 330.00
+  },
+  {
+    "id": 15,
+    "item": "Denature Alcohol 70% 1000ml",
+    "Price before any tax": 252.17,
+    "Excise tax": 0.00,
+    "VAT": 37.83,
+    "Excise tax+VAT": 37.83,
+    "Total price with Excise tax & VAT": 290.00
+  },
+  {
+    "id": 16,
+    "item": "Denature Alcohol 70% 250ml",
+    "Price before any tax": 78.26,
+    "Excise tax": 0.00,
+    "VAT": 11.74,
+    "Excise tax+VAT": 11.74,
+    "Total price with Excise tax & VAT": 90.00
+  },
+  {
+    "id": 17,
+    "item": "Santizer 1000ml",
+    "Price before any tax": 286.96,
+    "Excise tax": 0.00,
+    "VAT": 43.04,
+    "Excise tax+VAT": 43.04,
+    "Total price with Excise tax & VAT": 330.00
+  }
 ]
 
 export const AgentsSellingPrice = [
   {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
-      {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
-      {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
-      {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
-      {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
-      {
-        "id": 1,
-        "item": '1000 ml Vodka',
-        "Price before any tax": 207.31,
-        "Excise tax":170.25,
-        "VAT":60.43,
-        "Excise tax+VAT":230.68,
-        "Total price with Excise tax & VAT":400.00
-    },
-      {
         "id": 1,
         "item": '1000 ml Vodka',
         "Price before any tax": 207.31,

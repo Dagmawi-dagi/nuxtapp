@@ -141,7 +141,7 @@ const handleSubmit = async () => {
 
 <template>
   <div class="contact-container">
-    <h3 class="title">Contact Us</h3>
+    <h3 class="title" style="color: #0072b8;">Contact Us</h3>
     
     <div class="contact-content">
       <!-- Contact Info Section -->

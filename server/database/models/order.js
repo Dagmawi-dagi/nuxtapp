@@ -7,6 +7,7 @@ const base = z.object({
     country: z.string().trim().nonempty("country is required"),
     orderArea: z.string().trim().nonempty("orderArea is required"),
     product: z.string().trim().nonempty("product is required"),
+    message: z.string().trim().nonempty("message is required"),
     FileAttachments: z.array(z.string()) // multiple files
         .nonempty("At least one file must be uploaded")
         .max(10, "Maximum 10 files allowed")

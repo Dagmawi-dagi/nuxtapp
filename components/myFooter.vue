@@ -127,7 +127,7 @@ const subscribe =async ()=>{
                         <li><NuxtLink to="/">Home</NuxtLink></li>
                         <li><NuxtLink to="/about-us">About us</NuxtLink></li>
                         <li><NuxtLink to="/blog">Blog</NuxtLink></li>
-                        <li><NuxtLink to="/community">community</NuxtLink></li>
+                        <li><NuxtLink to="/Gallery">Gallery</NuxtLink></li>
                         <li><NuxtLink to="/contact-us">contact-us</NuxtLink></li>
                         <li><NuxtLink to="/vacancy">Career</NuxtLink></li>
                     </ul>

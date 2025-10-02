@@ -29,6 +29,21 @@ try {
     })
     blogPosts.value = data.value?.data
     recentPosts.value =  data.value?.data.slice(0, 3);
+    totalBlogCount.value = blogPosts.value?.length
+        // Reset counts
+    Object.keys(catagoriesCount.value).forEach(key => catagoriesCount.value[key] = 0)
+
+    // Count categories dynamically
+    blogPosts.value?.forEach(post => {
+        post.category.forEach(cat => {
+            if (catagoriesCount.value[cat] !== undefined) {
+                catagoriesCount.value[cat] += 1
+            } else {
+                // Optional: handle categories not in your default object
+                catagoriesCount.value[cat] = 1
+            }
+        })
+    })
 } catch (err) {
     frontEndErrorFeedback().err(err)
     console.log(err);
@@ -152,7 +167,7 @@ const onsearch  = ()=>{
 </script>
 <template>
     <div class="main-container" id="blog-main-container">
-        <h3 class="header">Blog</h3>
+        <!-- <h3 class="header">Blog</h3> -->
 
         <div class="chat" @click="$router.push('/contactUs')">
             <div class="chat-icon">
@@ -181,7 +196,7 @@ const onsearch  = ()=>{
                     <template #content>
                         <div class="maz-text-muted" >
                             <div  class="quill-html-content" v-html="`${blogPost.content_short}`"> </div>
-                            <button class="card__link"  @click.stop="openBlogPostModal(blogPost)">Read Full Article <span class="arrow">→</span></button>
+                            <button class="card__link"  @click.stop="openBlogPostModal(blogPost)">ReadMore <span class="arrow">→</span></button>
                         </div>
                     </template>
                 </MazCard>
@@ -223,12 +238,12 @@ const onsearch  = ()=>{
                 </div>
             </aside>
         </div>
-
+<!-- 
         <PaginationBar v-if="!searcq" class="vpag" v-model="page" :total-row="totalBlogCount" :align="'left'" @change="pagination_change">
             <PaginationPreviousPage/>
             <PaginationPageNumbers/>
             <PaginationNextPage/>
-        </PaginationBar>
+        </PaginationBar> -->
 
         <NewsletterSub style="margin-top: 4rem;"/>
     </div>

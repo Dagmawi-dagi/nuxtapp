@@ -99,15 +99,17 @@ contactus(info, files = []) {
         Phone: ${info.phoneNumber}
         Country: ${info.country}
         Product: ${info.product}
+        Additional message: ${info.message}
       `,
       html: `
         <h3>New Customer Order</h3>
+        <p><strong>Order Area:</strong> ${info.orderArea}</p>
         <p><strong>Full Name:</strong> ${info.fullName}</p>
         <p><strong>Email:</strong> ${info.email}</p>
         <p><strong>Phone:</strong> ${info.phoneNumber}</p>
         <p><strong>Country:</strong> ${info.country}</p>
         <p><strong>Product:</strong> ${info.product}</p>
-        <p><strong>Order Area:</strong> ${info.orderArea}</p>
+        <p><strong>Additional message:</strong> ${info.message}</p>
       `,
       attachments: files.map(file => ({
         filename: file.filename,

@@ -2,9 +2,84 @@
 import { FactorySellingPrice,AgentsSellingPrice } from '@/public/site_info_ref'
 
 definePageMeta({
-    layout:"default",
-    name: 'sellingPrice',
+  layout:"default",
+  name: 'sellingPrice',
 })
+
+useSeoMeta({
+  title: "Factory Selling Prices - DESTA ALCOHOL & LIQUOR PLC",
+  description: "Check the official factory selling prices for DESTA ALCOHOL & LIQUOR PLC products in Ethiopia. View vodka, gin, ouzo, zebib, superment, lemon, coffee, apple, annanas, denatured alcohol, and sanitizer prices with and without tax.",
+  ogTitle: "Factory Selling Prices - DESTA ALCOHOL & LIQUOR PLC",
+  ogDescription: "Official factory price list for Desta Alcohol & Liquor PLC – Vodka, Gin, Ouzo, Zebib, Superment, Lemon, Coffee, Apple, Annanas, Denatured Alcohol, and Sanitizer. Prices include Excise Tax & VAT.",
+  ogUrl: "https://www.destaalcohol.et/sellingPrice",
+  ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
+  twitterCard: "summary_large_image",
+  keywords: "factory alcohol prices Ethiopia, Desta vodka price, Desta gin price, Desta ouzo price, Desta zebib price, Desta liquor PLC price list, Ethiopian liquor factory prices"
+})
+
+const sellingPriceSchema = computed(() => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Factory Selling Prices - DESTA ALCOHOL & LIQUOR PLC",
+  "description": "Official factory alcohol & liquor selling prices including excise tax and VAT in Ethiopia.",
+  "url": "https://www.destaalcohol.et/sellingPrice",
+  "numberOfItems": FactorySellingPrice.length,
+  "itemListElement": FactorySellingPrice.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "name": item.item,
+      "brand": {
+        "@type": "Brand",
+        "name": "DESTA ALCOHOL & LIQUOR PLC"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "ETB",
+        "price": item["Total price with Excise tax & VAT"],
+        "url": "https://www.destaalcohol.et/sellingPrice",
+        "availability": "https://schema.org/InStock",
+        "eligibleRegion": {
+          "@type": "Country",
+          "name": "Ethiopia"
+        }
+      }
+    }
+  }))
+}))
+
+useHead({
+  script: [
+    {
+      key: 'selling-price-schema',
+      type: 'application/ld+json',
+      children: JSON.stringify(sellingPriceSchema.value)
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.destaalcohol.et/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Factory Selling Prices",
+            "item": "https://www.destaalcohol.et/sellingPrice"
+          }
+        ]
+      })
+    }
+  ]
+})
+
 
 
 const { mobilePhone } = useBreakPoint()

@@ -1,8 +1,99 @@
 <script setup>
 definePageMeta({
-    layout:"default",
-    name: 'order',
+  layout: "default",
+  name: "orderForm",
 })
+
+useSeoMeta({
+  title: "Order Online - DESTA ALCOHOL & LIQUOR PLC",
+  description: "Place your order directly with DESTA ALCOHOL & LIQUOR PLC. Choose from vodka, gin, ouzo, zebib, superment, lemon, coffee, apple, annanas, denatured alcohol, and sanitizer. Available for local and export orders in Ethiopia.",
+  ogTitle: "Order Online - DESTA ALCOHOL & LIQUOR PLC",
+  ogDescription: "Submit your order online for Desta Alcohol & Liquor PLC products. Available for Local and Export. Vodka, Gin, Ouzo, Zebib, Superment, Lemon, Coffee, Apple, Annanas, Denatured Alcohol, and Sanitizer.",
+  ogUrl: "https://www.destaalcohol.et/order",
+  ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
+  twitterCard: "summary_large_image",
+  keywords: "order Desta alcohol Ethiopia, Desta vodka order, Desta gin order, Desta ouzo order, Desta zebib order, Desta liquor factory order, Ethiopia alcohol export order, buy liquor Ethiopia online"
+})
+
+useHead({
+  script: [
+    {
+      key: 'order-form-schema',
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Alcohol & Liquor Orders",
+        "provider": {
+          "@type": "Organization",
+          "name": "DESTA ALCOHOL & LIQUOR PLC",
+          "url": "https://www.destaalcohol.et/",
+          "logo": "https://www.destaalcohol.et/pictures/desta-logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+251914300007",
+            "contactType": "customer service",
+            "areaServed": "ET",
+            "availableLanguage": ["en", "am"]
+          }
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Ethiopia"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.destaalcohol.et/order",
+          "priceCurrency": "ETB",
+          "eligibleRegion": {
+            "@type": "Country",
+            "name": "Ethiopia"
+          },
+          "availability": "https://schema.org/InStock"
+        },
+        "potentialAction": {
+          "@type": "OrderAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.destaalcohol.et/order",
+            "inLanguage": "en",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform"
+            ]
+          },
+          "result": {
+            "@type": "Order",
+            "orderStatus": "https://schema.org/OrderProcessing"
+          }
+        }
+      })
+    },
+    {
+      type: 'application/ld+json',
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.destaalcohol.et/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Order Form",
+            "item": "https://www.destaalcohol.et/order"
+          }
+        ]
+      })
+    }
+  ]
+})
+
+
 
 const {mobilePhone,tablet} = useBreakPoint()
 
@@ -11,7 +102,6 @@ const getWidth = computed(()=>{
   if(tablet.value) return '70%'
   return '50%'
 })
-
 const orderMail = async (FD,form$)=>{
     const formData = new FormData()
     formData.append('fullName', form$.data.fullName)
@@ -20,6 +110,7 @@ const orderMail = async (FD,form$)=>{
     formData.append('phoneNumber', form$.data.phoneNumber)
     formData.append('orderArea', form$.data.orderArea)
     formData.append('product', form$.data.product)
+    formData.append('message', form$.data.message)
     form$.data.FileAttachments.forEach(file => { formData.append("FileAttachments", file)});
   
   // send email
@@ -51,6 +142,7 @@ const orderMail = async (FD,form$)=>{
       size="sm"
       bottom="3"
       top="1"
+      style="color: #0072b8;text-transform: capitalize;"
     />
     <RadiogroupElement
       name="orderArea"
@@ -898,6 +990,7 @@ const orderMail = async (FD,form$)=>{
         'required',
       ]"
     />
+
     <SelectElement
       name="product"
       :search="true"
@@ -1705,11 +1798,17 @@ const orderMail = async (FD,form$)=>{
       default="1000"
       size="sm"
     />
-    <CaptchaElement
-      name="captcha"
+    <TextareaElement
+      name="message"
+      label="Additional Message"
+      :rules="[
+        'required',
+      ]"
+      field-name="message"
     />
     <MultifileElement
       name="FileAttachments"
+      label="File Attachments"
       :drop="true"
       :rules="[
           'required',
