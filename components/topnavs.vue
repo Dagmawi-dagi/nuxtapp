@@ -101,6 +101,8 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
                     <a  @click=" $router.push('/').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link">Home</a>
                     <a  @click=" $router.push('/aboutUs').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >About Us</a>
                     <a  @click=" $router.push('/contactUs').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Contact</a>
+                    <a  @click=" $router.push('/sellingPrice').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Selling Price</a>
+                    <a  @click=" $router.push('/order').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Order</a>
                     <a  @click=" $router.push('/blog').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Blog</a>
                     <a  @click=" $router.push('/community').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Community</a>
                     <a  @click=" $router.push('/vacancy').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Career</a>
