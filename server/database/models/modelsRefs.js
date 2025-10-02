@@ -7,6 +7,9 @@ import newsletterSub from '@/server/database/models/newsletterSub'
 import vacancyApplication from '@/server/database/models/vacancyApplication'
 import vacancy from '@/server/database/models/vacancy'
 
+import order from '@/server/database/models/order'
+import contact from '@/server/database/models/contact'
+
 export default {
     test,
     user,
@@ -14,5 +17,8 @@ export default {
     newsletter,
     newsletterSub,
     vacancy,
-    vacancyApplication
+    vacancyApplication,
+
+    order,
+    contact
 }

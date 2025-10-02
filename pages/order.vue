@@ -3,10 +3,38 @@ definePageMeta({
     layout:"default",
     name: 'order',
 })
+
+const orderMail = async (FD,form$)=>{
+    const formData = new FormData()
+    formData.append('fullName', form$.data.fullName)
+    formData.append('email', form$.data.email)
+    formData.append('country', form$.data.country)
+    formData.append('phoneNumber', form$.data.phoneNumber)
+    formData.append('orderArea', form$.data.orderArea)
+    formData.append('product', form$.data.product)
+    form$.data.FileAttachments.forEach(file => { formData.append("FileAttachments", file)});
+  
+  // send email
+    try {
+   await $fetch('/api/order',{
+      method:'POST',
+      headers:{
+        apiref:'/api/order/POST'
+      },
+      body:formData
+    })
+    frontEndErrorFeedback().success('order sent successfully!')
+  } catch (err) {
+    frontEndErrorFeedback().err(err)
+  } finally {
+    // isSubmitting.value = false
+  }
+}
+
 </script>
 
 <template>
-  <Vueform style="width: 50%; margin: 2rem auto;  ">
+  <Vueform style="width: 50%; margin: 2rem auto;" :endpoint="orderMail" >
     <StaticElement
       name="header"
       tag="h3"
@@ -40,7 +68,7 @@ definePageMeta({
       }"
     />
     <TextElement
-      name="FullName"
+      name="fullName"
       label="Full Name"
       size="sm"
       :rules="[
@@ -69,7 +97,7 @@ definePageMeta({
       ]"
     />
     <SelectElement
-      name="Country"
+      name="country"
       :search="true"
       :native="false"
       label="Country"
@@ -1674,20 +1702,18 @@ definePageMeta({
     />
     <MultifileElement
       name="FileAttachments"
-      label="File Attachments"
-      :urls="{}"
       :drop="true"
-      :auto="false"
-      size="sm"
-      :file="{
-        rules: [
-          'mimetypes:application/epub+zip,application/json,application/ld+json,application/pdf',
-        ],
-      }"
       :rules="[
-        'required',
+          'required',
       ]"
-    />
+      field-name="FileAttachments"
+      :urls="{}"
+      size="sm"
+      accept=".pdf" 
+      :clickable="false"
+      :url="false"
+      :upload-temp-endpoint="false" 
+      />
     <ButtonElement
       name="submit "
       button-label="Submit Order"

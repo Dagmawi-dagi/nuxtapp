@@ -213,7 +213,7 @@ export const API_INFO = {
     "/api/vacancy/POST" : { 
         method: 'POST',
         auth: true,
-        restrict:[],
+        restrict:['admin'],
         fileUpload:[],
         reqBodyValidation:{ bool:true,modelRef:'vacancy', schemaName: 'base'},
         addCreatedBy:true
@@ -235,7 +235,7 @@ export const API_INFO = {
     },
     "/api/vacancy/apply/POST" : { 
         method: 'POST',
-        auth: true,
+        auth: false,
         restrict:[],
         fileUpload: [
             {
@@ -316,6 +316,23 @@ export const API_INFO = {
         auth: false,
         restrict:[],
         fileUpload: [],
-        reqBodyValidation:{},
+        reqBodyValidation:{ bool:true,modelRef:'contact', schemaName: 'base'},
+    },
+    // ------------------------------orderMail--------------------------
+
+    "/api/order/POST" : { 
+        method: 'POST',
+        auth: false,
+        restrict:[],
+        fileUpload: [
+            {
+                fieldName: 'FileAttachments',
+                saveFileToFolder: 'order',
+                allowedTypes: ['.pdf'],
+                type:"file",
+                isarray: true
+            },
+        ],
+        reqBodyValidation:{ bool:true,modelRef:'order', schemaName: 'base'},
     },
 }

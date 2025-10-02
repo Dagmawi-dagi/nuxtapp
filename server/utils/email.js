@@ -57,14 +57,63 @@ export default class Email {
     })
   }
 
-  // Contact us
-  contactus(info){
+// Contact us
+contactus(info, files = []) {
+  return this.transport().sendMail({
+    to: process.env.SMTP_GM,
+    from: `Desta Alcohol and Liquor Factory <${process.env.SMTP_USER}>`,
+    subject: `CONTACT US MESSAGE FROM 'destaalcohol.et' WEBSITE : ${info.subject}`,
+    text: `
+      New Contact Us Message:
+
+      Name: ${info.name}
+      Email: ${info.email}
+      Phone: ${info.phoneNumber}
+      Subject: ${info.subject}
+      Message: ${info.message}
+    `,
+    html: `
+      <h3>New Contact Us Message</h3>
+      <p><strong>Name:</strong> ${info.name}</p>
+      <p><strong>Email:</strong> ${info.email}</p>
+      <p><strong>Phone:</strong> ${info.phoneNumber}</p>
+      <p><strong>Subject:</strong> ${info.subject}</p>
+      <p><strong>Message:</strong></p>
+      <p>${info.message}</p>
+    `,
+  });
+}
+
+
+  order(info, files = []) {
     return this.transport().sendMail({
-      to: process.env.SMTP_USER,
-      form: `<${process.env.SMTP_USER}>${info.name},${info.phone}, <${info.email}>`,
-      subject: `FROM DALF WEBSITE : ${info.subject}`,
-      text: info.message
-    })  
+      to: process.env.SMTP_GM,
+      from: `Desta Alcohol and Liquor Factory <${process.env.SMTP_USER}>`,
+      subject: `Customer Order mail from 'destaalcohol.et' WEBSITE`,
+      text: `
+        New Customer Order:
+
+        Order Area: ${info.orderArea}
+        Full Name: ${info.fullName}
+        Email: ${info.email}
+        Phone: ${info.phoneNumber}
+        Country: ${info.country}
+        Product: ${info.product}
+      `,
+      html: `
+        <h3>New Customer Order</h3>
+        <p><strong>Full Name:</strong> ${info.fullName}</p>
+        <p><strong>Email:</strong> ${info.email}</p>
+        <p><strong>Phone:</strong> ${info.phoneNumber}</p>
+        <p><strong>Country:</strong> ${info.country}</p>
+        <p><strong>Product:</strong> ${info.product}</p>
+        <p><strong>Order Area:</strong> ${info.orderArea}</p>
+      `,
+      attachments: files.map(file => ({
+        filename: file.filename,
+        content: file.buffer
+      }))
+    });
   }
 }
 

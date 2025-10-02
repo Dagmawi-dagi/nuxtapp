@@ -55,7 +55,7 @@ useHead({
 const isSubmitting = ref(false)
 
 const form = reactive({
-  name: '',
+  fullName: '',
   email: '',
   phoneNumber: '',
   subject: '',
@@ -63,7 +63,7 @@ const form = reactive({
 })
 
 const errors = reactive({
-  name: '',
+  fullName: '',
   email: '',
   phoneNumber: '',
   subject: '',
@@ -77,8 +77,8 @@ const validateForm = () => {
   Object.keys(errors).forEach(key => errors[key] = '')
 
   // Name validation
-  if (!form.name.trim()) {
-    errors.name = 'Name is required'
+  if (!form.fullName.trim()) {
+    errors.fullName = 'fullName is required'
     isValid = false
   }
 
@@ -193,12 +193,12 @@ const handleSubmit = async () => {
         <div class="form-grid">
           <div class="form-group">
             <input 
-              v-model="form.name"
+              v-model="form.fullName"
               type="text"
               placeholder="Name"
-              :class="{ 'error': errors.name }"
+              :class="{ 'error': errors.fullName }"
             />
-            <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
+            <span v-if="errors.fullName" class="error-message">{{ errors.fullName }}</span>
           </div>
 
           <div class="form-group">
