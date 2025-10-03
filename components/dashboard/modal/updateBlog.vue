@@ -94,14 +94,14 @@ const updateBlog = async (FormD, form$) => {
                 <FileElement
                 name="coverImg"
                 label="coverImg"
-                :preview-url="`${useRuntimeConfig().public.baseURL}/blog/`" 
+                :preview-url="`/blog/`" 
                 :urls="{}"
                 info="blog cover Img"
                 :drop="true"
                 accept="image/*" 
                 view="image"
                 :clickable="true"
-                :url="`${useRuntimeConfig().public.baseURL}/blog/`"
+                :url="`/blog/`"
                 :upload-temp-endpoint="false" 
                 />
                 <ButtonElement
