@@ -239,9 +239,6 @@ const openProductModal = (product)=>{
 
         <div class="profile-card">
             <div class="profile-left">
-                <div class="quote-container">
-                    <blockquote class="profile-quote">{{ manager.quote }}</blockquote>
-                </div>
                 <div class="profile-container">
                     <img src="/public/pictures/manager.jpg" alt="Desta Areki" class="profile-image">
                     <div style="display: flex; flex-direction: column; align-self:center">
@@ -251,6 +248,12 @@ const openProductModal = (product)=>{
                 </div>
             </div>
             <div class="profile-right">
+                <br>
+                <div class="quote-container">
+                    <blockquote class="profile-quote">{{ manager.quote }}</blockquote>
+                </div>
+                <br>
+                <br>
                 <div class="bio-container">
                     <div class="profile-bio">
                         <template v-for="(par, i) in manager.p" :key="i">

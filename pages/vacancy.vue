@@ -137,7 +137,8 @@ const openVacancyApplyModal = (vac)=>{
                     </summary>
                     <div class="content">
                         <div class="job-discriptions"> 
-                            <h5 class="dis">description: <span class="value"> {{ vac.description }} </span> </h5>
+                            <h5 >Description </h5>
+                            <p > {{ vac.description }} </p> 
                         </div>
                         <div  class="quill-html-content" v-html="`${vac.requirements}`"> </div>
                     </div>

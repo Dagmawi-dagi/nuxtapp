@@ -154,6 +154,9 @@
     &:hover {
       color: var(--dark-blue);
     }
+    &.router-link-exact-active{
+      color: #0071b7;
+    }
   }
 }
 

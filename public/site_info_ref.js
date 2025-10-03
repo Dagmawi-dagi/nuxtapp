@@ -23,9 +23,8 @@ export const address = [
 export const manager = {
     quote: "Research, Consult, Train, Elevate Excellence in Every Endeavor.",
     p:[
-        "Lorem Ipsum Dolor Sit Amet Consectetur a Risus Lacus Dapibus Consequat Egestas Blandit. Id Orci Mauris Cursus Nibh Mi Sed Urna Vestibulum. Proin Vel A Gravida Vulputate Auctor Odio Quis Nullam Cursus. Lacus Enim Urna Dapibus Volutpat Cras Consequat Id Facilisis. Feugiat Semper Ultricies Volutpat Adipiscing Velit.",
-        "Lorem Ipsum Dolor Sit Amet Consectetur a Risus Lacus Dapibus Consequat Egestas Blandit. Id Orci Mauris Cursus Nibh Mi Sed Urna Vestibulum. Proin Vel A Gravida Vulputate Auctor Odio Quis Nullam Cursus. Lacus Enim Urna Dapibus Volutpat Cras Consequat Id Facilisis. Feugiat Semper Ultricies Volutpat Adipiscing Velit.",
-        "Viverra Ornare Vulputate Ac Accumsan Sem Sagittis Lacus Pharetra Malesuada Mauris Tristique Iaculis Rutrum. Et Id Imperdiet Auctor Ultricies Sit Vel Senectus Ac. Nisi Enim Urna Gravida Nami Sagittis Et Aliquam Amet. Tellus Natoque Sed Accumsan Nunc Sed Egestas Eu Quis Dolor."
+        "At our company, we believe that true excellence is achieved through dedication, innovation, and collaboration. From the very beginning, our mission has been to deliver solutions that not only meet the needs of our clients but also create a lasting impact in their industries and communities. We are committed to upholding the highest standards of integrity, professionalism, and service in everything we do.",
+        "As General Manager, I am proud to lead a team that shares this vision and works tirelessly to bring it to life. Together, we focus on building trust, driving growth, and fostering meaningful partnerships. Our strength lies in our people, and through their expertise and passion, we continue to grow stronger, achieve more, and move closer to our goal of becoming a trusted leader in our field."
     ]
 }
 
