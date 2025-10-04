@@ -1,5 +1,6 @@
 <script setup>
 import { address } from '@/public/site_info_ref'
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
 
 definePageMeta({
     layout:"default",
@@ -15,7 +16,8 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/contactUs",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
 })
 
 useHead({

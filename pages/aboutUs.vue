@@ -1,7 +1,7 @@
 <script setup>
 import { aboutUs_p,aboutUsCardswithIcon,manager,customerReview,products } from '@/public/site_info_ref';
 import { format } from 'date-fns';
-
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
 definePageMeta({
     layout:"default",
     name: 'aboutUs',
@@ -15,10 +15,11 @@ useSeoMeta({
   ogImage:"https://www.destaalcohol.com/pictures/desta-logo.png", // choose a hero image or team image
   ogUrl: "https://www.destaalcohol.et/aboutUs",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
 })
 
-useHead({
+ useHead({
   script: [
     {
       type: 'application/ld+json',

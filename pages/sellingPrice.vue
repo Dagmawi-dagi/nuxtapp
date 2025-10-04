@@ -1,5 +1,6 @@
 <script setup>
 import { FactorySellingPrice,AgentsSellingPrice } from '@/public/site_info_ref'
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
 
 definePageMeta({
   layout:"default",
@@ -14,8 +15,8 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/sellingPrice",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
-  keywords: "factory alcohol prices Ethiopia, Desta vodka price, Desta gin price, Desta ouzo price, Desta zebib price, Desta liquor PLC price list, Ethiopian liquor factory prices"
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
 })
 
 const sellingPriceSchema = computed(() => ({

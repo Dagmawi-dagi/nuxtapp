@@ -1,6 +1,7 @@
 <script setup>
 // libs
 import { format } from 'date-fns';
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
 
 const { any_open_modal } = storeToRefs( useUtilStore() )
 const { vacancies } = storeToRefs( useVacancyStore() )
@@ -77,7 +78,8 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/vacancy",
   ogImage: "https://www.destaalcohol.et/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', '),
 })
 
 useHead({

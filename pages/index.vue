@@ -1,4 +1,6 @@
 <script setup se>
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
+
 definePageMeta({
   layout: "default",   
   name: "home"
@@ -13,7 +15,8 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/",
   ogImage: "https://www.destaalcohol.et/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
 })
 
 </script>

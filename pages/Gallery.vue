@@ -3,6 +3,7 @@
 import { Gallery } from '@/public/site_info_ref'
 // libs
 import gsap from 'gsap';
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
 
 definePageMeta({
     layout:"default",
@@ -23,8 +24,8 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/gallery",
   ogImage:"https://www.destaalcohol.et/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  keywords: `Desta alcohol gallery, Ethiopia liquor factory photos, ${galleryTitles}`,
-  robots: 'index, follow',
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
 })
 
 useHead({

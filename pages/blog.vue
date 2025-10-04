@@ -67,7 +67,7 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/blog",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
+   robots: 'index, follow',
   keywords: computed(() => {
     if (blogPosts.value && blogPosts.value.length > 0) {
       const allCategories = blogPosts.value.flatMap(post => post.category)

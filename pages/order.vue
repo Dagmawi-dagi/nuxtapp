@@ -1,4 +1,6 @@
 <script setup>
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
+
 definePageMeta({
   layout: "default",
   name: "orderForm",
@@ -12,8 +14,8 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/order",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  robots: 'index, follow',
-  keywords: "order Desta alcohol Ethiopia, Desta vodka order, Desta gin order, Desta ouzo order, Desta zebib order, Desta liquor factory order, Ethiopia alcohol export order, buy liquor Ethiopia online"
+   robots: 'index, follow',
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', '),
 })
 
 useHead({

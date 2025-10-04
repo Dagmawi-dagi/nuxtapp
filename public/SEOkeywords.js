@@ -1,5 +1,4 @@
-// composables/useKeywords.js
-export const SEOKeyWords = () => {
+export const SEO_KEYWORDS = () => {
   const primaryKeywords = [
     'alcohol',
     'liquor', 
@@ -12,17 +11,29 @@ export const SEOKeyWords = () => {
 
   const secondaryKeywords = [
     'Desta alcohol',
-    'Ethiopia alcohol',
-    'Ethiopia liquor',
-    'sanitizer Ethiopia',
-    'alcohol Ethiopia',
-    'liquor Ethiopia',
-    'vodka Ethiopia',
-    'spirits Ethiopia',
-    'Ethiopia premium vodka',
+
+    'Ethiopian premium vodka',
+
+    'Ethiopian  vodka',
+    'Ethiopian  gin',
+    'Ethiopian  Uozo',
+    'Ethiopian  Zebib',
+
+    'Ethiopian  alcohol',
+    'Ethiopian  liquor',
+    'Ethiopian sanitizer',
+    'Ethiopian spirits',
+
     'liquor store',
+    'alcohol store',
+
     'alcohol manufacturer',
+    'liquor manufacturer',
+
     'liquor company',
+    'liquor factory',
+    'alcohol company',
+    'alcohol factory'
   ]
 
   const brandKeywords = [
