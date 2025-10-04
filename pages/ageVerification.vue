@@ -11,7 +11,7 @@ definePageMeta({
 useSeoMeta({
   title: "Age Verification - DESTA ALCOHOL & LIQUOR FACTORY PLC",
   description: "Age verification required to access DESTA ALCOHOL & LIQUOR FACTORY PLC",
-  robots: 'noindex, nofollow, noimageindex' // This is crucial!
+//   robots: 'noindex, nofollow, noimageindex' // This is crucial!
 })
 
 const ageVerificationError = ref({
