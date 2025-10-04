@@ -18,9 +18,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle, $text-blue, 1px, transparent 1px);
+    background-image: radial-gradient(circle, #1492e6, 1px, transparent 1px);
     background-size: 16px 16px;
-    opacity: .16;
+    opacity: .8;
     pointer-events: none;
   }
 }
@@ -37,13 +37,14 @@
     margin: auto;
     margin-bottom: 2rem;
     svg{
-        width: 90px;
-        height:90px;
+        width: 150px;
+        height:150px;
         margin: auto;
         margin-bottom: 10px;
     }
     h4{
-        color: #a0a8b8;
+        color: #fff;
+        opacity: 1 !important;
     }
   
 }
@@ -76,6 +77,8 @@
     background-position: right 12px top 50%;
     background-size: 12px auto;
     cursor: pointer;
+    opacity: 1 !important;
+
 }
 
 /* Heading styles */
@@ -107,12 +110,15 @@
 .date-input input {
     width: 100%;
     padding: 12px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
     color: white;
-    font-size: 16px;
     text-align: center;
+
+    &::placeholder{
+        color: rgb(190, 190, 190) !important;
+    }
 }
 
 

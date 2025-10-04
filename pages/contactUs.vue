@@ -8,13 +8,14 @@ definePageMeta({
 
 // Contact Us page SEO
 useSeoMeta({
-  title: "Contact Us - DESTA ALCOHOL & LIQUOR PLC",
-  description: "Get in touch with DESTA ALCOHOL & LIQUOR PLC. Contact us via phone, email, or our contact form for inquiries, orders, and customer support. We're here to help!",
-  ogTitle: "Contact Us - DESTA ALCOHOL & LIQUOR PLC",
-  ogDescription: "Get in touch with DESTA ALCOHOL & LIQUOR PLC. Contact us via phone, email, or our contact form for inquiries, orders, and customer support.",
+  title: "Contact Us - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  description: "Get in touch with DESTA ALCOHOL & LIQUOR FACTORY PLC. Contact us via phone, email, or our contact form for inquiries, orders, and customer support. We're here to help!",
+  ogTitle: "Contact Us - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  ogDescription: "Get in touch with DESTA ALCOHOL & LIQUOR FACTORY PLC. Contact us via phone, email, or our contact form for inquiries, orders, and customer support.",
   ogUrl: "https://www.destaalcohol.et/contactUs",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
-  twitterCard: "summary_large_image"
+  twitterCard: "summary_large_image",
+  robots: 'index, follow',
 })
 
 useHead({
@@ -25,12 +26,12 @@ useHead({
       innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        "name": "Contact Us - DESTA ALCOHOL & LIQUOR PLC",
-        "description": "Contact page for DESTA ALCOHOL & LIQUOR PLC - Premium Alcohol & Liquor producer in Ethiopia",
+        "name": "Contact Us - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+        "description": "Contact page for DESTA ALCOHOL & LIQUOR FACTORY PLC - Premium Alcohol & Liquor producer in Ethiopia",
         "url": "https://www.destaalcohol.et/contactUs",
         "mainEntity": {
           "@type": "Organization",
-          "name": "DESTA ALCOHOL & LIQUOR PLC",
+          "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
           "telephone": [
             "+251 914300007",
             "+251 914705089", 

@@ -56,17 +56,18 @@ const blogMetaDescription = computed(() => {
     const categories = [...new Set(blogPosts.value.flatMap(post => post.category))].join(', ')
     return `Read our latest articles on ${categories}. ${blogPosts.value[0].content_short?.substring(0, 120)}...`
   }
-  return "Explore the latest news, articles, and updates from DESTA ALCOHOL & LIQUOR PLC."
+  return "Explore the latest news, articles, and updates from DESTA ALCOHOL & LIQUOR FACTORY PLC."
 })
 
 useSeoMeta({
-  title: "Blog - DESTA ALCOHOL & LIQUOR PLC",
+  title: "Blog - DESTA ALCOHOL & LIQUOR FACTORY PLC",
   description: blogMetaDescription,
-  ogTitle: "Blog - DESTA ALCOHOL & LIQUOR PLC",
+  ogTitle: "Blog - DESTA ALCOHOL & LIQUOR FACTORY PLC",
   ogDescription: blogMetaDescription,
   ogUrl: "https://www.destaalcohol.et/blog",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
+  robots: 'index, follow',
   keywords: computed(() => {
     if (blogPosts.value && blogPosts.value.length > 0) {
       const allCategories = blogPosts.value.flatMap(post => post.category)
@@ -81,12 +82,12 @@ useSeoMeta({
 const blogSchema = computed(() => ({
   "@context": "https://schema.org",
   "@type": "Blog",
-  "name": "DESTA ALCOHOL & LIQUOR PLC Blog",
-  "description": "Latest news and articles about premium alcohol products from DESTA ALCOHOL & LIQUOR PLC",
+  "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC Blog",
+  "description": "Latest news and articles about premium alcohol products from DESTA ALCOHOL & LIQUOR FACTORY PLC",
   "url": "https://www.destaalcohol.et/blog",
   "publisher": {
     "@type": "Organization",
-    "name": "DESTA ALCOHOL & LIQUOR PLC",
+    "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
     "logo": {
       "@type": "ImageObject",
       "url": "https://www.destaalcohol.com/pictures/desta-logo.png"
@@ -98,11 +99,11 @@ const blogSchema = computed(() => ({
     "description": post.content_short,
     "author": {
       "@type": "Organization",
-      "name": "DESTA ALCOHOL & LIQUOR PLC"
+      "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "DESTA ALCOHOL & LIQUOR PLC",
+      "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
       "logo": {
         "@type": "ImageObject",
         "url": "https://www.destaalcohol.com/pictures/desta-logo.png"

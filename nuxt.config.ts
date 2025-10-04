@@ -22,24 +22,24 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'DESTA ALCOHOL & LIQUOR PLC',
+      title: 'DESTA ALCOHOL & LIQUOR FACTORY PLC',
       meta: [
         // Global SEO defaults
-        { name: 'author', content: 'DESTA ALCOHOL & LIQUOR PLC' },
-        { name: 'robots', content: 'index, follow' },  // allow crawling
+        { name: 'author', content: 'DESTA ALCOHOL & LIQUOR FACTORY PLC' },
+        // { name: 'robots', content: 'index, follow' },  // allow crawling
 
         // Open Graph (site-wide) LinkedIn, Twitter, WhatsApp, Slack, Telegram and more when your link is shared. They control how your page looks in link previews
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://www.destaalcohol.et/' },
-        { property: 'og:title', content: 'DESTA ALCOHOL & LIQUOR PLC' },
-        { property: 'og:description', content: 'Welcome to DESTA ALCOHOL & LIQUOR PLC – Discover the Art of Distilling Excellence.\n EVERY STEP IS METICULOUSLY CRAFTED TO BRING YOU UNPARALLELED QUALITY AND FLAVOR!.' },
+        { property: 'og:title', content: 'DESTA ALCOHOL & LIQUOR FACTORY PLC' },
+        { property: 'og:description', content: 'Welcome to DESTA ALCOHOL & LIQUOR FACTORY PLC – Discover the Art of Distilling Excellence.\n EVERY STEP IS METICULOUSLY CRAFTED TO BRING YOU UNPARALLELED QUALITY AND FLAVOR!.' },
         { property: 'og:image', content: 'https://www.destaalcohol.et/pictures/desta-logo.png' },
 
         // Twitter (site-wide)
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:url', content: 'https://www.destaalcohol.et/' },
-        { name: 'twitter:title', content: 'DESTA ALCOHOL & LIQUOR PLC' },
-        { name: 'twitter:description', content: 'Welcome to DESTA ALCOHOL & LIQUOR PLC – Discover the Art of Distilling Excellence.\n EVERY STEP IS METICULOUSLY CRAFTED TO BRING YOU UNPARALLELED QUALITY AND FLAVOR!.' },
+        { name: 'twitter:title', content: 'DESTA ALCOHOL & LIQUOR FACTORY PLC' },
+        { name: 'twitter:description', content: 'Welcome to DESTA ALCOHOL & LIQUOR FACTORY PLC – Discover the Art of Distilling Excellence.\n EVERY STEP IS METICULOUSLY CRAFTED TO BRING YOU UNPARALLELED QUALITY AND FLAVOR!.' },
         { name: 'twitter:image', content: 'https://www.destaalcohol.et/pictures/desta-logo.png' },
 
         // Mobile / PWA
@@ -61,7 +61,7 @@ export default defineNuxtConfig({
           innerHTML: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "DESTA ALCOHOL & LIQUOR PLC",
+            "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
             "url": "https://www.destaalcohol.et/",
             "logo": "https://www.destaalcohol.et/pictures/desta-logo.png",
             "sameAs": [

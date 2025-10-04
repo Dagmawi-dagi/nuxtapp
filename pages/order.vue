@@ -5,13 +5,14 @@ definePageMeta({
 })
 
 useSeoMeta({
-  title: "Order Online - DESTA ALCOHOL & LIQUOR PLC",
-  description: "Place your order directly with DESTA ALCOHOL & LIQUOR PLC. Choose from vodka, gin, ouzo, zebib, superment, lemon, coffee, apple, annanas, denatured alcohol, and sanitizer. Available for local and export orders in Ethiopia.",
-  ogTitle: "Order Online - DESTA ALCOHOL & LIQUOR PLC",
-  ogDescription: "Submit your order online for Desta Alcohol & Liquor PLC products. Available for Local and Export. Vodka, Gin, Ouzo, Zebib, Superment, Lemon, Coffee, Apple, Annanas, Denatured Alcohol, and Sanitizer.",
+  title: "Order Online - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  description: "Place your order directly with DESTA ALCOHOL & LIQUOR FACTORY PLC. Choose from vodka, gin, ouzo, zebib, superment, lemon, coffee, apple, annanas, denatured alcohol, and sanitizer. Available for local and export orders in Ethiopia.",
+  ogTitle: "Order Online - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  ogDescription: "Submit your order online for DESTA ALCOHOL & LIQUOR FACTORY PLC products. Available for Local and Export. Vodka, Gin, Ouzo, Zebib, Superment, Lemon, Coffee, Apple, Annanas, Denatured Alcohol, and Sanitizer.",
   ogUrl: "https://www.destaalcohol.et/order",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
+  robots: 'index, follow',
   keywords: "order Desta alcohol Ethiopia, Desta vodka order, Desta gin order, Desta ouzo order, Desta zebib order, Desta liquor factory order, Ethiopia alcohol export order, buy liquor Ethiopia online"
 })
 
@@ -26,7 +27,7 @@ useHead({
         "name": "Alcohol & Liquor Orders",
         "provider": {
           "@type": "Organization",
-          "name": "DESTA ALCOHOL & LIQUOR PLC",
+          "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
           "url": "https://www.destaalcohol.et/",
           "logo": "https://www.destaalcohol.et/pictures/desta-logo.png",
           "contactPoint": {

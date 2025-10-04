@@ -8,13 +8,14 @@ definePageMeta({
 })
 
 useSeoMeta({
-  title: "About Us - DESTA ALCOHOL & LIQUOR PLC",
-  description: "Learn about DESTA ALCOHOL & LIQUOR PLC, Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Discover our mission, vision, core values, and team.",
-  ogTitle: "About Us - DESTA ALCOHOL & LIQUOR PLC",
-  ogDescription: "Learn about DESTA ALCOHOL & LIQUOR PLC, Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Discover our mission, vision, core values, and team.",
+  title: "About Us - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  description: "Learn about DESTA ALCOHOL & LIQUOR FACTORY PLC, Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Discover our mission, vision, core values, and team.",
+  ogTitle: "About Us - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  ogDescription: "Learn about DESTA ALCOHOL & LIQUOR FACTORY PLC, Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Discover our mission, vision, core values, and team.",
   ogImage:"https://www.destaalcohol.com/pictures/desta-logo.png", // choose a hero image or team image
   ogUrl: "https://www.destaalcohol.et/aboutUs",
-  twitterCard: "summary_large_image"
+  twitterCard: "summary_large_image",
+  robots: 'index, follow',
 })
 
 useHead({
@@ -25,7 +26,7 @@ useHead({
       innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "DESTA ALCOHOL & LIQUOR PLC",
+        "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
         "url": "https://www.destaalcohol.et",
         "logo": "https://www.destaalcohol.com/pictures/desta-logo.png",
         "foundingDate": "2001",
@@ -48,7 +49,7 @@ useHead({
             "jobTitle": "General Manager"
           }
         ],
-        "description": "DESTA ALCOHOL & LIQUOR PLC is Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Learn about our mission, vision, objectives, and core values."
+        "description": "DESTA ALCOHOL & LIQUOR FACTORY PLC is Ethiopia's premier producer of premium quality alcohol and liquor since 2001. Learn about our mission, vision, objectives, and core values."
       })
     } 
   ]
@@ -265,7 +266,7 @@ const openProductModal = (product)=>{
         </div>
 
         <MazCarousel  :hide-scrollbar="true" >
-            <template #title>  <h4 class="maz-m-0" style="text-align: center;">Customers’ review</h4> </template>
+            <template #title>  <h4 class="maz-m-0" style="text-align: center; color: #0072b8;">Customers review</h4> </template>
             <MazCard  v-for="(rev, i) in customerReview" :key="i"  style="min-width: 300px; max-width: 300px;" >
                 <template #content>
                     <div style="display: flex; gap: 10px; align-items: center;">

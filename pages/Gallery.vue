@@ -16,14 +16,15 @@ const galleryImages = Gallery.flatMap(g => g.images)
 
 // Nuxt SEO meta
 useSeoMeta({
-  title: "Gallery - DESTA ALCOHOL & LIQUOR PLC",
-  description: galleryDescriptions || "Explore the Desta Alcohol & Liquor PLC gallery showcasing our community, staff, compound, certifications, and achievements.",
-  ogTitle: "Gallery - DESTA ALCOHOL & LIQUOR PLC",
-  ogDescription: galleryDescriptions || "Explore the Desta Alcohol & Liquor PLC gallery showcasing our community, staff, compound, certifications, and achievements.",
+  title: "Gallery - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  description: galleryDescriptions || "Explore the DESTA ALCOHOL & LIQUOR FACTORY PLC gallery showcasing our community, staff, compound, certifications, and achievements.",
+  ogTitle: "Gallery - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  ogDescription: galleryDescriptions || "Explore the DESTA ALCOHOL & LIQUOR FACTORY PLC gallery showcasing our community, staff, compound, certifications, and achievements.",
   ogUrl: "https://www.destaalcohol.et/gallery",
   ogImage:"https://www.destaalcohol.et/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-  keywords: `Desta alcohol gallery, Ethiopia liquor factory photos, ${galleryTitles}`
+  keywords: `Desta alcohol gallery, Ethiopia liquor factory photos, ${galleryTitles}`,
+  robots: 'index, follow',
 })
 
 useHead({
@@ -34,7 +35,7 @@ useHead({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Gallery - Desta Alcohol & Liquor PLC",
+        "name": "Gallery - DESTA ALCOHOL & LIQUOR FACTORY PLC",
         "url": "https://www.destaalcohol.et/gallery",
         "about": galleryTitles,
         "hasPart": Gallery.map((item, idx) => ({

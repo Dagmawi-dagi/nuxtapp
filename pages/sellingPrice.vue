@@ -7,20 +7,21 @@ definePageMeta({
 })
 
 useSeoMeta({
-  title: "Factory Selling Prices - DESTA ALCOHOL & LIQUOR PLC",
-  description: "Check the official factory selling prices for DESTA ALCOHOL & LIQUOR PLC products in Ethiopia. View vodka, gin, ouzo, zebib, superment, lemon, coffee, apple, annanas, denatured alcohol, and sanitizer prices with and without tax.",
-  ogTitle: "Factory Selling Prices - DESTA ALCOHOL & LIQUOR PLC",
-  ogDescription: "Official factory price list for Desta Alcohol & Liquor PLC – Vodka, Gin, Ouzo, Zebib, Superment, Lemon, Coffee, Apple, Annanas, Denatured Alcohol, and Sanitizer. Prices include Excise Tax & VAT.",
+  title: "Factory Selling Prices - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  description: "Check the official factory selling prices for DESTA ALCOHOL & LIQUOR FACTORY PLC products in Ethiopia. View vodka, gin, ouzo, zebib, superment, lemon, coffee, apple, annanas, denatured alcohol, and sanitizer prices with and without tax.",
+  ogTitle: "Factory Selling Prices - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  ogDescription: "Official factory price list for DESTA ALCOHOL & LIQUOR FACTORY PLC – Vodka, Gin, Ouzo, Zebib, Superment, Lemon, Coffee, Apple, Annanas, Denatured Alcohol, and Sanitizer. Prices include Excise Tax & VAT.",
   ogUrl: "https://www.destaalcohol.et/sellingPrice",
   ogImage: "https://www.destaalcohol.com/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
+  robots: 'index, follow',
   keywords: "factory alcohol prices Ethiopia, Desta vodka price, Desta gin price, Desta ouzo price, Desta zebib price, Desta liquor PLC price list, Ethiopian liquor factory prices"
 })
 
 const sellingPriceSchema = computed(() => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Factory Selling Prices - DESTA ALCOHOL & LIQUOR PLC",
+  "name": "Factory Selling Prices - DESTA ALCOHOL & LIQUOR FACTORY PLC",
   "description": "Official factory alcohol & liquor selling prices including excise tax and VAT in Ethiopia.",
   "url": "https://www.destaalcohol.et/sellingPrice",
   "numberOfItems": FactorySellingPrice.length,
@@ -32,7 +33,7 @@ const sellingPriceSchema = computed(() => ({
       "name": item.item,
       "brand": {
         "@type": "Brand",
-        "name": "DESTA ALCOHOL & LIQUOR PLC"
+        "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC"
       },
       "offers": {
         "@type": "Offer",

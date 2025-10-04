@@ -23,8 +23,8 @@ try {
 const vacanciesSchema = computed(() => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Job Vacancies at DESTA ALCOHOL & LIQUOR PLC",
-  "description": "Current career opportunities and job openings at DESTA ALCOHOL & LIQUOR PLC",
+  "name": "Job Vacancies at DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  "description": "Current career opportunities and job openings at DESTA ALCOHOL & LIQUOR FACTORY PLC",
   "url": "https://www.destaalcohol.et/vacancy",
   "numberOfItems": vacancies.value?.length || 0,
   "itemListElement": vacancies.value?.map((vacancy, index) => ({
@@ -39,7 +39,7 @@ const vacanciesSchema = computed(() => ({
       "employmentType": "FULL_TIME",
       "hiringOrganization": {
         "@type": "Organization",
-        "name": "DESTA ALCOHOL & LIQUOR PLC",
+        "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
         "sameAs": "https://www.destaalcohol.et/",
         "logo": {
           "@type": "ImageObject",
@@ -70,13 +70,14 @@ const vacanciesSchema = computed(() => ({
 }))
 
 useSeoMeta({
-  title: "Careers - DESTA ALCOHOL & LIQUOR PLC",
-  description: "Join DESTA ALCOHOL & LIQUOR PLC. Explore current job openings and career opportunities in Ethiopia's premier alcohol production company.",
-  ogTitle: "Careers - DESTA ALCOHOL & LIQUOR PLC", 
-  ogDescription: "Join DESTA ALCOHOL & LIQUOR PLC. Explore current job openings and career opportunities.",
+  title: "Careers - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  description: "Join DESTA ALCOHOL & LIQUOR FACTORY PLC. Explore current job openings and career opportunities in Ethiopia's premier alcohol production company.",
+  ogTitle: "Careers - DESTA ALCOHOL & LIQUOR FACTORY PLC", 
+  ogDescription: "Join DESTA ALCOHOL & LIQUOR FACTORY PLC. Explore current job openings and career opportunities.",
   ogUrl: "https://www.destaalcohol.et/vacancy",
   ogImage: "https://www.destaalcohol.et/pictures/desta-logo.png",
-  twitterCard: "summary_large_image"
+  twitterCard: "summary_large_image",
+  robots: 'index, follow',
 })
 
 useHead({

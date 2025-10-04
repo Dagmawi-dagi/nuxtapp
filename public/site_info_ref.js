@@ -280,33 +280,33 @@ export const aboutUs_p = [
 
 export const customerReview = [
     {
-        name: "alula molla",
-        location: "mekelle tigray",
-        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when." ,
+        name: "Alula Molla",
+        location: "MEKELLE TIGRAY",
+        review: "I’m very impressed with the quality of service I received. The team was professional, responsive, and made the whole process easy. Highly recommended!" ,
         rating: 4
     },
     {
-        name: "alula molla",
-        location: "shire tigray",
-        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when." ,
+        name: "Kidane Abrha",
+        location: "SHIRE TIGRAY",
+        review: "This company truly values its customers. They went above and beyond to ensure everything was delivered on time and with great attention to detail.",
         rating: 5
     },
     {
-        name: "alula molla",
-        location: "mekelle tigray",
-        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when." ,
+        name: "Kedebe Hailemariam",
+        location: "MAYCHEW TIGRAY",
+        review: "I have been working with them for a while, and their consistency is amazing. Always reliable, always supportive, and always focused on results." ,
         rating: 3
     },
     {
         name: "alula molla",
-        location: "mekelle tigray",
-        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when." ,
+        location: "ADIGRAT TIGRAY",
+        review: "Their expertise and commitment really stand out. I felt confident knowing I was in good hands, and the outcome was exactly what I hoped for." ,
         rating: 5
     },
     {
         name: "alula molla",
-        location: "mekelle tigray",
-        review: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when." ,
+        location: "ADWA TIGRAY",
+        review: "From start to finish, the experience was outstanding. Friendly staff, excellent communication, and a final result that exceeded my expectations." ,
         rating: 5
     },
 ]
