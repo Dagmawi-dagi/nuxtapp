@@ -64,6 +64,7 @@ export default defineNuxtConfig({
             "name": "DESTA ALCOHOL & LIQUOR FACTORY PLC",
             "url": "https://www.destaalcohol.et/",
             "logo": "https://www.destaalcohol.et/pictures/desta-logo.png",
+            "description": "Desta Alcohol and Liquors Factory is the leading manufacturer and supplier of distilled alcohols of both colorant and non-colorant alcoholic liquors based on the international beverage standards and specifications in Ethiopia.",
             "sameAs": [
               "https://www.facebook.com/destaalcohol",
               "https://www.twitter.com/destaalcohol",
