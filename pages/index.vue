@@ -11,7 +11,7 @@ useSeoMeta({
   ogTitle: "Home - DESTA ALCOHOL & LIQUOR PLC",
   ogDescription: "Welcome to DESTA ALCOHOL & LIQUOR PLC – Discover the Art of Distilling Excellence.\n EVERY STEP IS METICULOUSLY CRAFTED TO BRING YOU UNPARALLELED QUALITY AND FLAVOR!",
   ogUrl: "https://www.destaalcohol.et/",
-  ogImage: "https://www.destaalcohol.et/og-image.jpg",
+  ogImage: "https://www.destaalcohol.et/pictures/desta-logo.png",
   twitterCard: "summary_large_image"
 })
 
