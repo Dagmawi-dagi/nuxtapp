@@ -15,8 +15,13 @@ useSeoMeta({
   ogUrl: "https://www.destaalcohol.et/",
   ogImage: "https://www.destaalcohol.et/pictures/desta-logo.png",
   twitterCard: "summary_large_image",
-   robots: 'index, follow',
+  robots: 'index, follow',
   keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
+})
+useHead({
+  meta: [
+    { name:"google-site-verification", content:"BYpoZQV2gmyX_kvcuQC-KjO9tBV9d6euznqamJLxCDA" },
+  ],
 })
 
 </script>
