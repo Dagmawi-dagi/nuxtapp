@@ -43,7 +43,7 @@ useHead({
             "brand": products.map(p => ({
               "@type": "Product",
               "name": p.name,
-              "image": `https://www.destaalcohol.et/pictures/${p.img}`,
+              "image": `https://www.destaalcohol.et/pictures/Products/${p.img}`,
               "description": p.description,
               "offers": {
                 "@type": "Offer",
