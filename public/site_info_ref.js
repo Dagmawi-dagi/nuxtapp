@@ -233,35 +233,38 @@ export const  products = [
 export const Gallery = [
     {   
         "title": "Community Sport",
-        "images" : ["test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg"],
+        "images" : ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg"],
         "p": [
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint."
+            "At Desta Alcohol & Liquor PLC, we believe in building strong ties with the community by supporting local sports and athletic programs. Over the years, we have proudly sponsored tournaments, teams, and events that encourage youth participation and promote healthy lifestyles. Our commitment goes beyond business—we value the role of sports in bringing people together and inspiring future generations.",
+            "Through these initiatives, our company has been recognized with numerous awards and trophies, a reflection of our dedication not only to excellence in our industry but also to social responsibility. We remain committed to uplifting our community by fostering teamwork, perseverance, and passion through sporting activities, ensuring that the legacy of unity and growth continues for years to come."
         ]
+
+
     },
-    {   
-        "title": "Certifications",
-        "images" : ["test.jpg"],
-        "p": [
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint."
-        ]
-    },
-    {   
-        "title": "our Compound",
-        "images" : ["test.jpg"],
-        "p": [
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
-        ]
-    },
-    {   
-        "title": "our Stuff",
-        "images" : ["test.jpg"],
-        "p": [
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
-        ]
-    },
+    // {   
+    //     "title": "Certifications",
+    //     "images" : ["test.jpg"],
+    //     "p": [
+    //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint."
+    //     ]
+    // },
+    // {   
+    //     "title": "our Compound",
+    //     "images" : ["test.jpg"],
+    //     "p": [
+    //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+    //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+    //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+    //     ]
+    // },
+    // {   
+    //     "title": "our Stuff",
+    //     "images" : ["test.jpg"],
+    //     "p": [
+    //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+    //         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, repellendus dicta sapiente quas maxime recusandae corrupti velit praesentium laborum eius minima asperiores dolorum distinctio quod debitis aperiam reiciendis reprehenderit, temporibus pariatur, ipsa neque earum assumenda? Ab deserunt animi dolores, eos non minima quisquam voluptatum neque consectetur! Eius eligendi inventore sint.",
+    //     ]
+    // },
 ]
 
 export const aboutUs_p = [
