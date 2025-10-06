@@ -1,1 +1,0 @@
-import{_ as e,d as t,e as r,z as n}from"./5-Ct17GO.js";const c={__name:"spinner",props:{color:String,width:String},setup(o){return(l,a)=>(r(),t("div",{class:"spinner",style:n({width:o.width,height:o.width,borderTopColor:o.color,borderBottomColor:o.color,borderLeftColor:o.color})},null,4))}},s=e(c,[["__scopeId","data-v-7f51fe09"]]);export{s as _};

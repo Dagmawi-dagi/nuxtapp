@@ -1,1 +1,0 @@
-import{_ as a,d as r,p as o,q as t,ae as n,e as l}from"./5-Ct17GO.js";const p={};function u(e,s,_,d,i,c){return l(),r("div",null,[s[0]||(s[0]=o("h2",null,"404 PAGE NOT FOUND ",-1)),o("p",null,t((e._.provides[n]||e.$route).params.slug),1)])}const m=a(p,[["render",u]]);export{m as default};
