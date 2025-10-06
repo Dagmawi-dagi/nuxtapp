@@ -1,5 +1,7 @@
 <script setup>
 
+import { SEO_KEYWORDS } from '@/public/SEOkeywords'
+
 definePageMeta({
     layout:"default",
     nav: false,
@@ -10,8 +12,13 @@ definePageMeta({
 // ADD THIS - Prevent search engines from indexing this page
 useSeoMeta({
   title: "Age Verification - DESTA ALCOHOL & LIQUOR FACTORY PLC",
-  description: "Age verification required to access DESTA ALCOHOL & LIQUOR FACTORY PLC",
-//   robots: 'noindex, nofollow, noimageindex' // This is crucial!
+  description: "Desta Alcohol and Liquors Factory is the leading manufacturer and supplier of distilled alcohols of both colorant and non-colorant alcoholic liquors based on the international beverage standards and specifications in Ethiopia.",
+  ogTitle: "Home - DESTA ALCOHOL & LIQUOR FACTORY PLC",
+  ogDescription: "Welcome to DESTA ALCOHOL & LIQUOR FACTORY PLC – Discover the Art of Distilling Excellence.\n EVERY STEP IS METICULOUSLY CRAFTED TO BRING YOU UNPARALLELED QUALITY AND FLAVOR!",
+  ogUrl: "https://www.destaalcohol.et/",
+  ogImage: "https://www.destaalcohol.et/pictures/desta-logo.png",
+  twitterCard: "summary_large_image",
+  keywords: SEO_KEYWORDS().getAllKeywords().join(', ')
 })
 
 const ageVerificationError = ref({

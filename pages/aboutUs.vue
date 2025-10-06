@@ -295,7 +295,7 @@ const openProductModal = (product)=>{
             <template #title>  <h4 class="maz-m-0" style="text-align: center;">Latest News</h4> </template>
             <MazCard class="blogcard" v-for="(blogPost, i) in blogPosts" :key="i"  :images="[{src:`/blog/${blogPost?.coverImg}`,alt:'blog post cover image'}]" :gallery-height="200" style="min-width: 300px; max-width: 400px;" >
                 <template #title>
-                    <h5 style="margin: 0">  Celebrating 25 Years of Success: A Milestone of Growth and Gratitude </h5>
+                    <h5 style="margin: 0">  {{ blogPost.title }} </h5>
                     <span style="font-size: 12px; color: #666666;"> {{  format(blogPost.createdAt, 'MMM dd,yyyy') }} </span>
                 </template>
                 <template #content>
