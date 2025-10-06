@@ -74,7 +74,7 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
             <NuxtLink  to="/" class="nav-link" >Home</NuxtLink>
             <NuxtLink  to="/aboutUs"  class="nav-link" >About Us</NuxtLink>
             <NuxtLink  to="/contactUs" class="nav-link" >Contact</NuxtLink>
-            <NuxtLink  to="/sellingPrice" class="nav-link" >Selling Price</NuxtLink>
+            <!-- <NuxtLink  to="/sellingPrice" class="nav-link" >Selling Price</NuxtLink> -->
             <NuxtLink  to="/order" class="nav-link" >Order</NuxtLink>
             <NuxtLink  to="/blog" class="nav-link" >Blog</NuxtLink>
             <NuxtLink  to="/Gallery" class="nav-link" >Gallery</NuxtLink>
@@ -102,7 +102,7 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
                     <a  @click=" $router.push('/').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link">Home</a>
                     <a  @click=" $router.push('/aboutUs').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >About Us</a>
                     <a  @click=" $router.push('/contactUs').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Contact</a>
-                    <a  @click=" $router.push('/sellingPrice').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Selling Price</a>
+                    <!-- <a  @click=" $router.push('/sellingPrice').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Selling Price</a> -->
                     <a  @click=" $router.push('/order').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Order</a>
                     <a  @click=" $router.push('/blog').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Blog</a>
                     <a  @click=" $router.push('/Gallery').then( ()=>isMobileMenuOpen = false)" class="mobile-nav-link" >Gallery</a>

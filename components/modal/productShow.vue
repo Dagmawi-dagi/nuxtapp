@@ -23,7 +23,7 @@ onMounted(()=>{
                     <img src="/assets/pictures/desta-logo.png" alt="logo" class="logo" >
                     <span :style="{color:productData.color,fontWeight:'bold',marginRight:'-10px'}">{{ productData.name }}</span>
                 </h1>
-                <p class="product-description">{{ productData.description }}</p>
+                <p class="product-description" style="margin-left: 0;">{{ productData.description }}</p>
                 <div class="product-values">
                     <p v-for="(v,i) in productData.values" :key="i">• {{v}} </p>
                 </div>
@@ -31,7 +31,7 @@ onMounted(()=>{
                 <div class="product-values" style="margin-bottom: 0;">
                     <p v-for="(size,i) in productData.sizes" :key="i" >• {{ size }}</p>
                 </div>
-                <h2 class="nutritional-title">packaging</h2>
+                <h2 class="nutritional-title" >packaging</h2>
                 <div class="product-values" style="margin-bottom: 0;">
                     <p v-for="(pac,i) in productData.packaging" :key="i" >• {{ pac }}</p>
                 </div>
@@ -115,7 +115,7 @@ onMounted(()=>{
 .nutritional-title {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin: 10px 0;
     color: #152a4a;
 }
 
@@ -124,6 +124,7 @@ onMounted(()=>{
     line-height: 1.6;
     color: #666;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 @media (max-width: 768px) {
