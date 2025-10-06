@@ -3,7 +3,19 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: false },
   ssr: true,
-  modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-easy-lightbox','@vueform/nuxt','maz-ui/nuxt'],
+  modules: ['@vueuse/nuxt', '@pinia/nuxt', 'nuxt-easy-lightbox', '@vueform/nuxt', 'maz-ui/nuxt', '@nuxtjs/sitemap'],
+  site:{url:"https://www.destaalcohol.et"},
+  sitemap: {
+    exclude: [
+      '/dashboard/**', // Exclude everything under /dashboard
+      '/sellingPrice/**',     // If you ever use /admin routes
+      '/ageVerification/**'
+    ],
+    defaults: {
+      changefreq: 'weekly',
+      priority: 0.7,
+    },
+  },
   css: ['@/assets/style/global.scss'],
   mazUi: {
     injectComponents: true,
@@ -79,5 +91,3 @@ export default defineNuxtConfig({
   }
 
 })
-
-  
