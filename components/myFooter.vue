@@ -137,7 +137,8 @@ const subscribe =async ()=>{
             <!-- Map Section -->
             <div class="map-section">
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d1029.2200462132528!2d39.54935840348577!3d13.489887122019104!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d13.4905432!2d39.5497745!5e1!3m2!1sen!2set!4v1741256970436!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d1029.2200462132528!2d39.54935840348577!3d13.489887122019104!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d13.4905432!2d39.5497745!5e1!3m2!1sen!2set!4v1741256970436!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m8!1m3!1d1029.2200462132528!2d39.54935840348577!3d13.489887122019104!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d13.4905432!2d39.5497745!5e1!3m2!1sen!2set!4v1741256970436!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -189,4 +190,10 @@ const subscribe =async ()=>{
 // @import '../sections/styles/newsletterSub.scss';
 @use '/assets/style/newsletterSub.scss' as *;
 @use '/assets/style/footer/index.scss' as *;
+
+iframe{
+    & .directions-card.directions-card-medium-large{
+        display: none !important;
+    }   
+}
 </style>

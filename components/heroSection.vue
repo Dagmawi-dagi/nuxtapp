@@ -5,7 +5,9 @@ import logo from '@/assets/pictures/Products/alcohol 70.png';
 // libs
 import gsap from 'gsap';
 //composables
-const { tablet,mobilePhone } = useBreakPoint()
+const { tablet,mobilePhone,xs,bkPoint,laptop } = useBreakPoint()
+
+const myMD = bkPoint.between('xs','mobilePhone')
 
 const resizeImg = computed(()=>{
     if( mobilePhone.value) {
@@ -18,9 +20,12 @@ const resizeImg = computed(()=>{
             { marginRight: "67%"},
             { marginLeft: "72%"},
             { marginRight: "72%"},
-            { marginLeft: "15%"}
+            { marginLeft: "14%"},
+            { marginLeft: "74%"},
+
         ]
     }
+
     if(tablet.value) {
         return [
             { marginLeft: "55%"},
@@ -31,9 +36,26 @@ const resizeImg = computed(()=>{
             { marginRight: "72%"},
             { marginLeft: "79%"},
             { marginRight: "79%"},
-            { marginLeft: "4%"}
+            { marginLeft: "4%"},
+            { marginLeft: "82%"},
+
         ] 
     }
+    if(laptop.value) {
+        return [
+            { marginLeft: "55%"},
+            { marginRight: "55%"},
+            { marginLeft: "64%"},
+            { marginRight: "64%"},
+            { marginLeft: "72%"},
+            { marginRight: "72%"},
+            { marginLeft: "79%"},
+            { marginRight: "79%"},
+            { marginLeft: "4%"},
+            { marginLeft: "82%"},
+
+        ] 
+    }   
     return [
             { marginLeft: "56%"},
             { marginRight: "56%"},
@@ -43,23 +65,30 @@ const resizeImg = computed(()=>{
             { marginRight: "74%"},
             { marginLeft: "82%"},
             { marginRight: "82%"},
-            { marginLeft: "-1%"}
+            { marginLeft: "-1%"},
+            { marginLeft: "85%"},
         ]
 })
 
 const resizeneon = computed(()=>{
+    if( xs.value) {
+        return { width: "370px"}
+    }
+    if( myMD.value) {
+        return { width: "430px"}
+    }
     if( mobilePhone.value) {
-        return { width: "410px"}
+        return { width: "450px"}
     }
     if(tablet.value) {
-        return { width: "570px"}
+        return { width: "58 0px"}
     }
     return { width: "600px"}
 })
 onMounted(()=>{
     
-    gsap.to(".img1",{ scale: "1.4", duration: 1,ease:"linear"}).then((el)=>{
-        gsap.to(".img1",{ scale: "1.3", duration: 2,ease:"linear"})
+    gsap.to(".img1",{ scale: "1.3", duration: 1,ease:"linear"}).then((el)=>{
+        gsap.to(".img1",{ scale: "1.2", duration: 2,ease:"linear"})
     })
 
     gsap.to(".img2",{...resizeImg.value[0],  duration: 2, delay: 1, ease:"linear"})
@@ -71,6 +100,7 @@ onMounted(()=>{
     gsap.to(".img8",{ ...resizeImg.value[6],  duration: 2, delay: 1, ease:"linear"})
     gsap.to(".img9",{ ...resizeImg.value[7], duration: 2, delay: 1, ease:"linear"})
     gsap.to(".img10",{ ...resizeImg.value[8], duration: 2, delay: 1, ease:"linear"})
+    gsap.to(".img11",{ ...resizeImg.value[9], duration: 2, delay: 1, ease:"linear"})
     // stagger effect (fade in one by one)
     gsap.to(".img",{ opacity: 1, duration: 3, delay:1, stagger: .3})
     // the neon light
@@ -120,6 +150,7 @@ const scrollToSection = (id) => {
             <img  class="img img8" src="/pictures/Products/lime.png" alt="pruduct image">
             <img  class="img img9" src="/pictures/Products/zebib.png" alt="pruduct image">
             <img  class="img img10" src="/pictures/Products/ananas.png" alt="pruduct image">
+            <img  class="img img11" src="/pictures/Products/alcohol 95.png" alt="pruduct image">
         </div>
 
         <div class="chat" @click="$router.push('/contactUs')">    

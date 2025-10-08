@@ -104,7 +104,7 @@ const showimg = (imgRef,isArr,index)=>{
     width: 100%;
     max-height: 400px;
     min-height: 300px;
-    object-fit: fill;
+    object-fit: cover;
     display: block;
     color: #fff;
 }
