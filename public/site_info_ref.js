@@ -65,7 +65,7 @@ export const  products = [
         img: 'vodka.png',
         description: "providing the first of its kind desta Vodka, it is ultra premium, specifically  distilled and excellently filtered Vodka,  Best test, perfection in every detail that excites and make you enjoy & feel your best!",
         values: ['Alcohol: 40% Alc/vol'],
-        sizes: ['1000ml','890ml','750ml'],
+        sizes: ['1000ml','750ml','500ml'],
         packaging: ['Glass bottle'],
         bgColor: '#e6edff',
         color:'#0072b8',
