@@ -24,17 +24,25 @@ onMounted(()=>{
                     <span :style="{color:productData.color,fontWeight:'bold',marginRight:'-10px'}">{{ productData.name }}</span>
                 </h1>
                 <p class="product-description" style="margin-left: 0;">{{ productData.description }}</p>
-                <div class="product-values">
-                    <p v-for="(v,i) in productData.values" :key="i">• {{v}} </p>
-                </div>
-                <h2 class="nutritional-title">sizes</h2>
+
+               
+                <h2 class="nutritional-title">Alcohol</h2>
+                <p class="product-values" style="margin-bottom: 0;">
+                    • {{ productData.values[0].split(":")[1] }}
+                </p>
+
+                <h2 class="nutritional-title">Sizes</h2>
                 <div class="product-values" style="margin-bottom: 0;">
                     <p v-for="(size,i) in productData.sizes" :key="i" >• {{ size }}</p>
                 </div>
-                <h2 class="nutritional-title" >packaging</h2>
+                <h2 class="nutritional-title" >Packaging</h2>
                 <div class="product-values" style="margin-bottom: 0;">
                     <p v-for="(pac,i) in productData.packaging" :key="i" >• {{ pac }}</p>
                 </div>
+                <h2 class="nutritional-title" v-if="productData.Usage" >Usage</h2>
+                <p class="product-values" style="margin-bottom: 0;">
+                    {{productData.Usage}}
+                </p>
             </div>
         </div>
     </Overlay>

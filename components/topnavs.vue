@@ -63,8 +63,8 @@ const toggleMobileMenu = () => {  isMobileMenuOpen.value = !isMobileMenuOpen.val
               </div>
             </div>
             <div class="logo-text">
-              <div class="logo-name">Desta</div>
-              <div class="logo-tagline">Alcohol & Liquor PLC</div>
+              <div class="logo-tagline">ደስታ የአልኮልና መጠጦች ፋብሪካ ኅላ.የተ.የግል.ማ</div>
+              <div class="logo-name">Desta Alcohol and Liquor Factory PLC</div>
             </div>
           </NuxtLink>
         </div>

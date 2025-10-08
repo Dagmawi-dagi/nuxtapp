@@ -61,43 +61,44 @@ export const ourNumbers = {
 
 export const  products = [
     {   
-        name: "Premium Vodka", 
+        name: "Premium Desta Vodka", 
         img: 'vodka.png',
-        description: "providing the first of its kind desta Vodka, it is ultra premium, specifically  distilled and excellently filtered Vodka,  Best test, perfection in every detail that excites and make you enjoy & feel your best!",
+        description: "Providing the first of its kind desta Vodka, it is ultra premium, specifically  distilled and excellently filtered Vodka,  Best test, perfection in every detail that excites and make you enjoy & feel your best!",
         values: ['Alcohol: 40% Alc/vol'],
         sizes: ['1000ml','750ml','500ml'],
         packaging: ['Glass bottle'],
+        Usage:"Best to take with Orange, Lemon, Watermelon, Ice and Gaswater ",
         bgColor: '#e6edff',
         color:'#0072b8',
         borderColor: '#0072b8',
     },
     {   
-        name: "Desta Uozo", 
+        name: "Desta Ouzo", 
         img: 'uozo.png',
         description: "DESTA Ouzo is well blended alcoholic beverage with anise-flavor, appetizer and distinctive test liquor.",
         values: ['Alcohol: 41% Alc/vol'],
-        sizes: ['1000ml','890ml','750ml','500ml','250ml'],
-        packaging: ['Glass bottle'],
+        sizes: ['1000ml','890ml','500ml','250ml','And as per customer requests'],
+        packaging: ['Glass bottles','plastic bottles'],
         bgColor: '#e6edff',
         color:'#0072b8',
         borderColor: '#0072b8',
     },
     {   
-        name: "Desta Gin", 
+        name: "Desta Dry Gin", 
         img: 'gin.png',
         description: "DESTA Gin is well blended alcoholic beverage with a mixed of junpier flavor and other aromatic herbs which give it dry junpier test liquor.",
         values: ['Alcohol: 41% Alc/vol'],
-        sizes: ['1000ml','890ml','750ml','500ml','250ml'],
-        packaging: ['Glass bottle'],
+        sizes: ['1000ml','890ml','500ml','250ml','And as per customer requests'],
+        packaging: ['Glass bottles','plastic bottles'],
         // bgColor: '#ffefef',
         bgColor: '#e6edff',
         color: '#b80303',
         borderColor: '#b80303',
     },
     {   
-        name: "Desta Apple", 
+        name: "Apple", 
         img: 'apple.png',
-        description: "A deliciously smooth apple-flavored spirit that balances sweetness with a gentle kick. Desta Apple is light, crisp, and refreshing — perfect for those who enjoy a fruity twist.",
+        description: "A deliciously smooth apple-flavored spirit that balances sweetness with a gentle kick. Desta Apple is light, crisp and refreshing perfect for those who enjoy a fruity twist.",
     values: ['Alcohol: 30% Alc/vol'],
         sizes: ['890ml'],
         packaging: ['Glass bottle'],
@@ -107,7 +108,7 @@ export const  products = [
         borderColor: '#b80303',
     },
     {   
-        name: "Desta superment", 
+        name: "superment", 
         img: 'superment.png',
          description: "Infused with natural mint essence, Desta Superment offers a cooling and invigorating taste. A perfect blend of smoothness and freshness, ideal for those who love a vibrant and minty finish.",
     values: ['Alcohol: 25% Alc/vol'],
@@ -119,7 +120,7 @@ export const  products = [
         borderColor: '#035d2c',
     },
     {   
-        name: "Desta Coffee", 
+        name: "Coffee", 
         img: 'coffee.png',
         description: "Crafted for coffee lovers, Desta Coffee combines the rich aroma of roasted coffee with a smooth, spirited base. Every sip delivers warmth, depth, and Ethiopian character.",
          values: ['Alcohol: 30% Alc/vol'],
@@ -131,7 +132,7 @@ export const  products = [
         borderColor: '#030204',
     },
     {   
-        name: "Desta Aprative", 
+        name: "Aprative", 
         img: 'aprative.png',
         description: "An elegant aperitif with a perfectly balanced blend of herbs and citrus notes. Desta Aprative awakens the palate and enhances every celebration with its smooth, lightly bitter finish.",
      values: ['Alcohol: 32% Alc/vol'],
@@ -143,7 +144,7 @@ export const  products = [
         borderColor: '#481e00',
     },
     {   
-        name: "Desta Lime", 
+        name: "Lime", 
         img: 'lime.png',
        description: "Bright, zesty, and full of energy — Desta Lime delivers the refreshing essence of lime with a subtle spirit base. A lively drink for those who enjoy citrus freshness in every sip.",
    values: ['Alcohol: 32% Alc/vol'],
@@ -155,7 +156,7 @@ export const  products = [
         borderColor: '#95994b',
     },
     {   
-        name: "Desta Zebib", 
+        name: "Zebib", 
         img: 'zebib.png',
         description: "A distinctive Ethiopian classic with deep aroma and bold flavor. Desta Zebib embodies tradition and craftsmanship — smooth, refined, and proudly local.",
      values: ['Alcohol: 41% Alc/vol'],
@@ -168,7 +169,7 @@ export const  products = [
 
     },
     {   
-        name: "Desta Ananas", 
+        name: "Ananas", 
         img: 'ananas.png',
         description: "A tropical delight infused with the natural sweetness of pineapple. Desta Ananas offers a juicy, vibrant flavor with a smooth finish — perfect for warm days and celebrations.",
     values: ['Alcohol: 32% Alc/vol'],
@@ -180,7 +181,7 @@ export const  products = [
         borderColor: '#97771f',
     },
     {   
-        name: "Desta Cognac", 
+        name: "Cognac", 
         img: 'cognac.png',
         description: "A refined spirit aged to perfection, Desta Cognac delivers a rich, smooth taste with notes of oak and spice. Crafted for those who appreciate depth, warmth, and sophistication.",
     values: ['Alcohol: 37% Alc/vol'],
@@ -192,7 +193,7 @@ export const  products = [
         borderColor: '#534000',
     },
     {   
-        name: "Desta Alcohol", 
+        name: "Denatured Alcohol", 
         img: 'alcohol 70.png',
         description: "High-quality 70% alcohol ideal for hygienic and industrial use. Desta Alcohol ensures purity and effectiveness for reliable disinfection and cleaning purposes.",
     values: ['Alcohol: 70% Alc/vol'],
@@ -204,7 +205,7 @@ export const  products = [
         borderColor: '#5b2b7c',
     },
     {   
-        name: "Desta Alcohol", 
+        name: "Denatured Alcohol", 
         img: 'alcohol 95.png',
          description: "Premium-grade 95% alcohol designed for laboratory, medical, and cleaning applications. Desta Alcohol guarantees exceptional purity and performance in every use.",
         values: ['Alcohol: 90% Alc/vol'],
@@ -216,7 +217,7 @@ export const  products = [
         borderColor: '#5b2b7c',
     },
     {   
-        name: "Desta Sanitizer", 
+        name: "Sanitizer", 
         img: 'sanitizer.png',
            description: "Formulated with 80% alcohol, Desta Sanitizer provides powerful protection and freshness. Gentle on hands yet tough on germs — trusted quality from Desta Alcohol & Liquor Factory.",
      values: ['Alcohol: 80% Alc/vol'],
@@ -277,37 +278,38 @@ export const aboutUs_p = [
     "•   Vision   • To be socially and environmentally exemplary, responsible, reliable and leading supplier of standard alcohols and liquors based on the international beverage standards and specifications in Ethiopia and endeavoring to generate foreign currencies by exporting standard liquors and industrial alcohol to the global and neighboring markets and contributing an import substitute to the economic growths of the country.",
     "•   Mission   • To be a competitive manufacturing plant in the production process and supply of high quality of alcoholic liquors while keeping the environment friendly save and ensuring sustainable use of resources by employing high-tech alcoholic processing distillery plant in the country in particular in the region.",
     "•	Objective   • <ul> -To produce and supply the highest quality of distilled alcoholic products to the local and international markets at a competitive prices and provide customer delivery services    -To strengthen the link between agricultural and industrial sectors as agro-industry processing chains of the country’s alcoholic markets   -To support the collective efforts made in the development of modern beverage distillery industries of the country and contributing to the income generation means of local business communities engaged in selling of beverages -To be envisaged as a center of educational excellence for chemical researches and practitioners of higher institutes such as university and college learners of the country, particularly the region.",
-    "•	Core Values  • <ul> -Supplying high quality products -Providing steadfast and reliable delivery services -Being reliable supplier of industrial alcohols -Pioneer owner of beverage technology and facilities -Socially responsible and environmentally friend"
+    "•	Core Values  • <ul> -Supplying high quality products -Providing steadfast and reliable delivery services -Being reliable supplier of industrial alcohols -Pioneer owner of beverage technology and facilities -Socially responsible and environmentally friend",
+    "•	Certification  • Our Company is nationaly certified by the Ethiopian Conformity Assessment Enterprise for the use of Quality Product Mark that ratifies  the market competitiveness  in the domestic markets of Ethiopia and is annually renewable."
 ]
 
 export const customerReview = [
     {
-        name: "Alula Molla",
-        location: "MEKELLE TIGRAY",
+        name: "Muruts G/mariam",
+        location: "Mekelle Tigray",
         review: "I’m very impressed with the quality of service I received. The team was professional, responsive, and made the whole process easy. Highly recommended!" ,
-        rating: 4
+        rating: 5
     },
     {
-        name: "Kidane Abrha",
-        location: "SHIRE TIGRAY",
+        name: "Tsegay Hadush",
+        location: "Shire Tigray",
         review: "This company truly values its customers. They went above and beyond to ensure everything was delivered on time and with great attention to detail.",
         rating: 5
     },
     {
-        name: "Kedebe Hailemariam",
-        location: "MAYCHEW TIGRAY",
-        review: "I have been working with them for a while, and their consistency is amazing. Always reliable, always supportive, and always focused on results." ,
-        rating: 3
+        name: "Azmera Tadesse",
+        location: "Mokoni Tigray",
+        review: "I have been working with them for a long, and their consistency is amazing. Always reliable, always supportive, and always focused on results." ,
+        rating: 5
     },
     {
-        name: "alula molla",
-        location: "ADIGRAT TIGRAY",
+        name: "Hadish Ftsum",
+        location: "Wukro Tigray",
         review: "Their expertise and commitment really stand out. I felt confident knowing I was in good hands, and the outcome was exactly what I hoped for." ,
         rating: 5
     },
     {
-        name: "alula molla",
-        location: "ADWA TIGRAY",
+        name: "Brhane Berhe",
+        location: "Axum Tigray",
         review: "From start to finish, the experience was outstanding. Friendly staff, excellent communication, and a final result that exceeded my expectations." ,
         rating: 5
     },
