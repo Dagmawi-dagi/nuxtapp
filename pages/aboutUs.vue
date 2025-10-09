@@ -250,11 +250,9 @@ const openProductModal = (product)=>{
                 </div>
             </div>
             <div class="profile-right">
-                <br>
                 <div class="quote-container">
                     <blockquote class="profile-quote">{{ manager.quote }}</blockquote>
                 </div>
-                <br>
                 <br>
                 <div class="bio-container">
                     <div class="profile-bio">

@@ -81,7 +81,7 @@ const resizeneon = computed(()=>{
         return { width: "450px"}
     }
     if(tablet.value) {
-        return { width: "58 0px"}
+        return { width: "580px"}
     }
     return { width: "600px"}
 })

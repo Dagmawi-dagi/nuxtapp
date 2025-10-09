@@ -22,10 +22,13 @@ export const address = [
 
 export const manager = {
     quote: "Research, Consult, Train, Elevate Excellence in Every Endeavor.",
-    p:[
-        "At our company, we believe that true excellence is achieved through dedication, innovation, and collaboration. From the very beginning, our mission has been to deliver solutions that not only meet the needs of our clients but also create a lasting impact in their industries and communities. We are committed to upholding the highest standards of integrity, professionalism, and service in everything we do.",
-        "As General Manager, I am proud to lead a team that shares this vision and works tirelessly to bring it to life. Together, we focus on building trust, driving growth, and fostering meaningful partnerships. Our strength lies in our people, and through their expertise and passion, we continue to grow stronger, achieve more, and move closer to our goal of becoming a trusted leader in our field."
-    ]
+    p: [
+            "At Desta Alcohol & Liquor Factory, our journey is driven by a clear vision  to redefine quality and innovation in Ethiopia’s distillery industry. We take pride in being pioneers, blending tradition with advanced technology to produce exceptional products that reflect our dedication to excellence. Every bottle we craft tells the story of progress, passion, and the pursuit of perfection.",
+            "As General Manager, I am proud to lead a company that continues to evolve  constantly upgrading and updating itself through the adoption of cutting-edge technologies, sustainable practices, and continuous improvement across all areas of operation. Our state-of-the-art, human-hand-free production systems stand as a testament to our commitment to efficiency, quality, and innovation.",
+            "We also recognize our responsibility to the environment and the community that surrounds us. Every year, we invest millions in environmental protection, community development, green area improvements, and high-tech infrastructure, ensuring that our growth contributes to a better future for all.",
+            "Beyond production, Desta Alcohol & Liquor Factory plays a vital role in the regional socioeconomic landscape  creating jobs, supporting local development, and driving progress across Tigray and beyond. We take pride in being an exemplary regional company, a reliable taxpayer, and most notably, the first distiller in Tigray, setting standards for excellence and accountability.",
+            "Founded through the vision and determination of two visionary brothers, Desta Alcohol & Liquor Factory embodies the spirit of innovation, resilience, and shared success. Together with our dedicated team, we continue to build trust, drive growth, and strengthen partnerships as we move toward our goal of becoming a trusted leader in Ethiopia’s distillery industry and a beacon of excellence for the region."
+        ]
 }
 
 export const  herosction = {
@@ -146,7 +149,7 @@ export const  products = [
     {   
         name: "Lime", 
         img: 'lime.png',
-       description: "Bright, zesty, and full of energy — Desta Lime delivers the refreshing essence of lime with a subtle spirit base. A lively drink for those who enjoy citrus freshness in every sip.",
+       description: "Bright, zesty, and full of energy  Desta Lime delivers the refreshing essence of lime with a subtle spirit base. A lively drink for those who enjoy citrus freshness in every sip.",
    values: ['Alcohol: 32% Alc/vol'],
         sizes: ['890ml'],
         packaging: ['Glass bottle'],
@@ -158,7 +161,7 @@ export const  products = [
     {   
         name: "Zebib", 
         img: 'zebib.png',
-        description: "A distinctive Ethiopian classic with deep aroma and bold flavor. Desta Zebib embodies tradition and craftsmanship — smooth, refined, and proudly local.",
+        description: "A distinctive Ethiopian classic with deep aroma and bold flavor. Desta Zebib embodies tradition and craftsmanship  smooth, refined, and proudly local.",
      values: ['Alcohol: 41% Alc/vol'],
         sizes: ['890ml'],
         packaging: ['Glass bottle'],
@@ -171,7 +174,7 @@ export const  products = [
     {   
         name: "Ananas", 
         img: 'ananas.png',
-        description: "A tropical delight infused with the natural sweetness of pineapple. Desta Ananas offers a juicy, vibrant flavor with a smooth finish — perfect for warm days and celebrations.",
+        description: "A tropical delight infused with the natural sweetness of pineapple. Desta Ananas offers a juicy, vibrant flavor with a smooth finish  perfect for warm days and celebrations.",
     values: ['Alcohol: 32% Alc/vol'],
         sizes: ['890ml'],
         packaging: ['Glass bottle'],
@@ -219,7 +222,7 @@ export const  products = [
     {   
         name: "Sanitizer", 
         img: 'sanitizer.png',
-           description: "Formulated with 80% alcohol, Desta Sanitizer provides powerful protection and freshness. Gentle on hands yet tough on germs — trusted quality from Desta Alcohol & Liquor Factory.",
+           description: "Formulated with 80% alcohol, Desta Sanitizer provides powerful protection and freshness. Gentle on hands yet tough on germs  trusted quality from Desta Alcohol & Liquor Factory.",
      values: ['Alcohol: 80% Alc/vol'],
         sizes: ['1000ml','250ml'],
         packaging: ['Plastic bottle',],
@@ -235,7 +238,7 @@ export const Gallery = [
         "title": "Community Sport",
         "images" : ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg","8.jpg"],
         "p": [
-            "At Desta Alcohol & Liquor PLC, we believe in building strong ties with the community by supporting local sports and athletic programs. Over the years, we have proudly sponsored tournaments, teams, and events that encourage youth participation and promote healthy lifestyles. Our commitment goes beyond business—we value the role of sports in bringing people together and inspiring future generations.",
+            "At Desta Alcohol & Liquor PLC, we believe in building strong ties with the community by supporting local sports and athletic programs. Over the years, we have proudly sponsored tournaments, teams, and events that encourage youth participation and promote healthy lifestyles. Our commitment goes beyond businesswe value the role of sports in bringing people together and inspiring future generations.",
             "Through these initiatives, our company has been recognized with numerous awards and trophies, a reflection of our dedication not only to excellence in our industry but also to social responsibility. We remain committed to uplifting our community by fostering teamwork, perseverance, and passion through sporting activities, ensuring that the legacy of unity and growth continues for years to come."
         ]
 

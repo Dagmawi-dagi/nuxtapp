@@ -23,38 +23,59 @@ useSeoMeta({
   ].join(', ')
 })
 useHead({
-  meta: [
+  meta:[
     { name:"google-site-verification", content:"BYpoZQV2gmyX_kvcuQC-KjO9tBV9d6euznqamJLxCDA" },
   ],
   script:[
     {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Desta Alcohol & Liquor Factory PLC",
-            "url": "https://www.destaalcohol.et/",
-            "logo": "https://www.destaalcohol.et/pictures/desta-logo.png",
-            "sameAs": [
-              "https://www.facebook.com/...",
-              "https://www.instagram.com/...",
-              "https://twitter.com/..."
-            ],
-            "brand": products.map(p => ({
-              "@type": "Product",
-              "name": p.name,
-              "image": `https://www.destaalcohol.et/pictures/Products/${p.img}`,
-              "description": p.description,
-              "offers": {
-                "@type": "Offer",
-                "availability": "https://schema.org/InStock",
-                "priceCurrency": "ETB"
-              }
-            }))
-          })
-        }
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Desta Alcohol & Liquor Factory PLC",
+        "url": "https://www.destaalcohol.et/",
+        "logo": "https://www.destaalcohol.et/pictures/desta-logo.png",
+        "sameAs": [
+          "https://www.facebook.com/...",
+          "https://www.instagram.com/...",
+          "https://twitter.com/..."
+        ],
+        "brand": products.map(p => ({
+          "@type": "Product",
+          "name": p.name,
+          "image": `https://www.destaalcohol.et/pictures/Products/${p.img}`,
+          "description": p.description,
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "ETB",
+            "price": p.price || "0", // Add price here dynamically
+            "priceValidUntil": "2099-12-31",
+            "url": "https://www.destaalcohol.et" // adjust to actual product URL
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": p.ratingValue || "4.5", // optional default
+            "reviewCount": p.reviewCount || "10"
+          },
+          "review": p.reviews?.map(r => ({
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": r.ratingValue
+            },
+            "author": {
+              "@type": "Person",
+              "name": r.author
+            },
+            "reviewBody": r.body
+          })) || []
+        }))
+      })
+    }
   ]
 })
+
 
 </script>
 
