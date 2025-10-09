@@ -147,7 +147,7 @@ export const  products = [
         borderColor: '#481e00',
     },
     {   
-        name: "Lime", 
+        name: "lemon", 
         img: 'lime.png',
        description: "Bright, zesty, and full of energy  Desta Lime delivers the refreshing essence of lime with a subtle spirit base. A lively drink for those who enjoy citrus freshness in every sip.",
    values: ['Alcohol: 32% Alc/vol'],
