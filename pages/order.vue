@@ -1002,11 +1002,13 @@ const orderMail = async (FD,form$)=>{
         label="Product"
         input-type="search"
         autocomplete="off"
-        :items="async  function(){
-           return products.flatMap(product => 
-              product.sizes.map(size => ({
-                  value: `${product.name} ${size}`,
-                  label: `${product.name} ${size}`
+        :items="async function() {
+          return products.flatMap(product =>
+            product.sizes
+              .filter(size => size !== 'And as per customer requests') // filter unwanted string
+              .map(size => ({
+                value: `${product.name} ${size}`,
+                label: `${product.name} ${size}`
               }))
           )
         }"
