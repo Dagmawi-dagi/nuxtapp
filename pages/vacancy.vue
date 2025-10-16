@@ -12,7 +12,15 @@ try {
             apiref: '/api/vacancy/GET',
         },
     })
-    vacancies.value = data.value?.data
+
+  const now = new Date() // current server time (Nuxt server-rendered)
+  
+  // Filter out expired vacancies
+  vacancies.value = (data.value?.data || []).filter(vac => {
+    const deadline = new Date(vac.deadline)
+    return deadline >= now
+  })
+  
 } catch (err) {
     frontEndErrorFeedback().err(err)
     console.log(err);

@@ -154,6 +154,11 @@
 
 .profile-right{
     text-align: justify;
+    hyphens: auto;
+
+    @media (max-width: 600px) { 
+        text-align: left; /* or right/center if fits your design */
+    }
 }
 
 .profile-image {
@@ -313,8 +318,12 @@ blockquote::after {
     margin-bottom: 30px;
     text-align: justify;
     line-height: 1.6;
+     hyphens: auto;
     p{
         margin-top: 10px;
+    }
+    @media (max-width: 600px) { 
+        text-align: left; /* or right/center if fits your design */
     }
 }
 .custom-list {
@@ -345,12 +354,16 @@ blockquote::after {
     }
 }
 
+@media (max-width: 600px) {
+    .section-text {
+        text-align: left; /* or right/center if fits your design */
+    }
+}
+
 @media (max-width: 576px) {
- 
     .section-title {
         font-size: 24px;
     }
-
 }
 
 /* Media queries for responsiveness */
