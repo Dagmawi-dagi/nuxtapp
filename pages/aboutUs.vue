@@ -2,6 +2,9 @@
 import { aboutUs_p,aboutUsCardswithIcon,manager,customerReview,products } from '@/public/site_info_ref';
 import { format } from 'date-fns';
 import { SEO_KEYWORDS } from '@/public/SEOkeywords'
+
+const config = useRuntimeConfig()
+
 definePageMeta({
     layout:"default",
     name: 'aboutUs',
@@ -242,7 +245,7 @@ const openProductModal = (product)=>{
         <div class="profile-card">
             <div class="profile-left">
                 <div class="profile-container">
-                    <img src="/assets/pictures/manager.jpg" alt="Desta Areki" class="profile-image">
+                    <img :src="`${config.public.baseURL}/pictures/manager.jpg`" alt="Desta Areki" class="profile-image">
                     <div style="display: flex; flex-direction: column; align-self:center">
                         <h4 class="profile-name">Mussie Hagos </h4>
                         <p class="profile-title">General Manager</p>
